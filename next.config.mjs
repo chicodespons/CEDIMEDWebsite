@@ -1,4 +1,32 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
+import createNextIntlPlugin from 'next-intl/plugin';
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin();
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "1337",
+        pathname: "/uploads/**/*",
+      },
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+      }
+    ]
+  },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+
+    return config;
+  },
+};
+
+export default withNextIntl(nextConfig);

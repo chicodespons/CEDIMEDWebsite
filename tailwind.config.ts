@@ -9,9 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        vubBlue: "#003399",
+        uzGreen: "#BCBE00",
+        grayBack: "#F3F3F3",
+        uzGray: "#5F604A",
+        vubOrange: "#ff6600"
       },
+      fontFamily: {
+        sans: ["Roboto", "Arial", "Helvetica", "sans-serif"]
+      }
     },
   },
   plugins: [],
