@@ -20,14 +20,13 @@ async function fetchPijlers(locale: string) {
 }
 
 const CardSection = async ({locale}: CardSectionProps) => {
- let pijlers: Pijler[] | null = await fetchPijlers(locale);
+ const pijlers: Pijler[] | null = await fetchPijlers(locale);
 
  if (pijlers) {
   pijlers.sort((a, b) => a.order - b.order);
 } else {
   return <p>No team members found for the provided locale.</p>;
 }
- pijlers = pijlers.sort((a,b) => a.order - b.order);
  console.log("Pijlers: ", pijlers);
     const cards = [
         {

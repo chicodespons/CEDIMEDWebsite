@@ -40,7 +40,7 @@ async function fetchTeamMembers(locale: string) {
 
 const TeamSection = async({locale}: {locale:string}) => {
 
-    let teamMembers: TeamMember[] | null = await fetchTeamMembers(locale);
+    const teamMembers: TeamMember[] | null = await fetchTeamMembers(locale);
     if (teamMembers) {
       teamMembers.sort((a, b) => a.order - b.order);
   } else {
