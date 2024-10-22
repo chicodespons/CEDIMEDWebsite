@@ -25,8 +25,14 @@ interface TeamMember {
     };
   }
 
+  const shouldFetchData = false; // Set this to false to skip fetching
+
 
 async function fetchTeamMembers(locale: string) {
+
+  if (!shouldFetchData) {
+    return null; // Skip fetching and return null
+  }
     const res = await fetch(`http://localhost:1337/api/team-members?locale=${locale}&populate=*`);
     const data = await res.json();
     return data.data || null;

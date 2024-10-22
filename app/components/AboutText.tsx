@@ -1,8 +1,14 @@
 import React from 'react'
 import RichTextRenderer from './RichTextRenderer';
 
+const shouldFetchData = false; // Set this to false to skip fetching
+
 
 async function fetchAbout(locale: string) {
+
+  if (!shouldFetchData) {
+    return null; // Skip fetching and return null
+  }
 
     const res = await fetch(`http://localhost:1337/api/about?locale=${locale}`);
     

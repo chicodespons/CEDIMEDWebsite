@@ -1,8 +1,14 @@
 import React from 'react'
 import RichTextRenderer from './RichTextRenderer';
 
+const shouldFetchData = false;
+
 
 async function fetchPijler(locale: string, slug:string) {
+
+  if (!shouldFetchData) {
+    return null;
+  }
 
     const res = await fetch(`http://localhost:1337/api/pijlers?filters[link][$eq]=${slug}&${locale}`);
     const data = await res.json();
