@@ -17,10 +17,10 @@ export function flattenAttributes(data: any): any {
     }
   
     // Initialize an object with an index signature for the flattened structure
-    let flattened: { [key: string]: any } = {};
+    const flattened: { [key: string]: any } = {};
   
     // Iterate over each key in the object
-    for (let key in data) {
+    for (const key in data) {
       // Skip inherited properties from the prototype chain
       if (!data.hasOwnProperty(key)) continue;
   
