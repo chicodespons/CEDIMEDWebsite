@@ -73,7 +73,7 @@ const ReviewsSection = () => {
                                 <div 
                                     className="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between flex-grow mb-4 transition duration-300 ease-in-out transform hover:bg-uzGreen active:bg-uzGray"
                                 >
-                                    <p className="font-light text-black mb-4 line-clamp-2">"{item.quote}"</p>
+                                    <p className="font-light text-black mb-4 line-clamp-2">{item.quote}</p>
                                     <p className="text-sm font-semibold text-black">- {item.author}</p>
                                 </div>
                             </div>

@@ -1,7 +1,7 @@
 import ContactForm from "@/app/components/ContactForm";
 import GoogleMapsComponent from "@/app/components/GoogleMapsComponent";
 
-export default async function Contact({ params: { locale}}: { params: { locale: string} }) {
+export default async function Contact() {
   
   
     return (

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link';
 import Logo from '@/app/assets/logo.svg';
 
-const LogoBanner = ({ t }: { t: (key: string) => string }) => {
+const LogoBanner = () => {
     return (
       <div className="bg-white py-4 ">
         <div className="container mx-auto flex justify-between items-center">

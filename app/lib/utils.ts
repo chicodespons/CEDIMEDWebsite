@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export function flattenAttributes(data: any): any {
     // Check if data is a plain object; return as is if not
     if (

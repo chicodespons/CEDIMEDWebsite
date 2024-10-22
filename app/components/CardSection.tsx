@@ -3,7 +3,6 @@ import Card from './Card';
 import { Pijler } from '../types/Pijler';
 
 type CardSectionProps = {
-  t: (key: string) => string,
   locale: string
 }
 
@@ -14,7 +13,7 @@ async function fetchPijlers(locale: string) {
   return data.data; 
 }
 
-const CardSection = async ({ t, locale}: CardSectionProps) => {
+const CardSection = async ({locale}: CardSectionProps) => {
  let pijlers: Pijler[] = await fetchPijlers(locale);
  pijlers = pijlers.sort((a,b) => a.order - b.order);
  console.log("Pijlers: ", pijlers);
