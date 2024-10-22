@@ -17,10 +17,10 @@ export default async function Home({ params: { locale }}: HomePageProps) {
   return (
     <div>
       <Hero t={t} locale={locale}/>
-      <CardSection t={t} locale={locale}/>
+      <CardSection locale={locale}/>
       <NieuwsSection />
       <ReviewsSection />
-      <LogoBanner t={t} />
+      <LogoBanner />
     </div>
   );
 }
