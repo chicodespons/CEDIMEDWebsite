@@ -40,12 +40,12 @@ async function fetchTeamMembers(locale: string) {
 
 const TeamSection = async({locale}: {locale:string}) => {
 
-    let teamMembers: TeamMember[] = await fetchTeamMembers(locale);
-    teamMembers = teamMembers.sort((a,b) => a.order-b.order)
-
-    if (!teamMembers) {
-        return <p>No teamMembers found for provided locale</p>
-    }
+    let teamMembers: TeamMember[] | null = await fetchTeamMembers(locale);
+    if (teamMembers) {
+      teamMembers.sort((a, b) => a.order - b.order);
+  } else {
+      return <p>No team members found for the provided locale.</p>;
+  }
 
 return (
     <section className="py-14 bg-gray-100">
