@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link';
-import Logo from '../../app/assets/logo.svg';
+// import Logo from '../../app/assets/logo.svg';
 
 const LogoBanner = () => {
     return (
@@ -19,7 +19,7 @@ const LogoBanner = () => {
           </div>
           {/* Logo 2 */}
           <div className="w-1/3 flex justify-center px-2">
-          <Link href="/" aria-label="Go to homepage" className="h-auto w-auto">
+          {/* <Link href="/" aria-label="Go to homepage" className="h-auto w-auto">
             <figure className="h-auto w-full max-w-xs sm:h-auto sm:w-48 flex justify-center cursor-pointer">
               <Logo
                 className="h-auto w-full max-h-16 sm:h-full sm:w-full object-contain"
@@ -27,7 +27,7 @@ const LogoBanner = () => {
               />
               <figcaption className="sr-only">CEDIMED Logo</figcaption>
             </figure>
-          </Link>
+          </Link> */}
         </div>
 
         {/* <div className="w-1/3 flex justify-center ">
