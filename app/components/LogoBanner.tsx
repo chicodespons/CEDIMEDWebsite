@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link';
-import Logo from '@/app/assets/logo.svg';
+import Logo from '../../app/assets/logo.svg';
 
 const LogoBanner = () => {
     return (

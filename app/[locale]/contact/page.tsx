@@ -1,5 +1,5 @@
-import ContactForm from "@/app/components/ContactForm";
-import GoogleMapsComponent from "@/app/components/GoogleMapsComponent";
+import ContactForm from "../../components/ContactForm";
+import GoogleMapsComponent from "../../components/GoogleMapsComponent";
 
 export default function Contact() {
   

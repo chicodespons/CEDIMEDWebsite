@@ -1,4 +1,4 @@
-import PijlerText from "@/app/components/PijlerText";
+import PijlerText from "../../components/PijlerText";
 import { setRequestLocale } from "next-intl/server";
 
 type Params = {

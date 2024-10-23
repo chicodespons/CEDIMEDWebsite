@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "@/app/globals.css";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
-import { routing } from "@/i18n/routing";
+import { routing } from "../../i18n/routing";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 

@@ -1,5 +1,5 @@
-import AboutText from "@/app/components/AboutText";
-import TeamSection from "@/app/components/TeamSection";
+import AboutText from "../../components/AboutText";
+import TeamSection from "../../components/TeamSection";
 import { setRequestLocale } from "next-intl/server";
 
 type Params = {
