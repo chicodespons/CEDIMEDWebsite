@@ -1,7 +1,7 @@
 import ContactForm from "@/app/components/ContactForm";
 import GoogleMapsComponent from "@/app/components/GoogleMapsComponent";
 
-export default async function Contact() {
+export default function Contact() {
   
   
     return (

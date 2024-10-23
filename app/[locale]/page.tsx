@@ -1,4 +1,4 @@
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Hero from '@/app/components/Hero';
 import CardSection from '@/app/components/CardSection';
 import NieuwsSection from '@/app/components/NieuwsSection';
@@ -12,6 +12,7 @@ type HomePageProps = {
 }
 
 export default async function Home({ params: { locale }}: HomePageProps) {
+  setRequestLocale(locale);
   const t = await getTranslations(); // Fetch translations for the current locale
 
   return (
