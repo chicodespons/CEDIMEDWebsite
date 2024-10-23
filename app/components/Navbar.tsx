@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Logo from '../..app/assets/logo.svg';
+import Logo from '../../app/assets/logo.svg';
 import { useTranslations } from 'next-intl';
 import LanguageSwitcher from './LanguageSwitcher';
 
