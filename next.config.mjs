@@ -4,8 +4,6 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-
-  basePath: '/cedimedwebsite',
   
   images: {
     remotePatterns: [
