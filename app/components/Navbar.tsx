@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-// import Logo from '../../app/assets/logo.svg';
+import Logo from '../../app/assets/logo.svg';
 import { useTranslations } from 'next-intl';
 import LanguageSwitcher from './LanguageSwitcher';
 
@@ -22,12 +22,12 @@ const Navbar = ({ locale }: NavbarProps) => {
     <nav className="bg-white shadow-xl">
       <div className="container mx-auto flex justify-between items-center py-4 px-7">
         {/* Logo */}
-        {/* <Link href="/" aria-label="Go to homepage" className="h-10 w-auto">
+        <Link href="/" aria-label="Go to homepage" className="h-10 w-auto">
           <figure className="h-full w-auto cursor-pointer">
             <Logo className="h-full w-auto" aria-label="CEDIMED Logo" />
             <figcaption className="sr-only">CEDIMED Logo</figcaption>
           </figure>
-        </Link> */}
+        </Link>
 
         {/* Hamburger Menu for mobile */}
         <div className="md:hidden">
