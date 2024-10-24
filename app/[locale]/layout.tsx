@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { routing } from "../../i18n/routing";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import "../globals.css";
 
 // Define the types for layout props
 interface LayoutProps {
