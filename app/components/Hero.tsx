@@ -17,7 +17,7 @@ const Hero = ({ t, locale }: { t: (key: string) => string, locale:string }) => {
       </div>
 
       {/* Overlay for dark background and above text */}
-      <div className="absolute top-[3rem] sm:top-[4.5rem] left-4 sm:left-6 right-4 sm:right-6 h-[60%] sm:h-[70%] bg-black opacity-50 z-20"></div> {/* Adjusted size for smaller screens */}
+      <div className="absolute top-[3rem] sm:top-[4.5rem] left-4 sm:left-6 right-4 sm:right-6 h-[70%] sm:h-[70%] bg-black opacity-50 z-20"></div> 
 
       {/* Content */}
       <div className="absolute inset-0 z-30 flex flex-col justify-center items-center text-center px-4">
