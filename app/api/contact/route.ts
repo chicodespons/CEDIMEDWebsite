@@ -13,7 +13,7 @@ export async function POST(request: Request) {
     console.log("Received request!!!")
     try {
         const body = await request.json();
-        const { firstName, lastName, email, tel, message, recaptchaToken } = body;
+        const { firstName, lastName, email, tel, message, messageType, recaptchaToken } = body;
 
         if (!recaptchaToken){
             return NextResponse.json({ error : "reCAPTCHA token is missing"}, {status: 400});
@@ -50,6 +50,7 @@ export async function POST(request: Request) {
             
             Email: ${email}
             Tel : ${tel || "Not provided"}
+            Onderwerp: ${messageType}
             Message: ${message}`
         };
 
