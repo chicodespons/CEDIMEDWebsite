@@ -9,6 +9,8 @@ const EMAIL_USER = process.env.EMAIL_USER!;
 const EMAIL_PASS = process.env.EMAIL_PASS!;
 
 export async function POST(request: Request) {
+
+    console.log("Received request!!!")
     try {
         const body = await request.json();
         const { firstName, lastName, email, tel, message, recaptchaToken } = body;
@@ -24,7 +26,7 @@ export async function POST(request: Request) {
 
         const reCaptchaData = await reCaptchaRes.json();
 
-        if (!reCaptchaData.succes){
+        if (!reCaptchaData.success){
             return NextResponse.json({ error: "reCAPTCHA verification failed" }, { status: 400});
         }
 
