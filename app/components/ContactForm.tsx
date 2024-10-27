@@ -1,36 +1,74 @@
 'use client';
 import React, { useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
+
+enum MessageType {
+  CLINICAL_CARE = 'klinischeZorg',
+  EDUCATION = 'onderwijs',
+  RESEARCH = 'onderzoek',
+  INNOVATION = 'innovatie',
+}
 
 type ContactFormData = {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
+  tel: string; // Optional
+  messageType: MessageType;
   message: string;
+  recaptchaToken: string;
 };
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<ContactFormData>({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
+    tel: '', // Not required
+    messageType: MessageType.CLINICAL_CARE,
     message: '',
+    recaptchaToken: '',
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleRecaptchaChange = (token: string | null) => {
+    setFormData({
+      ...formData,
+      recaptchaToken: token || '',
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // You can add your submission logic here (e.g., sending data to an API)
-    console.log('Form data:', formData);
+    if (!formData.recaptchaToken) {
+      alert('Please complete the reCAPTCHA.');
+      return;
+    }
 
-    // Simulate form submission success
-    setIsSubmitted(true);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        alert('There was an error submitting the form. Please try again.');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+    }
   };
 
   return (
@@ -40,20 +78,37 @@ const ContactForm: React.FC = () => {
 
         {!isSubmitted ? (
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Name Input */}
+            {/* First Name Input */}
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                Name
+              <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+                First Name
               </label>
               <input
                 type="text"
-                name="name"
-                id="name"
-                value={formData.name}
+                name="firstName"
+                id="firstName"
+                value={formData.firstName}
                 onChange={handleChange}
                 required
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Enter your name"
+                placeholder="Enter your first name"
+              />
+            </div>
+
+            {/* Last Name Input */}
+            <div>
+              <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+                Last Name
+              </label>
+              <input
+                type="text"
+                name="lastName"
+                id="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                required
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Enter your last name"
               />
             </div>
 
@@ -74,6 +129,42 @@ const ContactForm: React.FC = () => {
               />
             </div>
 
+            {/* Telephone Input (Optional) */}
+            <div>
+              <label htmlFor="tel" className="block text-sm font-medium text-gray-700">
+                Telephone (Optional)
+              </label>
+              <input
+                type="tel"
+                name="tel"
+                id="tel"
+                value={formData.tel}
+                onChange={handleChange}
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Enter your telephone number"
+              />
+            </div>
+
+            {/* Message Type Dropdown */}
+            <div>
+              <label htmlFor="messageType" className="block text-sm font-medium text-gray-700">
+                Message Type
+              </label>
+              <select
+                name="messageType"
+                id="messageType"
+                value={formData.messageType}
+                onChange={handleChange}
+                required
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              >
+                <option value={MessageType.CLINICAL_CARE}>Klinische Zorg</option>
+                <option value={MessageType.EDUCATION}>Onderwijs</option>
+                <option value={MessageType.RESEARCH}>Onderzoek</option>
+                <option value={MessageType.INNOVATION}>Innovatie</option>
+              </select>
+            </div>
+
             {/* Message Input */}
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700">
@@ -88,6 +179,14 @@ const ContactForm: React.FC = () => {
                 rows={4}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Enter your message"
+              />
+            </div>
+
+            {/* reCAPTCHA */}
+            <div className="pt-4">
+              <ReCAPTCHA
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                onChange={handleRecaptchaChange}
               />
             </div>
 
