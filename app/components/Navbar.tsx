@@ -30,7 +30,7 @@ const Navbar = ({ locale }: NavbarProps) => {
         </Link>
 
         {/* Hamburger Menu for mobile */}
-        <div className="md:hidden">
+        <div className="xl:hidden">
           <button
             onClick={toggleMenu}
             className="text-gray-700 hover:text-black focus:outline-none"
@@ -53,7 +53,7 @@ const Navbar = ({ locale }: NavbarProps) => {
         </div>
 
         {/* Navigation Links (shown on medium+ screens) */}
-        <nav className="hidden md:flex space-x-2 lg:space-x-6">
+        <nav className="hidden xl:flex space-x-2 lg:space-x-6">
           <Link href={`/${locale}/about`} className="text-uzGray lg:text-xl font-bold hover:text-black">{t('overOns')}</Link>
           <Link href={`/${locale}/clinical-care`} className="text-uzGray lg:text-xl font-bold hover:text-black">{t('klinischeZorg')}</Link>
           <Link href={`/${locale}/education`} className="text-uzGray lg:text-xl font-bold hover:text-black">{t('onderwijs')}</Link>
