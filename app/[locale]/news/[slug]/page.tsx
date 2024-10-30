@@ -9,9 +9,10 @@ type Props = {
 
   // to do: normal newspage without params => that gets the latest news
   //link up to strapi
-  export default function NewsPage({ params }: Props) {
+  //{ params }: Props
+  export default function NewsPage() {
 
-    const slug = params?? "1";
+    // const slug = params?? "1";
 
     return (
         <NewsComponent/>  

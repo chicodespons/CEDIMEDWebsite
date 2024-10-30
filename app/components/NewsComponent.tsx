@@ -1,5 +1,13 @@
+import DefaultImageComponent from "./defaultImageComponent";
 export const NewsComponent: React.FC = () => {
-    
+
+    const authorImage = '/images/author.jpg';
+    const defaultImage = '/images/default_user.png';
+
+    const addDefaultImg = (e: { target: { src: string; }; }) => {
+        e.target.src = defaultImage;
+     }
+
     return (
         <div className="flex flex-col md:flex-row gap-8 p-4 mx-auto">
         {/* Main Content */}
@@ -10,20 +18,10 @@ export const NewsComponent: React.FC = () => {
           <p className="text-gray-600 mb-6">
             Published on April 25, 2023 by Dr. Emily Carter
           </p>
-          <img
-            src="/images/emergency.jpg" // Replace with your image source
-            alt="Emergency medicine"
-            className="w-full h-auto rounded-lg mb-6"
-          />
           <p className="mb-4">
             Emergency medicine is a critical field that requires quick thinking, precise actions, and innovative solutions...llalalalalalall alalalalalal  alalal alala lalal  alalal alllll lll ll
           </p>
           {/* More article content here */}
-          <img
-            src="/images/tools.jpg" // Replace with your image source
-            alt="Medical tools"
-            className="w-full h-auto rounded-lg mt-6"
-          />
           <p className="mt-4">
             In this blog post, we delve into some of the groundbreaking projects our team has been working on...
           </p>
@@ -46,15 +44,19 @@ export const NewsComponent: React.FC = () => {
           <section className="bg-white shadow-md rounded-lg p-4">
             <h2 className="text-lg font-semibold mb-4">Over de Auteur</h2>
             <div className="flex items-center mb-4">
-              <img
-                src="/images/author.jpg" // Replace with author image source
+            <DefaultImageComponent
+                image={authorImage}
+                defaultImage={defaultImage}
                 alt="Dr. Emily Carter"
+                width={48}
+                height={48}
                 className="w-12 h-12 rounded-full mr-4"
               />
               <div>
                 <h3 className="text-base font-semibold">Dr. Emily Carter</h3>
                 <p className="text-sm text-gray-600">Leading expert in emergency medicine with over 15 years of experience...</p>
               </div>
+              
             </div>
           </section>
         </aside>

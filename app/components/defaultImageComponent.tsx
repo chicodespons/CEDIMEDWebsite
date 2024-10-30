@@ -1,0 +1,35 @@
+"use client";
+
+import Image from 'next/image';
+import { useState } from 'react';
+
+interface DefaultImageComponentProps {
+    image: string;
+    defaultImage: string;
+    alt: string;
+    width: number;
+    height: number;
+    className: string;
+}
+
+function DefaultImageComponent({image, defaultImage, alt, width, height, className} : DefaultImageComponentProps) {
+
+  const [src, setSrc] = useState(image);
+
+  const handleImageError = () => {
+    setSrc(defaultImage); // Set path to your default image
+  };
+
+  return (
+    <Image
+      src={src || defaultImage}
+      alt={alt}
+      width={width}
+      height={height}
+      onError={handleImageError} // Fallback on error
+      className={className}
+    />
+  );
+}
+
+export default DefaultImageComponent;
