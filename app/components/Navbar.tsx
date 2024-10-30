@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -8,7 +8,7 @@ import LanguageSwitcher from './LanguageSwitcher';
 
 type NavbarProps = {
   locale: string
-}
+};
 
 const Navbar = ({ locale }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false); // State to track whether the menu is open
@@ -21,7 +21,7 @@ const Navbar = ({ locale }: NavbarProps) => {
   return (
     <nav className="bg-white shadow-xl">
       <div className="container mx-auto flex justify-between items-center py-4 px-7">
-        {/* Logo */}
+        {/* Logo (left) */}
         <Link href="/" aria-label="Go to homepage" className="h-10 w-auto">
           <figure className="h-full w-auto cursor-pointer">
             <Logo className="h-full w-auto" aria-label="CEDIMED Logo" />
@@ -29,7 +29,19 @@ const Navbar = ({ locale }: NavbarProps) => {
           </figure>
         </Link>
 
-        {/* Hamburger Menu for mobile */}
+        {/* Navigation Links (center on larger screens) */}
+        <div className="hidden xl:flex space-x-2 lg:space-x-6">
+          <Link href={`/${locale}/about`} className="text-uzGray lg:text-xl font-bold hover:text-black">{t('overOns')}</Link>
+          <Link href={`/${locale}/clinical-care`} className="text-uzGray lg:text-xl font-bold hover:text-black">{t('klinischeZorg')}</Link>
+          <Link href={`/${locale}/education`} className="text-uzGray lg:text-xl font-bold hover:text-black">{t('onderwijs')}</Link>
+          <Link href={`/${locale}/research`} className="text-uzGray lg:text-xl font-bold hover:text-black">{t('onderzoek')}</Link>
+          <Link href={`/${locale}/innovation`} className="text-uzGray lg:text-xl font-bold hover:text-black">{t('innovatie')}</Link>
+          <Link href={`/${locale}/contact`} className="text-uzGray lg:text-xl font-bold hover:text-black">{t('contact')}</Link>
+          <Link href={`/${locale}/news`} className="text-uzGray lg:text-xl font-bold hover:text-black">{t('nieuws')}</Link>
+          <LanguageSwitcher currentLocale={locale} />
+        </div>
+
+        {/* Hamburger Menu (right, visible on smaller screens) */}
         <div className="xl:hidden">
           <button
             onClick={toggleMenu}
@@ -51,23 +63,11 @@ const Navbar = ({ locale }: NavbarProps) => {
             </svg>
           </button>
         </div>
-
-        {/* Navigation Links (shown on medium+ screens) */}
-        <nav className="hidden xl:flex space-x-2 lg:space-x-6">
-          <Link href={`/${locale}/about`} className="text-uzGray lg:text-xl font-bold hover:text-black">{t('overOns')}</Link>
-          <Link href={`/${locale}/clinical-care`} className="text-uzGray lg:text-xl font-bold hover:text-black">{t('klinischeZorg')}</Link>
-          <Link href={`/${locale}/education`} className="text-uzGray lg:text-xl font-bold hover:text-black">{t('onderwijs')}</Link>
-          <Link href={`/${locale}/research`} className="text-uzGray lg:text-xl font-bold hover:text-black">{t('onderzoek')}</Link>
-          <Link href={`/${locale}/innovation`} className="text-uzGray lg:text-xl font-bold hover:text-black">{t('innovatie')}</Link>
-          <Link href={`/${locale}/contact`} className="text-uzGray lg:text-xl font-bold hover:text-black">{t('contact')}</Link>
-          <Link href={`/${locale}/news`} className="text-uzGray lg:text-xl font-bold hover:text-black">{t('nieuws')}</Link>
-          <LanguageSwitcher currentLocale= {locale} />
-        </nav>
       </div>
 
       {/* Mobile Menu (shown when isOpen is true) */}
       {isOpen && (
-        <div className="md:hidden bg-white shadow-lg">
+        <div className="xl:hidden bg-white shadow-lg">
           <nav className="flex flex-col space-y-4 px-7 py-4">
             <Link href={`/${locale}/about`} className="text-uzGray font-bold hover:text-black" onClick={toggleMenu}>{t('overOns')}</Link>
             <Link href={`/${locale}/clinical-care`} className="text-uzGray font-bold hover:text-black" onClick={toggleMenu}>{t('klinischeZorg')}</Link>
@@ -76,7 +76,7 @@ const Navbar = ({ locale }: NavbarProps) => {
             <Link href={`/${locale}/innovation`} className="text-uzGray font-bold hover:text-black" onClick={toggleMenu}>{t('innovatie')}</Link>
             <Link href={`/${locale}/contact`} className="text-uzGray font-bold hover:text-black" onClick={toggleMenu}>{t('contact')}</Link>
             <Link href={`/${locale}/news`} className="text-uzGray font-bold hover:text-black" onClick={toggleMenu}>{t('nieuws')}</Link>
-            <LanguageSwitcher currentLocale= {locale} />
+            <LanguageSwitcher currentLocale={locale} />
           </nav>
         </div>
       )}
