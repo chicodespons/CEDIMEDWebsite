@@ -4,10 +4,6 @@ export const NewsComponent: React.FC = () => {
     const authorImage = '/images/author.jpg';
     const defaultImage = '/images/default_user.png';
 
-    const addDefaultImg = (e: { target: { src: string; }; }) => {
-        e.target.src = defaultImage;
-     }
-
     return (
         <div className="flex flex-col md:flex-row gap-8 p-4 mx-auto">
         {/* Main Content */}

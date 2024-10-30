@@ -1,10 +1,10 @@
 import { NewsComponent } from "@/app/components/NewsComponent";
 
-type Props = {
-    params: {
-      slug?: string;
-    };
-  };
+// type Props = {
+//     params: {
+//       slug?: string;
+//     };
+//   };
   
 
   // to do: normal newspage without params => that gets the latest news
