@@ -13,6 +13,7 @@ const Hero = ({ t, locale }: { t: (key: string) => string, locale:string }) => {
           fill
           className='object-cover object-center rounded-lg' // Use inline style for object fit and position
           quality={100} // Optional: Set image quality
+          priority
         />
       </div>
 
