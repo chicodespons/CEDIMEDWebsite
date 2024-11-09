@@ -4,6 +4,7 @@ import { NextResponse } from 'next/server';
 
 const locales = ['en', 'nl', 'fr']; // Define the locales you support
 const defaultPaths = ['/']; // Define the default paths to revalidate
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://cedimed.brussels';
 
 export async function POST(request: Request) {
   // Secure the revalidation with a secret key from the webhook
@@ -17,7 +18,7 @@ export async function POST(request: Request) {
     await Promise.all(
       defaultPaths.flatMap((path) =>
         locales.map(async (locale) => {
-          const localizedPath = `/${locale}${path === '/' ? '' : path}`; // Generate the localized path
+          const localizedPath = `${baseUrl}/${locale}${path === '/' ? '' : path}`; // Generate the localized path
           console.log(`Revalidating: ${localizedPath}`);
           // Revalidate the actual page path, not the API route
           revalidatePath(localizedPath);
