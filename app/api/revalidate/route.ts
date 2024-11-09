@@ -25,7 +25,9 @@ export async function POST(request: Request) {
       )
     );
 
-    return NextResponse.json({ revalidated: true });
+    const response = NextResponse.json({ revalidated: true });
+    response.headers.set('Cache-Control', 'no-store, max-age=0');
+    return response;
   } catch (err) {
     console.error('Error revalidating:', err);
     return NextResponse.json({ message: 'Error revalidating' }, { status: 500 });
