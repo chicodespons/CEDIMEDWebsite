@@ -6,15 +6,14 @@ type CardSectionProps = {
   locale: string
 }
 
-const shouldFetchData = false; // Set this to false to skip fetching
-
 async function fetchPijlers(locale: string) {
 
-  if (!shouldFetchData) {
-    return null; // Skip fetching and return null
-  }
-
-  const res = await fetch(`http://localhost:1337/api/pijlers?locale=${locale}`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/pijlers?locale=${locale}`, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
+    },
+    cache: 'force-cache'
+  });
   const data = await res.json();
   return data.data; 
 }
