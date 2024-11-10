@@ -1,35 +1,38 @@
 // app/api/revalidate/route.ts
-import { revalidatePath } from 'next/cache';
 import { NextResponse } from 'next/server';
 
-const locales = ['en', 'nl', 'fr']; // Define the locales you support
-const defaultPaths = ['/']; // Define the default paths to revalidate
+const appId = '573d137f-a7ae-4150-a581-c7800106d480'; // Replace with your DigitalOcean app ID
+const digitalOceanToken = 'dop_v1_92c4db031651bedc323a0b8db8cc0d5d2703727dfe10adbaca6e4d91be2f43d2'; // Store your token in an environment variable for security
 
 export async function POST(request: Request) {
-  // Secure the revalidation with a secret key from the webhook
+  // Secure the webhook using a secret token
   const secret = request.headers.get('x-secret');
   if (secret !== process.env.REVALIDATE_SECRET_TOKEN) {
     return NextResponse.json({ message: 'Invalid secret' }, { status: 401 });
   }
 
   try {
-    // Revalidate each locale-specific version of the default paths
-    await Promise.all(
-      defaultPaths.flatMap((path) =>
-        locales.map(async (locale) => {
-          const localizedPath = `/${locale}${path === '/' ? '' : path}`; // Generate the localized path
-          console.log(`Revalidating: ${localizedPath}`);
-          // Revalidate the actual page path, not the API route
-          revalidatePath(localizedPath);
-        })
-      )
+    // Trigger a rebuild on DigitalOcean using fetch
+    const response = await fetch(
+      `https://api.digitalocean.com/v2/apps/${appId}/deployments`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${digitalOceanToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ force_build: true }),
+      }
     );
 
-    const response = NextResponse.json({ revalidated: true });
-    response.headers.set('Cache-Control', 'no-store');
-    return response;
-  } catch (err) {
-    console.error('Error revalidating:', err);
-    return NextResponse.json({ message: 'Error revalidating' }, { status: 500 });
+    if (!response.ok) {
+      throw new Error(`DigitalOcean API responded with status ${response.status}`);
+    }
+
+    const jsonResponse = await response.json();
+    return NextResponse.json({ message: 'Deployment triggered successfully', data: jsonResponse });
+  } catch (error) {
+    console.error('Error triggering deployment:', error);
+    return NextResponse.json({ message: 'Error triggering deployment', error: error.message }, { status: 500 });
   }
 }
