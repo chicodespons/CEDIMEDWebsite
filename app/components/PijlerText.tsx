@@ -1,14 +1,9 @@
 import React from 'react'
 import RichTextRenderer from './RichTextRenderer';
 
-const shouldFetchData = false;
-
 
 async function fetchPijler(locale: string, slug:string) {
 
-  if (!shouldFetchData) {
-    return null;
-  }
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/pijlers?filters[link][$eq]=${slug}&${locale}`, {
       headers: {
