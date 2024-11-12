@@ -10,7 +10,11 @@ async function fetchPijler(locale: string, slug:string) {
     return null;
   }
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/pijlers?filters[link][$eq]=${slug}&${locale}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/pijlers?filters[link][$eq]=${slug}&${locale}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
+      },
+    });
     const data = await res.json();
     return data.data?.[0] || null;
   }
