@@ -1,6 +1,5 @@
 import React from 'react'
 import RichTextRenderer from './RichTextRenderer';
-import { json } from 'stream/consumers';
 
 const shouldFetchData = false;
 
