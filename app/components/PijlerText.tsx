@@ -1,5 +1,6 @@
 import React from 'react'
 import RichTextRenderer from './RichTextRenderer';
+import { json } from 'stream/consumers';
 
 const shouldFetchData = false;
 
@@ -9,14 +10,21 @@ async function fetchPijler(locale: string, slug:string) {
   if (!shouldFetchData) {
     return null;
   }
-
+  try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/pijlers?filters[link][$eq]=${slug}&${locale}`, {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
       },
     });
+
     const data = await res.json();
+    console.log(JSON.stringify(data,null,2))
     return data.data?.[0] || null;
+
+  } catch (error){
+    console.log("data not fetched correctly: " ,error)
+  }
+    return null;    
   }
 
 const PijlerText = async ({locale,slug}: {locale: string, slug:string }) => {
