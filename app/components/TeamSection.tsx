@@ -25,17 +25,21 @@ interface TeamMember {
     };
   }
 
-  const shouldFetchData = false; // Set this to false to skip fetching
 
 
 async function fetchTeamMembers(locale: string) {
-
-  if (!shouldFetchData) {
-    return null; // Skip fetching and return null
-  }
-    const res = await fetch(`http://localhost:1337/api/team-members?locale=${locale}&populate=*`);
+  try {
+    const res = await fetch(`http://localhost:1337/api/team-members?locale=${locale}&populate=*`, {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
+      },
+    });
     const data = await res.json();
     return data.data || null;
+  } catch (error) {
+    console.log("data not fetched correctly: ", error)
+  }
+  return null;
 }
 
 const TeamSection = async({locale}: {locale:string}) => {

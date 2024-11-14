@@ -1,20 +1,24 @@
 import React from 'react'
 import RichTextRenderer from './RichTextRenderer';
 
-const shouldFetchData = false; // Set this to false to skip fetching
+
 
 
 async function fetchAbout(locale: string) {
-
-  if (!shouldFetchData) {
-    return null; // Skip fetching and return null
-  }
-
-    const res = await fetch(`http://localhost:1337/api/about?locale=${locale}`);
+  try {
+    const res = await fetch(`http://localhost:1337/api/about?locale=${locale}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
+      },
+    });
     
     const data = await res.json();
     console.log(data);
     return data.data || null;
+  } catch (error){
+    console.log("data not fetched correctly: ", error)
+  }
+  return null;
   }
 
 const AboutText = async ({locale}: {locale: string}) => {
