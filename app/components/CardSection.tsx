@@ -8,7 +8,11 @@ type CardSectionProps = {
 
 async function fetchPijlers(locale: string) {
   
-  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/pijlers?locale=${locale}`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/pijlers?locale=${locale}`, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
+    },
+  });
   const data = await res.json();
   return data.data; 
 }
