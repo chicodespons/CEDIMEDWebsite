@@ -7,7 +7,7 @@ type Params = {
   }
 };
 
-export default function ClinicalCare({ params: { locale }}: Params) {
+export default async function ClinicalCare({ params: { locale }}: Params) {
   setRequestLocale(locale);
     return (
       <div>
