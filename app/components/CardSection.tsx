@@ -12,6 +12,8 @@ async function fetchPijlers(locale: string) {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
     },
+    cache: "force-cache",
+    next: { tags: [`pijler-${locale}`]}
   });
   const data = await res.json();
   return data.data; 
