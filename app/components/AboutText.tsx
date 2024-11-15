@@ -6,7 +6,7 @@ import RichTextRenderer from './RichTextRenderer';
 
 async function fetchAbout(locale: string) {
   try {
-    const res = await fetch(`http://localhost:1337/api/about?locale=${locale}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/about?locale=${locale}`, {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
       },

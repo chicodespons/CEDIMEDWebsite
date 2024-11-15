@@ -29,7 +29,7 @@ interface TeamMember {
 
 async function fetchTeamMembers(locale: string) {
   try {
-    const res = await fetch(`http://localhost:1337/api/team-members?locale=${locale}&populate=*`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/team-members?locale=${locale}&populate=*`, {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
       },
