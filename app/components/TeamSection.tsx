@@ -35,6 +35,7 @@ async function fetchTeamMembers(locale: string) {
       },
     });
     const data = await res.json();
+    console.log(JSON.stringify(data,null,2))
     return data.data || null;
   } catch (error) {
     console.log("data not fetched correctly: ", error)
