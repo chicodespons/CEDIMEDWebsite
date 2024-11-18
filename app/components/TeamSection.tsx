@@ -62,7 +62,7 @@ return (
             <div key={index} className="bg-white rounded-lg shadow-lg p-6">
               <div className="flex justify-center mb-4">
                 {member.image && (
-                    <StrapiImage
+                    <img
                     src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${member.image.formats.thumbnail.url}`}
                     alt={member.image.alternativeText || member.name}
                     width={150}
