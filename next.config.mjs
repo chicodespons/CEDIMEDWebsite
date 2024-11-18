@@ -9,7 +9,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: process.env.NEXT_PUBLIC_STRAPI_API_URL || "localhost",
+        hostname: "www.strapi.cedimed.brussels",
         port: "8080",
         pathname: "/uploads/**/*",
       },
