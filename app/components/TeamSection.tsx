@@ -1,5 +1,4 @@
 import React from 'react';
-import { StrapiImage } from './StrapiImage';
 
 interface TeamMember {
     order: number;
