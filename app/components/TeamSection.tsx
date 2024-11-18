@@ -63,7 +63,7 @@ return (
               <div className="flex justify-center mb-4">
                 {member.image && (
                     <StrapiImage
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api${member.image.formats.thumbnail.url}`}
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${member.image.formats.thumbnail.url}`}
                     alt={member.image.alternativeText || member.name}
                     width={150}
                     height={150}
