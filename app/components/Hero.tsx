@@ -12,7 +12,7 @@ const Hero = ({ t, locale }: { t: (key: string) => string, locale:string }) => {
           alt="Emergency and Disaster Medicine"
           fill
           className='object-cover object-center rounded-lg' // Use inline style for object fit and position
-          quality={100} // Optional: Set image quality
+          quality={75} // Optional: Set image quality
           priority
         />
       </div>
@@ -23,25 +23,27 @@ const Hero = ({ t, locale }: { t: (key: string) => string, locale:string }) => {
       {/* Content */}
       <div className="absolute inset-0 z-30 flex flex-col justify-center items-center text-center px-4">
         {/* Title */}
-        <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white">
+        <h1 className="text-xl sm:text-xl md:text-3xl lg:text-4xl font-bold text-white">
         Centre for Emergency & Disaster Medicine Brussels
         </h1>
         {/* Subtitle */}
-        <p className="mt-4 text-sm sm:text-lg md:text-xl text-white">
-          {t("cedimedSlogan")}
+        <p className="mt-4 text-xs md:text-xl text-white">
+          {t("cedimedSlogan1")}
+          <br/>
+          {t("cedimedSlogan2")}
         </p>
 
         {/* Buttons */}
-        <div className="mt-8 space-x-2 sm:space-x-4">
+        <div className="mt-8 grid grid-cols-2 gap-2 ">
           <Link
             href={`/${locale}/about`}
-            className="inline-block px-6 sm:px-8 py-2 sm:py-3 bg-uzGreen text-white font-bold rounded hover:bg-uzGray transition duration-300 text-sm sm:text-base"
+            className="px-2 sm:px-8 py-2 sm:py-3 bg-uzGreen text-white font-bold rounded hover:bg-uzGray transition duration-300 text-sm sm:text-base"
           >
             {t("overOns")}
           </Link>
           <Link
             href={`/${locale}/contact`}
-            className="inline-block px-6 sm:px-8 py-2 sm:py-3 bg-uzGreen text-white font-bold rounded hover:bg-uzGray transition duration-300 text-sm sm:text-base"
+            className="px-2 sm:px-8 py-2 sm:py-3 bg-uzGreen text-white font-bold rounded hover:bg-uzGray transition duration-300 text-sm sm:text-base"
           >
             {t("contact")}
           </Link>
