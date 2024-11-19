@@ -1,4 +1,4 @@
-import DefaultImageComponent from "./defaultImageComponent";
+import DefaultImageComponent from "../defaultImageComponent";
 export const NewsComponent: React.FC = () => {
 
     const authorImage = '/images/author.jpg';

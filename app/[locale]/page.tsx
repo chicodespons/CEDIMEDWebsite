@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Hero from '../../app/components/Hero';
 import CardSection from '../../app/components/CardSection';
-import NieuwsSection from '../../app/components/NieuwsSection';
+import NieuwsSection from '../components/news/NieuwsSection';
 import ReviewsSection from '../../app/components/ReviewSection';
 import LogoBanner from '../../app/components/LogoBanner';
 
@@ -19,7 +19,7 @@ export default async function Home({ params: { locale }}: HomePageProps) {
     <div>
       <Hero t={t} locale={locale}/>
       <CardSection locale={locale}/>
-      <NieuwsSection />
+      <NieuwsSection t={t} locale={locale} />
       <ReviewsSection />
       <LogoBanner />
     </div>

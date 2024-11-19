@@ -1,4 +1,4 @@
-import { NewsComponent } from "@/app/components/NewsComponent";
+import { NewsComponent } from "@/app/components/news/NewsComponent";
 
 // type Props = {
 //     params: {

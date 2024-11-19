@@ -23,7 +23,7 @@ const CardSection = async ({locale}: CardSectionProps) => {
  if (pijlers) {
   pijlers.sort((a, b) => a.order - b.order);
 } else {
-  return <p>No team members found for the provided locale.</p>;
+  return <p>pijlers found for the provided locale.</p>;
 }
  console.log("Pijlers: ", pijlers);
     const cards = [
