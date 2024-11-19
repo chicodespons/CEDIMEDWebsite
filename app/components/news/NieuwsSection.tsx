@@ -1,5 +1,5 @@
 import React from 'react';
-import NewsSliderComponent from './newsSliderComponent';
+import NewsSliderComponent from './NewsSliderComponent';
 
 
 interface NieuwsItem {
@@ -20,7 +20,7 @@ async function fetchNieuwsItems(locale: string) : Promise<NieuwsItem[]> {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
     },
   });
-  
+
   const data = await res.json();
   return data.data.map((item: any) => ({
     id: item.id,
