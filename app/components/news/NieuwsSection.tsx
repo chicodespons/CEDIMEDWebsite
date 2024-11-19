@@ -22,8 +22,8 @@ async function fetchNieuwsItems(locale: string) : Promise<NieuwsItem[]> {
   });
 
   const data = await res.json();
-  
-  // @ts-ignore
+
+  // @ts-expect-error
   return data.data.map((item: any) => ({
     id: item.id,
     excerpt: item.excerpt,
