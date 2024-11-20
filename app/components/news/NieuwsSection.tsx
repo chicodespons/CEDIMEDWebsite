@@ -1,6 +1,21 @@
 import React from 'react';
 import NewsSliderComponent from './NewsSliderComponent';
 
+interface ApiAuthor {
+  name: string;
+}
+
+interface ApiNewsItem {
+  id: number;
+  excerpt: string;
+  author: ApiAuthor;
+  publicationDate: string; // ISO string format
+}
+
+interface ApiResponse {
+  data: ApiNewsItem[];
+}
+
 
 interface NieuwsItem {
     id: number;
@@ -21,10 +36,9 @@ async function fetchNieuwsItems(locale: string) : Promise<NieuwsItem[]> {
     },
   });
 
-  const data = await res.json();
+  const data: ApiResponse = await res.json();
 
-  // @ts-expect-error
-  return data.data.map((item: any) => ({
+  return data.data.map((item) => ({
     id: item.id,
     excerpt: item.excerpt,
     author: item.author.name,
