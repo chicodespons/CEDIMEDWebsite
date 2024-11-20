@@ -29,21 +29,28 @@ interface NieuwsSectionProps {
   locale: string;
 }
 
-async function fetchNieuwsItems(locale: string) : Promise<NieuwsItem[]> {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?fields=excerpt&populate[author][fields]=name&locale=${locale}`, {
-    headers: {
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
-    },
-  });
+async function fetchNieuwsItems(locale: string) : Promise<NieuwsItem[] | null> {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?fields=excerpt&populate[author][fields]=name&locale=${locale}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
+      },
+    });
+  
+    const data: ApiResponse = await res.json();
+  
+    return data.data.map((item) => ({
+      id: item.id,
+      excerpt: item.excerpt,
+      author: item.author.name,
+      publicationDate: new Date(item.publicationDate),
+    }));
 
-  const data: ApiResponse = await res.json();
-
-  return data.data.map((item) => ({
-    id: item.id,
-    excerpt: item.excerpt,
-    author: item.author.name,
-    publicationDate: new Date(item.publicationDate),
-  }));
+  } catch (error) {
+    console.log("data not fetched correctly: ", error)
+  }
+  return null;
+ 
 }
 
 const NieuwsSection = async ({t, locale} : NieuwsSectionProps) => {
