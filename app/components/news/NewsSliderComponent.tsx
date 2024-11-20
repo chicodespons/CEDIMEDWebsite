@@ -11,7 +11,7 @@ interface NieuwsItem {
   }
   
   interface SliderClientProps {
-    nieuwsItems: NieuwsItem[];
+    nieuwsItems: NieuwsItem[] | null;
   }
 
 const NewsSliderComponent: React.FC<SliderClientProps> = ({ nieuwsItems }) => {
@@ -41,6 +41,11 @@ const NewsSliderComponent: React.FC<SliderClientProps> = ({ nieuwsItems }) => {
           },
         ],
       };
+
+      if (!nieuwsItems || nieuwsItems.length === 0) {
+        return <p className="text-center">No news available at the moment.</p>;
+      }
+    
 
   return (
     <Slider {...settings}>
