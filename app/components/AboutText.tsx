@@ -6,11 +6,12 @@ import RichTextRenderer from './RichTextRenderer';
 
 async function fetchAbout(locale: string) {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/about?locale=${locale}`, {
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
-      },
-    });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/about?locale=${locale}`)
+    //   , {
+    //   headers: {
+    //     Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
+    //   },
+    // });
     
     const data = await res.json();
     console.log(data);
@@ -33,15 +34,19 @@ const AboutText = async ({locale}: {locale: string}) => {
   
     return (
       <section className="py-14 bg-white mt-2">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-4">{about.title}</h2>
-  
-          <div className="text-lg text-justify leading-loose max-w-[800px] mx-auto">
-            {/* Render the blocks using BlocksRenderer , we gaan nog moeten kjken om de verschillende types zoals heading, ... te implementeren*/}
-            <RichTextRenderer content={about.text} />
-          </div>
-        </div>
-      </section>
+  <div className="container mx-auto px-6 text-justify hyphens-auto lg:text-left lg:hyphens-none">
+    <div className="max-w-[1200px] mx-auto bg-gray-100 p-4 rounded">
+      {/* Center the h2 */}
+      <div className="text-left py-4">
+        <h2 className="text-8xl font-bold mb-4 bg-vubBlue text-white px-4 py-2 rounded inline-block">
+          {about.title}
+        </h2>
+      </div>
+
+      <RichTextRenderer content={about.text} />
+    </div>
+  </div>
+</section>
     );
   };
     

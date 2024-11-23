@@ -15,9 +15,9 @@ const RichTextRenderer = ({ content }: RichTextRendererProps) => {
 
             // Define the Tailwind classes for different heading levels
             const headingClasses: Record<number,string> = {
-                   1: 'text-2xl font-bold mb-6 mt-8', // More space around headings
-          2: 'text-xl font-bold mb-5 mt-7',
-          3: 'text-lg font-bold mb-4 mt-6',
+                   1: 'text-3xl text-left font-bold bg-uzGreen text-white inline-block px-4 py-2 rounded mb-6 mt-10', // More space around headings
+          2: 'text-2xl font-bold mb-5 mt-10',
+          3: 'text-xl font-bold mb-4 mt-10',
                 // Add more heading levels if needed
             };
 
@@ -29,7 +29,7 @@ const RichTextRenderer = ({ content }: RichTextRendererProps) => {
   
         case 'paragraph':
           return (
-            <p key={index} className="mb-6 leading-loose max-w-full">
+            <p key={index} className="text-lg mb-6 leading-loose max-w-full">
               {node.children.map((child: any, idx: number) => renderNode(child, idx))}
             </p>
           );
@@ -64,7 +64,7 @@ const RichTextRenderer = ({ content }: RichTextRendererProps) => {
         case 'image':
           return (
             <div key={index} className="my-8 max-w-full">
-              <Image
+              <img
                 src={node.image.url}
                 alt={node.image.alternativeText || 'Image'}
                 width={node.image.width || 800}
@@ -78,19 +78,19 @@ const RichTextRenderer = ({ content }: RichTextRendererProps) => {
         case 'list':
           const ListTag = node.format === 'ordered' ? 'ol' : 'ul';
           return (
-            <ListTag key={index} className="list-disc pl-6 mb-6 leading-loose max-w-full">
+            <ListTag key={index} className="text-lg list-disc m-6 leading-loose max-w-full">
               {node.children.map((child: any, idx: number) => renderNode(child, idx))}
             </ListTag>
           );
   
         case 'list-item':
-          return <li key={index} className="mb-2 max-w-full">{node.children.map((child: any, idx: number) => renderNode(child, idx))}</li>;
+          return <li key={index} className="mb-6 text-lg max-w-full">{node.children.map((child: any, idx: number) => renderNode(child, idx))}</li>;
   
           case 'quote':
             return (
               <blockquote
                 key={index}
-                className="block border-l-4 border-gray-300 pl-4 mb-8 mx-auto leading-loose"
+                className="block border-l-4 border-gray-300 pl-4 mb-8 mx-auto leading-loose text-lg"
                 style={{ wordWrap: 'break-word' }} // Prevent text overflow
               >
                 {node.children.map((child: any, idx: number) => renderNode(child, idx))}
@@ -102,7 +102,7 @@ const RichTextRenderer = ({ content }: RichTextRendererProps) => {
       }
     };
   
-    return <div className="max-w-full leading-loose">{content.map((node, index) => renderNode(node, index))}</div>;
+    return <div className="max-w-full leading-loose text-lg">{content.map((node, index) => renderNode(node, index))}</div>;
   };
 
 export default RichTextRenderer;
