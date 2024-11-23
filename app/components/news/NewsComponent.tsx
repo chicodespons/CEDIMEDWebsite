@@ -1,5 +1,21 @@
 import DefaultImageComponent from "../defaultImageComponent";
-export const NewsComponent: React.FC = () => {
+
+
+interface NieuwsItem {
+  id: number;
+  title: string;
+  content: string;
+  excerpt: string;
+  slug: string;
+  publicationDate: string;
+  img: string; 
+  author: string | null
+  bio: string | null;
+  avatar: string | null;
+}
+
+
+export const NewsComponent: React.FC = ({id, title, content, excerpt, slug, publicationDate, img, author, bio, avatar} : NieuwsItem) => {
 
     const authorImage = '/images/author.jpg';
     const defaultImage = '/images/default_user.png';
@@ -9,7 +25,7 @@ export const NewsComponent: React.FC = () => {
         {/* Main Content */}
         <main className="flex-1 pr-4">
           <h1 className="text-3xl font-bold mb-4">
-            Innovative Approaches to Emergency Medicine
+          {title}          
           </h1>
           <p className="text-gray-600 mb-6">
             Published on April 25, 2023 by Dr. Emily Carter
