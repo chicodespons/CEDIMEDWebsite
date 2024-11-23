@@ -37,7 +37,7 @@ const AboutText = async ({locale}: {locale: string}) => {
   <div className="container mx-auto px-6 text-justify hyphens-auto lg:text-left lg:hyphens-none">
     <div className="max-w-[1200px] mx-auto bg-gray-100 p-4 rounded">
       {/* Center the h2 */}
-      <div className="text-left py-4">
+      <div className="text-center py-4">
         <h2 className="text-4xl md:text-6xl xl:text-8xl font-bold mb-4 bg-vubBlue text-white px-4 py-2 rounded md:inline-block">
           {about.title}
         </h2>
