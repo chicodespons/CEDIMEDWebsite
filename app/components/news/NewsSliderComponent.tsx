@@ -6,15 +6,17 @@ import Link from 'next/link';
 interface NieuwsItem {
     id: number;
     excerpt: string;
+    slug: string;
     author: string;
     publicationDate: Date;
   }
   
   interface SliderClientProps {
     nieuwsItems: NieuwsItem[] | null;
+    locale: string;
   }
 
-const NewsSliderComponent: React.FC<SliderClientProps> = ({ nieuwsItems }) => {
+const NewsSliderComponent: React.FC<SliderClientProps> = ({ nieuwsItems, locale }) => {
 
     const settings = {
 
@@ -50,7 +52,7 @@ const NewsSliderComponent: React.FC<SliderClientProps> = ({ nieuwsItems }) => {
   return (
     <Slider {...settings}>
         {nieuwsItems.map((item) => (
-        <Link key={item.id} href="/">
+        <Link key={item.id} href={`/${locale}/news/${item.slug}`}>
           <div className="px-4">
           <div 
             className="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between flex-grow mb-4 transition duration-300 ease-in-out transform hover:bg-uzGreen active:bg-uzGray"

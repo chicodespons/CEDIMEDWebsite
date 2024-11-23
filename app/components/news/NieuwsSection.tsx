@@ -8,6 +8,7 @@ interface ApiAuthor {
 interface ApiNewsItem {
   id: number;
   excerpt: string;
+  slug: string;
   author: ApiAuthor;
   publicationDate: string; // ISO string format
 }
@@ -20,6 +21,7 @@ interface ApiResponse {
 interface NieuwsItem {
     id: number;
     excerpt: string;
+    slug: string;
     author: string;
     publicationDate: Date;
 }
@@ -31,17 +33,19 @@ interface NieuwsSectionProps {
 
 async function fetchNieuwsItems(locale: string) : Promise<NieuwsItem[] | null> {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?fields=excerpt&populate[author][fields]=name&locale=${locale}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?fields=excerpt,slug&populate[author][fields]=name&locale=${locale}`, {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
       },
     });
   
     const data: ApiResponse = await res.json();
+    console.log(data, { depth: null })
   
     return data.data.map((item) => ({
       id: item.id,
       excerpt: item.excerpt,
+      slug: item.slug,
       author: item.author.name,
       publicationDate: new Date(item.publicationDate),
     }));
@@ -98,7 +102,7 @@ const NieuwsSection = async ({t, locale} : NieuwsSectionProps) => {
  <section className="py-14 bg-white mx-6 rounded-lg">
     <div className="container mx-auto px-6">
       <h2 className="text-2xl font-bold text-center mb-10">{t('cedimedNieuws')}</h2>
-      <NewsSliderComponent nieuwsItems={nieuwsItems}/>
+      <NewsSliderComponent nieuwsItems={nieuwsItems} locale={locale}/>
     </div>
   </section>
     </div>
