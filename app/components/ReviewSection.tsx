@@ -64,8 +64,8 @@ const ReviewsSection = () => {
     return (
         <div className='bg-grayBack pb-14'>
             <section className="py-14 bg-white mx-6 rounded-lg">
-                <div className="container mx-auto px-6">
-                    <h2 className="text-2xl font-bold text-center mb-10">{t('watMensenOverOnsZeggen')}</h2>
+                <div className="container mx-auto px-6 text-center">
+                    <h2 className="text-3xl font-bold bg-uzGreen text-white inline-block mb-10 px-4 py-2 rounded">{t('watMensenOverOnsZeggen')}</h2>
                     <Slider {...settings}>
                         {reviewItems.map((item, index) => (
                         <Link key={index} href="/">
