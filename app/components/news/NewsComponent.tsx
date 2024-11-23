@@ -14,9 +14,15 @@ interface NieuwsItem {
   avatar: string | null;
 }
 
+interface NewsComponentProps {
+  newsItem: NieuwsItem
+}
 
-export const NewsComponent: React.FC = ({id, title, content, excerpt, slug, publicationDate, img, author, bio, avatar} : NieuwsItem) => {
 
+export const NewsComponent: React.FC = ({newsItem} : NewsComponentProps) => {
+
+  const { title } = newsItem;
+  
     const authorImage = '/images/author.jpg';
     const defaultImage = '/images/default_user.png';
 

@@ -133,7 +133,7 @@ type Props = {
    }
 
     return (
-        <NewsComponent/>  
+        <NewsComponent newsItem={newsItem} />  
     );
   }
 
