@@ -6,12 +6,12 @@ import RichTextRenderer from './RichTextRenderer';
 
 async function fetchAbout(locale: string) {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/about?locale=${locale}`)
-    //   , {
-    //   headers: {
-    //     Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
-    //   },
-    // });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/about?locale=${locale}`
+      , {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
+      },
+    });
     
     const data = await res.json();
     console.log(data);
