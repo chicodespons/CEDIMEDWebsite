@@ -16,8 +16,8 @@ const RichTextRenderer = ({ content }: RichTextRendererProps) => {
             // Define the Tailwind classes for different heading levels
             const headingClasses: Record<number,string> = {
                    1: 'text-3xl text-left font-bold bg-uzGreen text-white inline-block px-4 py-2 rounded mb-6 mt-10', // More space around headings
-          2: 'text-2xl font-bold mb-5 mt-10',
-          3: 'text-xl font-bold mb-4 mt-10',
+          2: 'text-2xl font-bold mb-6 mt-10',
+          3: 'text-xl font-bold mb-6 mt-10',
                 // Add more heading levels if needed
             };
 
@@ -65,10 +65,10 @@ const RichTextRenderer = ({ content }: RichTextRendererProps) => {
           return (
             <div key={index} className="my-8 max-w-full">
               <img
-                src={node.image.url}
+                src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${node.image.formats.medium.url}`}
                 alt={node.image.alternativeText || 'Image'}
-                width={node.image.width || 800}
-                height={node.image.height || 600}
+                width={node.image.formats.medium.width || 800}
+                height={node.image.formats.medium.height || 600}
                 className="rounded-md max-w-full"
               />
               {node.image.caption && <p className="text-sm text-gray-500 mt-2">{node.image.caption}</p>}

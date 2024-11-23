@@ -10,6 +10,8 @@ interface TeamMember {
         formats: {
           thumbnail: {
             url: string;
+            width: number;
+            height: number;
           };
           large: {
             url: string;
@@ -64,8 +66,8 @@ return (
                     <img
                     src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${member.image.formats.thumbnail.url}`}
                     alt={member.image.alternativeText || member.name}
-                    width={150}
-                    height={150}
+                    width={member.image.formats.thumbnail.width}
+                    height={member.image.formats.thumbnail.height}
                     className='rounded-full object-cover' />
                 )}
               </div>
