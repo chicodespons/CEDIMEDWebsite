@@ -19,10 +19,10 @@ interface NewsComponentProps {
 }
 
 
-export const NewsComponent: React.FC = ({newsItem} : NewsComponentProps) => {
+export const NewsComponent: React.FC<NewsComponentProps> = ({newsItem}) => {
 
   const { title } = newsItem;
-  
+
     const authorImage = '/images/author.jpg';
     const defaultImage = '/images/default_user.png';
 
