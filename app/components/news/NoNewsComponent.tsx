@@ -9,7 +9,6 @@ export default function NoNewsComponent( {t}: NoNewsComponentProps) {
       <h1 className="text-2xl font-bold">{t("noNewsFound")}</h1>
       <p className="mt-2 text-lg">
         {t("noNewsFoundText")}
-        We couldn’t find any news at the moment. Please check back later.
       </p>
     </div>
   );
