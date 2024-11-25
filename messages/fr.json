@@ -16,5 +16,7 @@
     "adres": "Adresse : Laarbeeklaan 101, Jette",
     "quickLinks": "Liens rapides",
     "volgOns": "Suivez-nous",
-    "onsTeam": "Notre Équipe"   
+    "onsTeam": "Notre Équipe",
+    "noNewsFound": "Aucune actualité trouvée",
+    "noNewsFoundText": "Nous n'avons pas pu trouver d'actualités pour le moment. Veuillez revenir plus tard."
    }
