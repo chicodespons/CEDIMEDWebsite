@@ -8,10 +8,10 @@ interface NieuwsItem {
   excerpt: string;
   slug: string;
   publicationDate: string;
-  img: string; 
+  imgUrl: string; 
   author: string | null
   bio: string | null;
-  avatar: string | null;
+  avatarUrl: string | null;
 }
 
 interface NewsComponentProps {

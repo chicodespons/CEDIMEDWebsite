@@ -5,7 +5,13 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 interface ApiAuthor {
     name: string;
     bio: string;
-    avatar?: string;
+    avatar?: {
+      formats: {
+        thumbnail: {
+          url: string
+        }
+      }
+    };
   }
   
   interface ApiNewsItem {
@@ -15,8 +21,14 @@ interface ApiAuthor {
     excerpt: string;
     slug: string;
     author?: ApiAuthor;
-    publicationDate: string;
-    img?: string; 
+    publishedAt: string;
+    image?: {
+      formats: {
+        medium : {
+          url: string
+        }
+      }
+    } ;
   }
   
   interface ApiResponse {
@@ -30,16 +42,16 @@ interface NieuwsItem {
     excerpt: string;
     slug: string;
     publicationDate: string;
-    img: string; 
+    imgUrl: string; 
     author: string | null
     bio: string | null;
-    avatar: string | null;
+    avatarUrl: string | null;
 }
 
 async function fetchLatestNewsItem(locale:string): Promise<NieuwsItem| null> {
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?sort[0]=publicationDate:desc&populate[author]=*&locale=${locale}`,
+        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?sort[0]=publishedAt:desc&populate[author][populate]=avatar&populate=image&locale=${locale}`,
         {
           headers: {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
@@ -57,11 +69,11 @@ async function fetchLatestNewsItem(locale:string): Promise<NieuwsItem| null> {
           content: newsItem.content,
           excerpt: newsItem.excerpt,
           slug: newsItem.slug,
-          publicationDate: newsItem.publicationDate,
-          img: newsItem.img ?? null,
+          publicationDate: newsItem.publishedAt,
+          imgUrl: newsItem.image.formats.medium.url ?? null,
           author: newsItem.author ? newsItem.author.name : null,
           bio: newsItem.author ? newsItem.author.bio : null,
-          avatar: newsItem.author && newsItem.author.avatar ? newsItem.author.avatar : null,
+          avatarUrl: newsItem.author && newsItem.author.avatar ? newsItem.author.avatar.formats.thumbnail.url : null,
         };
   
         return mappedItem;

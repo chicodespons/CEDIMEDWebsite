@@ -12,7 +12,13 @@ type Props = {
   interface ApiAuthor {
     name: string;
     bio: string;
-    avatar?: string;
+    avatar?: {
+      formats: {
+        thumbnail: {
+          url: string
+        }
+      }
+    };
   }
   
   interface ApiNewsItem {
@@ -22,8 +28,14 @@ type Props = {
     excerpt: string;
     slug: string;
     author?: ApiAuthor;
-    publicationDate: string;
-    img?: string; 
+    publishedAt: string;
+    image?: {
+      formats: {
+        medium : {
+          url: string
+        }
+      }
+    };
   }
   
   interface ApiResponse {
@@ -37,16 +49,16 @@ type Props = {
     excerpt: string;
     slug: string;
     publicationDate: string;
-    img: string; 
+    imgUrl: string; 
     author: string | null
     bio: string | null;
-    avatar: string | null;
+    avatarUrl: string | null;
 }
 
   async function fetchNewsItemViaSlug(slug: string, locale: string) : Promise<NieuwsItem | null> {
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?filters[slug][$eq]=${slug}&populate[author]=*&locale=${locale}`, 
+        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?filters[slug][$eq]=${slug}&populate[author][populate]=avatar&populate=image&locale=${locale}`, 
         {
           headers: {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
@@ -64,11 +76,11 @@ type Props = {
           content: newsItem.content,
           excerpt: newsItem.excerpt,
           slug: newsItem.slug,
-          publicationDate: newsItem.publicationDate,
-          img: newsItem.img ?? null, 
+          publicationDate: newsItem.publishedAt,
+          imgUrl: newsItem.image.formats.medium.url ?? null, 
           author: newsItem.author ? newsItem.author.name : null, 
           bio: newsItem.author ? newsItem.author.bio : null,   
-          avatar: newsItem.author && newsItem.author.avatar ? newsItem.author.avatar : null, 
+          avatarUrl: newsItem.author && newsItem.author.avatar ? newsItem.author.avatar.formats.thumbnail.url : null, 
         };
   
         return mappedItem;
