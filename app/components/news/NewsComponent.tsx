@@ -1,17 +1,34 @@
 import DefaultImageComponent from "../defaultImageComponent";
+import RichTextRenderer from "../RichTextRenderer";
+
+interface StrapiImage {
+  alternativeText: string;
+  formats: {
+    medium : {
+      url: string;
+      width: number;
+      height: number;
+    }
+    thumbnail: {
+      url: string;
+      width: number;
+      height: number;
+    }
+  }
+}
 
 
 interface NieuwsItem {
   id: number;
   title: string;
-  content: string;
+  content: Array<any>;
   excerpt: string;
   slug: string;
   publicationDate: string;
-  imgUrl: string; 
+  img: StrapiImage | null; 
   author: string | null
   bio: string | null;
-  avatarUrl: string | null;
+  avatar: StrapiImage | null;
 }
 
 interface NewsComponentProps {
@@ -21,10 +38,17 @@ interface NewsComponentProps {
 
 export const NewsComponent: React.FC<NewsComponentProps> = ({newsItem}) => {
 
-  const { title } = newsItem;
+  const { title, content, excerpt, slug, publicationDate, img, author, bio, avatar } = newsItem;
+  const date = new Date(publicationDate);
+  const formattedDate = new Intl.DateTimeFormat('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(date);
 
-    const authorImage = '/images/author.jpg';
-    const defaultImage = '/images/default_user.png';
+    const avatarImageUrl = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${avatar.formats.thumbnail.url}`
+
+    const defaultAvatarImage = '/images/default_user.png';
 
     return (
         <div className="flex flex-col md:flex-row gap-8 p-4 mx-auto">
@@ -34,14 +58,18 @@ export const NewsComponent: React.FC<NewsComponentProps> = ({newsItem}) => {
           {title}          
           </h1>
           <p className="text-gray-600 mb-6">
-            Published on April 25, 2023 by Dr. Emily Carter
-          </p>
+          {`Published on ${formattedDate} by ${author}`}
+           </p>
+           {img && (
+                    <img
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${img.formats.medium.url}`}
+                    alt={img.alternativeText || "News Item Image"}
+                    width={img.formats.medium.width}
+                    height={img.formats.medium.height}
+                     />
+                )}
           <p className="mb-4">
-            Emergency medicine is a critical field that requires quick thinking, precise actions, and innovative solutions...llalalalalalall alalalalalal  alalal alala lalal  alalal alllll lll ll
-          </p>
-          {/* More article content here */}
-          <p className="mt-4">
-            In this blog post, we delve into some of the groundbreaking projects our team has been working on...
+          <RichTextRenderer content={content} />          
           </p>
         </main>
   
@@ -63,16 +91,16 @@ export const NewsComponent: React.FC<NewsComponentProps> = ({newsItem}) => {
             <h2 className="text-lg font-semibold mb-4">Over de Auteur</h2>
             <div className="flex items-center mb-4">
             <DefaultImageComponent
-                image={authorImage}
-                defaultImage={defaultImage}
-                alt="Dr. Emily Carter"
+                image={avatarImageUrl}
+                defaultImage={defaultAvatarImage}
+                alt={author}
                 width={48}
                 height={48}
                 className="w-12 h-12 rounded-full mr-4"
               />
               <div>
-                <h3 className="text-base font-semibold">Dr. Emily Carter</h3>
-                <p className="text-sm text-gray-600">Leading expert in emergency medicine with over 15 years of experience...</p>
+                <h3 className="text-base font-semibold">{author}</h3>
+                <p className="text-sm text-gray-600">{bio}</p>
               </div>
               
             </div>

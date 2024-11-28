@@ -21,7 +21,7 @@ function DefaultImageComponent({image, defaultImage, alt, width, height, classNa
   };
 
   return (
-    <Image
+    <img
       src={src || defaultImage}
       alt={alt}
       width={width}

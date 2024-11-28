@@ -9,33 +9,37 @@ type Props = {
     };
   };
 
+  interface StrapiImage {
+    alternativeText: string;
+    formats: {
+      medium : {
+        url: string;
+        width: number;
+        height: number;
+      }
+      thumbnail: {
+        url: string;
+        width: number;
+        height: number;
+      }
+    }
+  }
+
   interface ApiAuthor {
     name: string;
     bio: string;
-    avatar?: {
-      formats: {
-        thumbnail: {
-          url: string
-        }
-      }
-    };
+    avatar?: StrapiImage;
   }
   
   interface ApiNewsItem {
     id: number;
     title: string;
-    content: string;
+    content: Array<any>;
     excerpt: string;
     slug: string;
     author?: ApiAuthor;
     publishedAt: string;
-    image?: {
-      formats: {
-        medium : {
-          url: string
-        }
-      }
-    };
+    image?: StrapiImage;
   }
   
   interface ApiResponse {
@@ -45,14 +49,14 @@ type Props = {
   interface NieuwsItem {
     id: number;
     title: string;
-    content: string;
+    content: Array<any>;
     excerpt: string;
     slug: string;
     publicationDate: string;
-    imgUrl: string; 
+    img: StrapiImage | null; 
     author: string | null
     bio: string | null;
-    avatarUrl: string | null;
+    avatar: StrapiImage | null;
 }
 
   async function fetchNewsItemViaSlug(slug: string, locale: string) : Promise<NieuwsItem | null> {
@@ -77,10 +81,10 @@ type Props = {
           excerpt: newsItem.excerpt,
           slug: newsItem.slug,
           publicationDate: newsItem.publishedAt,
-          imgUrl: newsItem.image.formats.medium.url ?? null, 
+          img: newsItem.image ?? null, 
           author: newsItem.author ? newsItem.author.name : null, 
           bio: newsItem.author ? newsItem.author.bio : null,   
-          avatarUrl: newsItem.author && newsItem.author.avatar ? newsItem.author.avatar.formats.thumbnail.url : null, 
+          avatar: newsItem.author && newsItem.author.avatar ? newsItem.author.avatar : null, 
         };
   
         return mappedItem;
