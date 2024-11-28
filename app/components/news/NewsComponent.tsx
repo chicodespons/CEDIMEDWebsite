@@ -38,7 +38,7 @@ interface NewsComponentProps {
 
 export const NewsComponent: React.FC<NewsComponentProps> = ({newsItem}) => {
 
-  const { title, content, excerpt, slug, publicationDate, img, author, bio, avatar } = newsItem;
+  const { title, content, publicationDate, img, author, bio, avatar } = newsItem;
   const date = new Date(publicationDate);
   const formattedDate = new Intl.DateTimeFormat('en-US', {
     month: 'long',
