@@ -21,7 +21,7 @@ async function fetchPijler(locale: string, slug:string) {
     return null;    
   }
 
-const PijlerText = async ({locale,slug}: {locale: string, slug:string }) => {
+const PijlerText = async ({locale,slug,titleBgColor}: {locale: string, slug:string, titleBgColor:string }) => {
     const pijler = await fetchPijler(locale, slug);
 
     console.dir(pijler, { depth: null });
@@ -42,7 +42,7 @@ const PijlerText = async ({locale,slug}: {locale: string, slug:string }) => {
         </h2>
       </div>
 
-      <RichTextRenderer content={pijler.text} />
+      <RichTextRenderer content={pijler.text} titleBgColor={titleBgColor} />
     </div>
   </div>
 </section>

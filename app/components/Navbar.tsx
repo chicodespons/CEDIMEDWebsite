@@ -24,7 +24,7 @@ const Navbar = ({ locale }: NavbarProps) => {
         {/* Logo (left) */}
         <Link href="/" aria-label="Go to homepage" className="h-10 w-auto">
           <figure className="h-full w-auto cursor-pointer">
-            <Logo className="h-full w-auto" aria-label="CEDIMED Logo" />
+            <Logo className="h-full w-auto p-1" aria-label="CEDIMED Logo" />
             <figcaption className="sr-only">CEDIMED Logo</figcaption>
           </figure>
         </Link>

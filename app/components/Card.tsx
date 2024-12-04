@@ -14,26 +14,27 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ title, description, imageUrl, imageAlt, link, hoverColor }) => {
   return (
     <Link href={link}>
-    <div className={`bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transition duration-300 ease-in-out transform ${hoverColor} active:bg-grayBack h-full`}>
+      {/* Add "group" class to enable hover effects on children */}
+      <div className={`group bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transition duration-300 ease-in-out transform ${hoverColor} active:bg-grayBack h-full`}>
         {/* Text Section */}
-      <div className="p-6 flex-grow">
-        <h3 className="text-2xl font-bold mb-2">{title}</h3>
-        <p className="text-black">{description}</p>
+        <div className="p-6 flex-grow">
+          {/* Apply hover styles for text */}
+          <h3 className="text-2xl font-bold mb-2 transition-colors duration-300 group-hover:text-white">{title}</h3>
+          <p className="text-black transition-colors duration-300 group-hover:text-white">{description}</p>
+        </div>
+        {/* Image Section */}
+        <div className="relative m-6 h-48">
+          <Image
+            src={imageUrl}
+            alt={imageAlt}
+            fill
+            className="object-cover object-center rounded-lg"
+            quality={100}
+          />
+        </div>
       </div>
-      {/* Image Section */}
-      <div className="relative m-6 h-48">
-        <Image
-          src={imageUrl}
-          alt={imageAlt}
-          fill
-          className='object-cover object-center rounded-lg'
-          quality={100}
-        />
-      </div>
-    </div>
     </Link>
-    
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

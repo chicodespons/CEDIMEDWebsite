@@ -11,7 +11,7 @@ export default function Research({ params: { locale }}: Params) {
   setRequestLocale(locale);
     return (
       <div>
-        <PijlerText locale={locale} slug={"research"} />
+        <PijlerText locale={locale} slug={"research"} titleBgColor="bg-uzGreen" />
       </div>
     );
   }

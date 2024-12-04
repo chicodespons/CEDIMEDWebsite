@@ -17,7 +17,7 @@ export default async function Innovation({
 
     return (
       <div>
-        <PijlerText locale={locale} slug={"innovation"} />
+        <PijlerText locale={locale} slug={"innovation"} titleBgColor="bg-vubOrange" />
       </div>
     );
   }

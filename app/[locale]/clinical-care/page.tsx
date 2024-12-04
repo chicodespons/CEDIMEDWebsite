@@ -14,7 +14,7 @@ export default async function ClinicalCare({
   setRequestLocale(locale);
     return (
       <div>
-        <PijlerText locale={locale} slug={"clinical-care"} />
+        <PijlerText locale={locale} slug={"clinical-care"} titleBgColor='bg-vubBlue'/>
       </div>
     );
   }
