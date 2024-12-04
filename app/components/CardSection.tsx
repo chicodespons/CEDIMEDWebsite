@@ -28,22 +28,22 @@ const CardSection = async ({locale}: CardSectionProps) => {
  console.log("Pijlers: ", pijlers);
     const cards = [
         {
-          imageUrl: '/images/card1-image.jpeg',
+          imageUrl: '/images/Clinical.webp',
           imageAlt: 'Doctor attending to a patient in a hospital',
           hoverColor: 'hover:bg-vubBlue'
         },
         {
-          imageUrl: '/images/card2-image.jpeg',
+          imageUrl: '/images/Education.webp',
           imageAlt: 'Medical professionals in training',
           hoverColor: 'hover:bg-uzGray'
         },
         {
-          imageUrl: '/images/card3-image.jpeg',
+          imageUrl: '/images/IMG_RESEARCH.webp',
           imageAlt: 'Researchers working in a laboratory',
           hoverColor: 'hover:bg-uzGreen'
         },
         {
-          imageUrl: '/images/card4-image.jpeg',
+          imageUrl: '/images/Innovation.webp',
           imageAlt: 'Medical professionals discussing innovation',
           hoverColor: 'hover:bg-vubOrange'
         },
