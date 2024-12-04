@@ -27,9 +27,9 @@ const Card: React.FC<CardProps> = ({ title, description, imageUrl, imageAlt, lin
           <Image
             src={imageUrl}
             alt={imageAlt}
-            fill
             className="object-cover object-center rounded-lg"
             quality={100}
+            layout="responsive"
           />
         </div>
       </div>
