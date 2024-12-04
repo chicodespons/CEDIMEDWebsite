@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { FaFacebookF, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
+import { FaFacebookF, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 
 const Footer = ({ t }: { t: (key: string) => string }) => {
   return (
@@ -19,11 +19,11 @@ const Footer = ({ t }: { t: (key: string) => string }) => {
         <div className="space-y-4">
           <h3 className="text-lg font-semibold">{t('quickLinks')}</h3>
           <div className="grid grid-cols-2 gap-4">
-            <Link href="/over-ons" className="hover:underline">{t('overOns')}</Link>
-            <Link href="/klinische-zorg" className="hover:underline">{t('klinischeZorg')}</Link>
-            <Link href="/onderwijs" className="hover:underline">{t('onderwijs')}</Link>
-            <Link href="/onderzoek" className="hover:underline">{t('onderzoek')}</Link>
-            <Link href="/innovatie" className="hover:underline">{t('innovatie')}</Link>
+            <Link href="/about" className="hover:underline">{t('overOns')}</Link>
+            <Link href="/clinical-care" className="hover:underline">{t('klinischeZorg')}</Link>
+            <Link href="/education" className="hover:underline">{t('onderwijs')}</Link>
+            <Link href="/research" className="hover:underline">{t('onderzoek')}</Link>
+            <Link href="/innovation" className="hover:underline">{t('innovatie')}</Link>
             <Link href="/contact" className="hover:underline">{t('contact')}</Link>
           </div>
         </div>
@@ -32,13 +32,13 @@ const Footer = ({ t }: { t: (key: string) => string }) => {
         <div className="space-y-4 md:ml-[1.5rem] xl:ml-[8.9rem]">
           <h3 className="text-lg font-semibold">{t('volgOns')}</h3>
           <div className="flex space-x-6">
-            <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <Link href="https://www.facebook.com/cedimedbrussels" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
               <FaFacebookF className="text-2xl hover:text-blue-400" />
             </Link>
-            <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-              <FaTwitter className="text-2xl hover:text-blue-400" />
+            <Link href="https://www.instagram.com/cedimedbrussels" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              <FaInstagram className="text-2xl hover:text-blue-400" />
             </Link>
-            <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <Link href="https://www.linkedin.com/company/cedimed-brussels" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <FaLinkedinIn className="text-2xl hover:text-blue-400" />
             </Link>
           </div>
