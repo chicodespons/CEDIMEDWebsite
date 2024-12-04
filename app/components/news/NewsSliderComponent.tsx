@@ -51,19 +51,24 @@ const NewsSliderComponent: React.FC<SliderClientProps> = ({ nieuwsItems, locale 
 
   return (
     <Slider {...settings}>
-        {nieuwsItems.map((item) => (
-        <Link key={item.id} href={`/${locale}/news/${item.slug}`}>
-          <div className="px-4">
-          <div 
-            className="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between flex-grow mb-4 transition duration-300 ease-in-out transform hover:bg-uzGreen active:bg-uzGray"
-          >
-            <p className="font-light text-black mb-4 line-clamp-2">{item.excerpt}</p>
-            <p className="text-sm font-semibold text-black">- {item.author}</p>
-          </div>
+  {nieuwsItems.map((item) => (
+    <Link key={item.id} href={`/${locale}/news/${item.slug}`}>
+      <div className="px-4">
+        <div 
+          className="group bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between flex-grow mb-4 transition duration-300 ease-in-out transform hover:bg-uzGreen active:bg-uzGray"
+        >
+          <p className="font-light text-black mb-4 line-clamp-2 transition-colors duration-300 group-hover:text-white">
+            {item.excerpt}
+          </p>
+          <p className="text-sm font-semibold text-black transition-colors duration-300 group-hover:text-white">
+            - {item.author}
+          </p>
         </div>
-        </Link>
-        ))}
-      </Slider>
+      </div>
+    </Link>
+  ))}
+</Slider>
+
   )
 }
 
