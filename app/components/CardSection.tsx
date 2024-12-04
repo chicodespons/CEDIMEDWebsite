@@ -61,7 +61,6 @@ const CardSection = async ({locale}: CardSectionProps) => {
                   imageUrl={cards[index].imageUrl}
                   imageAlt={cards[index].imageAlt}
                   link={`/${locale}/${pijler.link}`}
-                  hoverColor={cards[index].hoverColor}
                 />
               ))}
             </div>
