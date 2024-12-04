@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { FaFacebookF, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 
-const Footer = ({ t }: { t: (key: string) => string }) => {
+const Footer = ({ t, locale }: { t: (key: string) => string, locale: string}) => {
   return (
     <footer className="bg-vubBlue text-white py-10">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-6">
@@ -19,12 +19,12 @@ const Footer = ({ t }: { t: (key: string) => string }) => {
         <div className="space-y-4">
           <h3 className="text-lg font-semibold">{t('quickLinks')}</h3>
           <div className="grid grid-cols-2 gap-4">
-            <Link href="/about" className="hover:underline">{t('overOns')}</Link>
-            <Link href="/clinical-care" className="hover:underline">{t('klinischeZorg')}</Link>
-            <Link href="/education" className="hover:underline">{t('onderwijs')}</Link>
-            <Link href="/research" className="hover:underline">{t('onderzoek')}</Link>
-            <Link href="/innovation" className="hover:underline">{t('innovatie')}</Link>
-            <Link href="/contact" className="hover:underline">{t('contact')}</Link>
+            <Link href={`/${locale}/about`} className="hover:underline">{t('overOns')}</Link>
+            <Link href={`/${locale}/clinical-care`} className="hover:underline">{t('klinischeZorg')}</Link>
+            <Link href={`/${locale}/education`} className="hover:underline">{t('onderwijs')}</Link>
+            <Link href={`/${locale}/research`} className="hover:underline">{t('onderzoek')}</Link>
+            <Link href={`/${locale}/innovation`} className="hover:underline">{t('innovatie')}</Link>
+            <Link href={`/${locale}/contact`} className="hover:underline">{t('contact')}</Link>
           </div>
         </div>
 

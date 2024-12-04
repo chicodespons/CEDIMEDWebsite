@@ -47,7 +47,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
             </main>
 
             {/* Footer sticks to the bottom */}
-            <Footer t={t} />  {/* Pass messages to Footer */}
+            <Footer t={t} locale={locale}/>  {/* Pass messages to Footer */}
           </div>
         </NextIntlClientProvider>
       </body>
