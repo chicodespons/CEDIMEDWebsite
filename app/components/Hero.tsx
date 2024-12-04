@@ -12,10 +12,6 @@ const Hero = ({ t, locale }: { t: (key: string) => string, locale:string }) => {
           alt="Emergency and Disaster Medicine"
           fill
           className='object-cover object-center rounded-lg' // Use inline style for object fit and position
-          onError={(e) => {
-            // Fallback to PNG on error
-            (e.target as HTMLImageElement).src = "/images/LuchtfotoUZB.png";
-          }}
           quality={75} // Optional: Set image quality
           priority
         />
