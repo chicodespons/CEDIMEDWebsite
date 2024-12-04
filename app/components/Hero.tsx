@@ -8,10 +8,14 @@ const Hero = ({ t, locale }: { t: (key: string) => string, locale:string }) => {
       {/* Background Image with Border */}
       <div className="relative h-full w-full border-grayBack border-[16px] sm:border-[24px]"> {/* Responsive border */}
         <Image
-          src="/images/hero-image.jpeg" // Ensure this matches the correct image path
+          src="/images/LuchtfotoUZB.webp" // Ensure this matches the correct image path
           alt="Emergency and Disaster Medicine"
           fill
           className='object-cover object-center rounded-lg' // Use inline style for object fit and position
+          onError={(e) => {
+            // Fallback to PNG on error
+            (e.target as HTMLImageElement).src = "/images/LuchtfotoUZB.png";
+          }}
           quality={75} // Optional: Set image quality
           priority
         />
