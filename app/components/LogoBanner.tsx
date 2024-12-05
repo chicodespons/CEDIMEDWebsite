@@ -9,10 +9,10 @@ const LogoBanner = () => {
         <div className="container mx-auto flex justify-between items-center">
           {/* Logo 1 */}
           <div className="w-1/3 flex justify-center px-2">
-          <Link href="https://www.vub.be" aria-label='Go to VUB'>
+          <Link href="https://www.uzbrussel.be" aria-label="Go to UZ Brussel">
           <Image
               src="/images/UZ-Brussel-logo.png"
-              alt="Vrije Universiteit Brussel"
+              alt="Universitair Ziekenhuis Brussel"
               width={200}
               height={100}
               className='object-contain'
@@ -35,16 +35,15 @@ const LogoBanner = () => {
 
           {/* Logo 3 */}
           <div className="w-1/3 flex justify-center px-2">
-          <Link href="https://www.uzbrussel.be" aria-label="Go to UZ Brussel">
+          <Link href="https://www.vub.be" aria-label='Go to VUB'>
           <Image
               src="/images/Vrije_Universiteit_Brussel_logo.png"
-              alt="Universitair Ziekenhuis Brussel"
+              alt="Vrije Universiteit Brussel"
               width={200}
               height={100}
               className='object-contain'
             />
           </Link>
-            
           </div>
         </div>
       </div>
