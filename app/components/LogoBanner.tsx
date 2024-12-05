@@ -9,13 +9,16 @@ const LogoBanner = () => {
         <div className="container mx-auto flex justify-between items-center">
           {/* Logo 1 */}
           <div className="w-1/3 flex justify-center px-2">
-            <Image
+          <Link href="https://www.vub.be" aria-label='Go to VUB'>
+          <Image
               src="/images/UZ-Brussel-logo.png"
               alt="Vrije Universiteit Brussel"
               width={200}
               height={100}
               className='object-contain'
             />
+          </Link>
+            
           </div>
           {/* Logo 2 */}
           <div className="w-1/3 flex justify-center px-2">
@@ -30,25 +33,18 @@ const LogoBanner = () => {
           </Link>
         </div>
 
-        {/* <div className="w-1/3 flex justify-center ">
-          <Link href="/" aria-label="Go to homepage" className="h-10 w-auto mb-6">
-          <figure className="h-auto w-48 flex justify-center cursor-pointer">
-            <Logo className="h-full w-full object-contain" aria-label="CEDIMED Logo" />
-            <figcaption className="sr-only">CEDIMED Logo</figcaption>
-          </figure>
-        </Link>
-          </div> */}
-
-
           {/* Logo 3 */}
           <div className="w-1/3 flex justify-center px-2">
-            <Image
+          <Link href="https://www.uzbrussel.be" aria-label="Go to UZ Brussel">
+          <Image
               src="/images/Vrije_Universiteit_Brussel_logo.png"
               alt="Universitair Ziekenhuis Brussel"
               width={200}
               height={100}
               className='object-contain'
             />
+          </Link>
+            
           </div>
         </div>
       </div>
