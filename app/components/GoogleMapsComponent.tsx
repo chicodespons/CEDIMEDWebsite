@@ -1,13 +1,15 @@
 'use client'
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 type Props = {
   apiKey: string;
-  t:(key: string) => string;
 };
 
-const GoogleMapsComponent: React.FC<Props> = ({ apiKey, t }) => {
+const GoogleMapsComponent: React.FC<Props> = ({ apiKey}) => {
+
+  const t = useTranslations();
   
   const mapContainerStyle = {
     width: '100%',
