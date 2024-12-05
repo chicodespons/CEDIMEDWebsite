@@ -14,7 +14,7 @@ export default async  function Education({
   setRequestLocale(locale);
     return (
       <div>
-        <PijlerText locale={locale} slug={"education"} titleBgColor="bg-uzGray" />
+        <PijlerText locale={locale} slug={"education"} />
       </div>
     );
   }
