@@ -1,8 +1,18 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import ContactForm from "../../components/ContactForm";
 import GoogleMapsComponent from "../../components/GoogleMapsComponent";
 
-export default async function Contact() {
+type Params = {
+  locale: string | string[];
+};
+
+export default async function Contact({
+  params,
+}: {
+  params: Params;
+}) {
+  const locale = Array.isArray(params?.locale) ? params.locale[0] : params.locale || "nl"; // Default to 'nl'
+  setRequestLocale(locale);
   const t = await getTranslations();
   
     return (
