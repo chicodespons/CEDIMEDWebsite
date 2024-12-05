@@ -4,9 +4,10 @@ import Link from 'next/link';
 
 type Props = {
   apiKey: string;
+  t:(key: string) => string;
 };
 
-const GoogleMapsComponent: React.FC<Props> = ({ apiKey }) => {
+const GoogleMapsComponent: React.FC<Props> = ({ apiKey, t }) => {
   
   const mapContainerStyle = {
     width: '100%',
@@ -37,16 +38,16 @@ const GoogleMapsComponent: React.FC<Props> = ({ apiKey }) => {
       {/* Right: Contact Information */}
       <div className="w-full md:w-1/2 p-6 flex flex-col justify-center ">
         <h2 className="text-xl font-semibold">CEDIMED Brussels</h2>
-        <p><strong>Adres:</strong> Laarbeeklaan 101, Jette</p>
-        <p><strong>Tel:</strong> +32 473 55 70</p>
-        <p><strong>Openingsuren:</strong> 09:00 - 17:00</p>
-        <p><strong>Email:</strong> <a href="mailto:info@cedimed.brussels" className="text-blue-600">info@cedimed.brussels</a></p>
+        <p><strong>{t('adres2')}</strong> Laarbeeklaan 101, Jette</p>
+        <p><strong>{t('tel')}</strong> +32 473 55 70</p>
+        <p><strong>{t('openingsUren')}</strong> 09:00 - 17:00</p>
+        <p><strong>{t('email')}</strong> <a href="mailto:info@cedimed.brussels" className="text-blue-600">info@cedimed.brussels</a></p>
 
         <Link
           href={googleMapsRouteUrl}
           className="inline-block max-w-72 mt-6 px-6 sm:px-8 py-2 sm:py-3 bg-uzGreen text-white font-bold rounded hover:bg-uzGray transition duration-300 text-sm sm:text-base"
         >
-          Get Directions on Google Maps
+          {t('getDirectionsOnGoogleMaps')}
         </Link>
       </div>
     </div>

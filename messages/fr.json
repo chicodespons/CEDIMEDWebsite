@@ -18,5 +18,8 @@
     "volgOns": "Suivez-nous",
     "onsTeam": "Notre Équipe",
     "noNewsFound": "Aucune actualité trouvée",
-    "noNewsFoundText": "Nous n'avons pas pu trouver d'actualités pour le moment. Veuillez revenir plus tard."
+    "noNewsFoundText": "Nous n'avons pas pu trouver d'actualités pour le moment. Veuillez revenir plus tard.",
+    "adres2": "Adresse : ",
+    "openingsUren": "Heures d'ouverture : ",
+    "getDirectionsOnGoogleMaps": "Itinéraire sur Google Maps"
    }

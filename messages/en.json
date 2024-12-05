@@ -18,5 +18,8 @@
     "volgOns": "Follow Us",
     "onsTeam": "Our Team",
     "noNewsFound": "No News Found",
-    "noNewsFoundText": "We couldn’t find any news at the moment. Please check back later."
+    "noNewsFoundText": "We couldn’t find any news at the moment. Please check back later.",
+    "adres2": "Address: ",
+    "openingsUren": "Opening hours: ",
+    "getDirectionsOnGoogleMaps": "Directions on Google Maps"
    }
