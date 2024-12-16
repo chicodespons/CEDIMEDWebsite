@@ -1,6 +1,5 @@
 import AboutText from "../../components/AboutText";
-import TeamSection from "../../components/TeamSection";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 
 type Params = {
   locale: string | string[];
@@ -14,12 +13,12 @@ export default async function About({
 }) {
   const locale = Array.isArray(params?.locale) ? params.locale[0] : params.locale || "nl"; // Default to 'nl'
   setRequestLocale(locale);
-  const t = await getTranslations();
+  // const t = await getTranslations();
 
   return (
     <div>
       <AboutText locale={locale} />
-      <TeamSection t={t} locale={locale} />
+      {/* <TeamSection t={t} locale={locale} /> */}
     </div>
   );
 }
