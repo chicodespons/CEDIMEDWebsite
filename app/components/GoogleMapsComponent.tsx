@@ -40,7 +40,7 @@ const GoogleMapsComponent: React.FC<Props> = ({ apiKey}) => {
       {/* Right: Contact Information */}
       <div className="w-full md:w-1/2 p-6 flex flex-col justify-center ">
         <h2 className="text-xl font-semibold">CEDIMED Brussels</h2>
-        <p><strong>{t('adres2')}</strong> Laarbeeklaan 101, Jette</p>
+        <p><strong>{t('adres2')}</strong> {t('laarbeeklaan')}</p>
         <p><strong>{t('tel')}</strong> +32 473 55 70</p>
         <p><strong>{t('openingsUren')}</strong> 09:00 - 17:00</p>
         <p><strong>{t('email')}</strong> <a href="mailto:info@cedimed.brussels" className="text-blue-600">info@cedimed.brussels</a></p>

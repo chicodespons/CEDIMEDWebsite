@@ -21,5 +21,15 @@
  "noNewsFoundText": "We konden op dit moment geen nieuws vinden. Kom later nog eens terug.",
  "adres2": "Adres: ",
  "openingsUren": "Openingsuren: ",
- "getDirectionsOnGoogleMaps": "Routebeschrijving op Google Maps"
+ "getDirectionsOnGoogleMaps": "Routebeschrijving op Google Maps",
+ "laarbeeklaan": "Laarbeeklaan 101, Jette",
+ "voorNaam": "Voornaam",
+ "familieNaam": "Familienaam",
+ "email2": "Email",
+ "tel2": "Tel (optioneel)",
+ "onderwerp": "Onderwerp",
+ "bericht": "Bericht",
+ "verzendBericht": "Verzend Bericht",
+ "bedanktVoorBericht": "Bedankt voor uw bericht!",
+ "weZullenContactOpnemen": "We zullen zo snel mogelijk contact met U opnemen."
 }

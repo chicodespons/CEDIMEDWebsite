@@ -13,7 +13,7 @@
     "contacteerOns": "Contactez-nous",
     "email": "Email: ",
     "tel":"Tél: ",
-    "adres": "Adresse : Laarbeeklaan 101, Jette",
+    "adres": "Adresse : Avenue du Laerbeek 101",
     "quickLinks": "Liens rapides",
     "volgOns": "Suivez-nous",
     "onsTeam": "Notre Équipe",
@@ -21,5 +21,16 @@
     "noNewsFoundText": "Nous n'avons pas pu trouver d'actualités pour le moment. Veuillez revenir plus tard.",
     "adres2": "Adresse : ",
     "openingsUren": "Heures d'ouverture : ",
-    "getDirectionsOnGoogleMaps": "Itinéraire sur Google Maps"
+    "getDirectionsOnGoogleMaps": "Itinéraire sur Google Maps",
+    "laarbeeklaan": "Avenue du Laerbeek 101, Jette",
+    "voorNaam": "Prénom",
+    "familieNaam": "Nom de famille",
+    "email2": "E-mail",
+    "tel2": "Téléphone (facultatif)",
+    "onderwerp": "Sujet",
+    "bericht": "Message",
+    "verzendBericht": "Envoyer le message",
+    "bedanktVoorBericht": "Merci pour votre message!",
+    "weZullenContactOpnemen": "Nous vous contacterons dès que possible."
+
    }

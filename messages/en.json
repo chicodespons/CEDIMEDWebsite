@@ -21,5 +21,15 @@
     "noNewsFoundText": "We couldn’t find any news at the moment. Please check back later.",
     "adres2": "Address: ",
     "openingsUren": "Opening hours: ",
-    "getDirectionsOnGoogleMaps": "Directions on Google Maps"
+    "getDirectionsOnGoogleMaps": "Directions on Google Maps",
+    "laarbeeklaan": "Laarbeeklaan 101, Jette",
+    "voorNaam": "First Name",
+    "familieNaam": "Last Name",
+    "email2": "Email",
+    "tel2": "Phone (optional)",
+    "onderwerp": "Subject",
+    "bericht": "Message",
+    "verzendBericht": "Send Message",
+    "bedanktVoorBericht": "Thank you for your message!",
+    "weZullenContactOpnemen": "We will contact you as soon as possible."
    }

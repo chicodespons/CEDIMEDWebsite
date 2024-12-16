@@ -1,4 +1,5 @@
 'use client';
+import { useTranslations } from 'next-intl';
 import React, { useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
@@ -29,6 +30,8 @@ const ContactForm: React.FC = () => {
     message: '',
     recaptchaToken: '',
   });
+
+  const t = useTranslations();
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -74,14 +77,14 @@ const ContactForm: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center py-12 bg-gray-100">
       <div className="w-full max-w-lg bg-white shadow-md rounded-lg p-8">
-        <h2 className="text-2xl font-semibold text-center mb-6">Contacteer Ons</h2>
+        <h2 className="text-2xl font-semibold text-center mb-6">{t('contacteerOns')}</h2>
 
         {!isSubmitted ? (
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* First Name Input */}
             <div>
               <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
-                First Name
+                {t('voorNaam')}
               </label>
               <input
                 type="text"
@@ -98,7 +101,7 @@ const ContactForm: React.FC = () => {
             {/* Last Name Input */}
             <div>
               <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
-                Last Name
+              {t('familieNaam')}
               </label>
               <input
                 type="text"
@@ -115,7 +118,7 @@ const ContactForm: React.FC = () => {
             {/* Email Input */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                Email
+              {t('email2')}
               </label>
               <input
                 type="email"
@@ -132,7 +135,7 @@ const ContactForm: React.FC = () => {
             {/* Telephone Input (Optional) */}
             <div>
               <label htmlFor="tel" className="block text-sm font-medium text-gray-700">
-                Telephone (Optional)
+              {t('tel2')}
               </label>
               <input
                 type="tel"
@@ -148,7 +151,7 @@ const ContactForm: React.FC = () => {
             {/* Message Type Dropdown */}
             <div>
               <label htmlFor="messageType" className="block text-sm font-medium text-gray-700">
-                Message Type
+              {t('onderwerp')}
               </label>
               <select
                 name="messageType"
@@ -158,17 +161,17 @@ const ContactForm: React.FC = () => {
                 required
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
               >
-                <option value={MessageType.CLINICAL_CARE}>Klinische Zorg</option>
-                <option value={MessageType.EDUCATION}>Onderwijs</option>
-                <option value={MessageType.RESEARCH}>Onderzoek</option>
-                <option value={MessageType.INNOVATION}>Innovatie</option>
+                <option value={MessageType.CLINICAL_CARE}>{t('klinischeZorg')}</option>
+                <option value={MessageType.EDUCATION}>{t('onderwijs')}</option>
+                <option value={MessageType.RESEARCH}>{t('onderzoek')}</option>
+                <option value={MessageType.INNOVATION}>{t('innovatie')}</option>
               </select>
             </div>
 
             {/* Message Input */}
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-                Message
+                {t('bericht')}
               </label>
               <textarea
                 name="message"
@@ -196,14 +199,14 @@ const ContactForm: React.FC = () => {
                 type="submit"
                 className="w-full bg-uzGreen hover:bg-uzGray text-white font-bold py-2 px-4 rounded-md transition duration-300"
               >
-                Verzend Bericht
+                {t('verzendBericht')}
               </button>
             </div>
           </form>
         ) : (
           <div className="text-center">
-            <h3 className="text-lg font-medium text-green-600">Bedankt voor je bericht!</h3>
-            <p>We zullen zo snel mogelijk contact met je opnemen.</p>
+            <h3 className="text-lg font-medium text-green-600">{t('bedanktVoorBericht')}</h3>
+            <p>{t('weZullenContactOpnemen')}</p>
           </div>
         )}
       </div>
