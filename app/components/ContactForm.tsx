@@ -94,7 +94,7 @@ const ContactForm: React.FC = () => {
                 onChange={handleChange}
                 required
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Enter your first name"
+                placeholder={t('voorNaam')}
               />
             </div>
 
@@ -111,7 +111,7 @@ const ContactForm: React.FC = () => {
                 onChange={handleChange}
                 required
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Enter your last name"
+                placeholder={t('familieNaam')}
               />
             </div>
 
@@ -128,7 +128,7 @@ const ContactForm: React.FC = () => {
                 onChange={handleChange}
                 required
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Enter your email"
+                placeholder={t('email2')}
               />
             </div>
 
@@ -144,7 +144,7 @@ const ContactForm: React.FC = () => {
                 value={formData.tel}
                 onChange={handleChange}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Enter your telephone number"
+                placeholder="tel"
               />
             </div>
 
@@ -181,7 +181,7 @@ const ContactForm: React.FC = () => {
                 required
                 rows={4}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Enter your message"
+                placeholder={t('bericht')}
               />
             </div>
 
