@@ -3,11 +3,10 @@ import React from 'react';
 
 interface RichTextRendererProps {
   content: Array<any>; // Adjust the type as needed for your content structure
-  titleBgColor?: string;
   
 }
 
-const RichTextRenderer = ({ content, titleBgColor }: RichTextRendererProps) => {
+const RichTextRenderer = ({ content }: RichTextRendererProps) => {
     const renderNode = (node: any, index: number) => {
       switch (node.type) {
         case 'heading':
@@ -16,9 +15,7 @@ const RichTextRenderer = ({ content, titleBgColor }: RichTextRendererProps) => {
 
             // Define the Tailwind classes for different heading levels
             const headingClasses: Record<number,string> = {
-                   1: `text-2xl text-left font-bold tracking-wider uppercase underline decoration-uzGreen decoration-4 underline-offset-4 md:inline-block px-4 py-2 rounded mb-6 mt-10 ${
-            titleBgColor ? titleBgColor : 'bg-uzGreen'
-          }`, // More space around headings
+                   1: 'text-2xl text-left font-bold tracking-wider uppercase underline decoration-uzGreen decoration-4 underline-offset-4 md:inline-block px-4 py-2 rounded mb-6 mt-10',
           2: 'text-2xl font-bold mb-6 mt-10',
           3: 'text-xl font-bold mb-6 mt-10',
                 // Add more heading levels if needed
