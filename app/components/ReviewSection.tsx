@@ -15,25 +15,22 @@ const ReviewsSection = () => {
 
     const reviewItems: ReviewItem[] = [
         {
-          quote: 'CEDIMED verleende uitzonderlijke zorg tijdens een kritieke periode. Hun team is professioneel en meelevend.',
-          author: 'Dr. Sarah Williams',
+          quote: 'Ik lig momenteel op spoed en wordt opgenomen.Het personeel is uiterst professioneel en heel behumpzaam. Ik zou mijn dank willen betuigen.',
+          author: 'Maddy Gielen',
         },
         {
-          quote: 'De trainingsprogramma\'s bij CEDIMED zijn van topkwaliteit. Ik voel me beter voorbereid dan ooit om noodgevallen aan te pakken.',
-          author: 'Nurse John Doe',
+          quote: 'Venu en urgence pour une douleurs ... opéré le soir même mis en service abdominale. Personnel soignant au top. Très empathigque',
+          author: 'Hamza Mike',
         },
         {
-          quote: 'Hun onderzoeksinitiatieven zijn baanbrekend. CEDIMED is echt een leider op het gebied van spoedeisende geneeskunde.',
-          author: 'Dr. Emily Brown',
+          quote: `Extrêmement bien reçu aux urgences. L'attente est longue mais vu la quantité des malades c'est compréhensible.Les infirmières sont des vrais professionnels en pédiatrie, les médecins très doux avec les enfants.`,
+          author: 'Anna Szymaniak',
         },
         {
-          quote: 'De zorg die ik heb ontvangen van CEDIMED heeft mijn leven veranderd. Ik ben dankbaar voor hun toewijding aan patiënten.',
-          author: 'Dr. Jane Doe',
+          quote: `Bonjour, Je voudrais remercier tout vos équipes d'urgence qui ont pris mon fils en charge directement. Tout le personnel pneumonie et service soins intensif. Merci beaucoup d'avoir soigner mon fils et surtout vous m'avez tous expliqué en français, vous m'avez soutenu et rassuré. Il est bien rentré à la maison. Prenez soin de vous. Merci encore.`,
+          author: 'Tulay Gultaslar',
         },
-        {
-          quote: 'CEDIMED is echt vooruitstrevend in het leveren van hoogwaardige zorg. Hun aanpak is inspirerend.',
-          author: 'Prof. Dr. Hendrik Cuppens',
-        },
+        
     ];
     
     const settings = {
