@@ -15,9 +15,9 @@ const RichTextRenderer = ({ content }: RichTextRendererProps) => {
 
             // Define the Tailwind classes for different heading levels
             const headingClasses: Record<number,string> = {
-                   1: 'text-2xl text-left font-bold tracking-wider uppercase underline decoration-uzGreen decoration-4 underline-offset-4 md:inline-block px-4 py-2 rounded mb-6 mt-10',
-          2: 'text-2xl font-bold mb-6 mt-10',
-          3: 'text-xl font-bold mb-6 mt-10',
+                   1: "text-2xl text-left font-bold tracking-wider uppercase border-l-4 border-uzGreen px-2 mb-6 mt-10",
+          2: "text-xl text-left font-bold tracking-wider uppercase border-l-4 border-uzGreen px-2 mb-6 mt-10",
+          3: "text-lg text-left font-bold tracking-wider uppercase border-l-4 border-uzGreen px-2 mb-6 mt-10",
                 // Add more heading levels if needed
             };
 
@@ -40,7 +40,7 @@ const RichTextRenderer = ({ content }: RichTextRendererProps) => {
           if (node.italic) textClasses += 'italic ';
           if (node.underline) textClasses += 'underline ';
           if (node.strikethrough) textClasses += 'line-through ';
-          if (node.code) textClasses += 'bg-gray-200 font-mono px-1 ';
+          if (node.code) textClasses += 'bg-gray-200 font-mono px-2 ';
   
           return (
             <span key={index} className={textClasses} style={{ wordWrap: 'break-word' }}>
