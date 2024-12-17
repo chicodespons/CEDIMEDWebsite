@@ -47,7 +47,7 @@ const GoogleMapsComponent: React.FC<Props> = ({ apiKey}) => {
 
         <Link
           href={googleMapsRouteUrl}
-          className="inline-block max-w-72 mt-6 px-6 sm:px-8 py-2 sm:py-3 bg-uzGreen text-white font-bold rounded hover:bg-uzGray transition duration-300 text-sm sm:text-base"
+          className="inline-block uppercase max-w-72 mt-6 px-6 sm:px-8 py-2 sm:py-3 bg-uzGreen text-white font-bold rounded hover:bg-uzGray transition duration-300 text-sm sm:text-base"
         >
           {t('getDirectionsOnGoogleMaps')}
         </Link>

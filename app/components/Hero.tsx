@@ -37,13 +37,13 @@ const Hero = ({ t, locale }: { t: (key: string) => string, locale:string }) => {
         <div className="mt-8 grid grid-cols-2 gap-2 ">
           <Link
             href={`/${locale}/about`}
-            className="px-2 sm:px-8 py-2 sm:py-3 bg-uzGreen text-white font-bold rounded hover:bg-uzGray transition duration-300 text-sm sm:text-base"
+            className="px-2 uppercase sm:px-8 py-2 sm:py-3 bg-uzGreen text-white font-bold rounded hover:bg-uzGray transition duration-300 text-sm sm:text-base"
           >
             {t("overOns")}
           </Link>
           <Link
             href={`/${locale}/contact`}
-            className="px-2 sm:px-8 py-2 sm:py-3 bg-uzGreen text-white font-bold rounded hover:bg-uzGray transition duration-300 text-sm sm:text-base"
+            className="px-2 uppercase sm:px-8 py-2 sm:py-3 bg-uzGreen text-white font-bold rounded hover:bg-uzGray transition duration-300 text-sm sm:text-base"
           >
             {t("contact")}
           </Link>

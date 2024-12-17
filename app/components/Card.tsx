@@ -20,7 +20,7 @@ const Card: React.FC<CardProps> = ({ title, description, imageUrl, imageAlt, lin
         <div className="p-6 flex-grow">
           {/* Apply hover styles for text */}
           <h3 className="text-2xl uppercase tracking-wider font-bold mb-2 transition-colors duration-300 group-hover:text-white">{title}</h3>
-          <p className="text-black text-justify transition-colors duration-300 group-hover:text-white">{description}</p>
+          <p className="text-black transition-colors duration-300 group-hover:text-white">{description}</p>
         </div>
         {/* Image Section */}
         <div className="relative m-6 h-48">
