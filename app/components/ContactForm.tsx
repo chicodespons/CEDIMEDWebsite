@@ -77,7 +77,7 @@ const ContactForm: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center py-12 bg-gray-100">
       <div className="w-full max-w-lg bg-white shadow-md rounded-lg p-8">
-        <h2 className="text-2xl font-semibold text-center mb-6">{t('contacteerOns')}</h2>
+        <h2 className="text-3xl font-bold text-center mb-6 uppercase tracking-wider">{t('contacteerOns')}</h2>
 
         {!isSubmitted ? (
           <form onSubmit={handleSubmit} className="space-y-4">

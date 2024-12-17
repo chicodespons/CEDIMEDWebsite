@@ -54,7 +54,7 @@ export const NewsComponent: React.FC<NewsComponentProps> = ({newsItem}) => {
         <div className="flex flex-col md:flex-row gap-8 p-4 mx-auto">
         {/* Main Content */}
         <main className="flex-1 pr-4">
-          <h1 className="text-3xl font-bold mb-4">
+          <h1 className="text-3xl uppercase tracking-wider font-bold mb-4">
           {title}          
           </h1>
           <p className="text-gray-600 mb-6">

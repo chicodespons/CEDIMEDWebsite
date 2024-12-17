@@ -15,9 +15,9 @@ const RichTextRenderer = ({ content }: RichTextRendererProps) => {
 
             // Define the Tailwind classes for different heading levels
             const headingClasses: Record<number,string> = {
-                   1: "text-2xl text-left font-bold tracking-wider uppercase border-l-4 border-uzGreen px-2 mb-6 mt-10",
-          2: "text-xl text-left font-bold tracking-wider uppercase border-l-4 border-uzGreen px-2 mb-6 mt-10",
-          3: "text-lg text-left font-bold tracking-wider uppercase border-l-4 border-uzGreen px-2 mb-6 mt-10",
+                   1: "text-2xl text-left font-bold tracking-wider uppercase border-l-4 border-uzGreen px-2 my-15",
+          2: "text-xl text-left font-bold tracking-wider uppercase border-l-4 border-uzGreen px-2 my-15",
+          3: "text-lg text-left font-bold tracking-wider uppercase border-l-4 border-uzGreen px-2 my-15",
                 // Add more heading levels if needed
             };
 
@@ -84,7 +84,7 @@ const RichTextRenderer = ({ content }: RichTextRendererProps) => {
           );
   
         case 'list-item':
-          return <li key={index} className="mb-6 text-lg max-w-full">{node.children.map((child: any, idx: number) => renderNode(child, idx))}</li>;
+          return <li key={index} className="mb-6 text-lg leading-loose max-w-full">{node.children.map((child: any, idx: number) => renderNode(child, idx))}</li>;
   
           case 'quote':
             return (
