@@ -16,7 +16,7 @@ const RichTextRenderer = ({ content, titleBgColor }: RichTextRendererProps) => {
 
             // Define the Tailwind classes for different heading levels
             const headingClasses: Record<number,string> = {
-                   1: `text-2xl text-left font-bold text-white md:inline-block px-4 py-2 rounded mb-6 mt-10 ${
+                   1: `text-2xl text-left font-bold tracking-wider uppercase underline decoration-uzGreen decoration-4 underline-offset-4 md:inline-block px-4 py-2 rounded mb-6 mt-10 ${
             titleBgColor ? titleBgColor : 'bg-uzGreen'
           }`, // More space around headings
           2: 'text-2xl font-bold mb-6 mt-10',
