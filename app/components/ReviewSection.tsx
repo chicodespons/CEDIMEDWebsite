@@ -60,34 +60,33 @@ const ReviewsSection = () => {
 
     return (
       <div className="bg-grayBack pb-14">
-      <section className="py-14 bg-white mx-6 rounded-lg">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl uppercase tracking-wider font-bold text-center mb-10">
-            {t('watMensenOverOnsZeggen')}
-          </h2>
-          <Slider {...settings}>
-            {reviewItems.map((item, index) => (
-              <Link key={index} href="/">
-                <div className="px-4">
-                  {/* Add the 'group' class */}
-                  <div 
-                    className="group bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between flex-grow mb-4 transition duration-300 ease-in-out transform hover:bg-uzGreen active:bg-uzGray"
-                  >
-                    {/* Update text color to white on hover */}
+        <section className="py-14 bg-white mx-6 rounded-lg">
+          <div className="container mx-auto px-6">
+            <h2 className="text-3xl uppercase tracking-wider font-bold text-center mb-10">
+              {t('watMensenOverOnsZeggen')}
+            </h2>
+            <Slider {...settings}>
+              {reviewItems.map((item, index) => (
+                <div key={index} className="px-4">
+                  <div className="group relative bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between flex-grow mb-4 transition duration-300 ease-in-out transform hover:bg-uzGreen active:bg-uzGray">
+                    {/* Display truncated text */}
                     <p className="font-light text-black mb-4 line-clamp-2 transition-colors duration-300 group-hover:text-white">
                       {item.quote}
                     </p>
                     <p className="text-sm font-semibold text-black transition-colors duration-300 group-hover:text-white">
                       - {item.author}
                     </p>
+                    {/* Text bubble for full review */}
+                    <div className="absolute hidden group-hover:flex top-full left-1/2 transform -translate-x-1/2 mt-4 bg-white text-black shadow-lg rounded-lg p-4 w-72 z-10">
+                      <p className="text-sm">{item.quote}</p>
+                    </div>
                   </div>
                 </div>
-              </Link>
-            ))}
-          </Slider>
-        </div>
-      </section>
-    </div>    
+              ))}
+            </Slider>
+          </div>
+        </section>
+      </div>
     );
 };
 
