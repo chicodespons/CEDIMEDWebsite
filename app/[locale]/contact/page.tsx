@@ -6,7 +6,7 @@ export default function Contact() {
 
   return (
       <div>
-        <GoogleMapsComponent apiKey={"AIzaSyAsiywReNSwy8qFOpnPeHAHnSN9TkHXy74"} />
+        <GoogleMapsComponent apiKey={"AIzaSyDfQcp5aVCnGNlJtr-Nxf2_yFy2elwBS-g"} />
         <ContactForm />
       </div>
   );
