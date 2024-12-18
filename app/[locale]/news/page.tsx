@@ -95,7 +95,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   setRequestLocale(locale);
 
   const newsItem: NieuwsItem = await fetchLatestNewsItem(locale);
-  let imgUrl: string = '/images/opengraph-image.png';
+  let imgUrl: string = `${process.env.NEXT_PUBLIC_BASE_URL}/images/opengraph-image.png`;
 
   if (newsItem?.img?.formats?.medium?.url) {
     imgUrl = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${newsItem.img.formats.medium.url}`

@@ -103,7 +103,7 @@ type Props = {
     const locale = Array.isArray(params?.locale) ? params.locale[0] : params.locale || "nl"; // Default to 'nl'
     setRequestLocale(locale);
     let newsItem : NieuwsItem = null;
-    let imgUrl : string = '/images/opengraph-image.png'
+    let imgUrl : string = `${process.env.NEXT_PUBLIC_BASE_URL}/images/opengraph-image.png`
     if (params.slug) {
       newsItem = await fetchNewsItemViaSlug(params.slug, locale);
      }

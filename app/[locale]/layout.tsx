@@ -29,7 +29,7 @@ export const metadata: Metadata = {
       "Shaping the Future of Emergency and Disaster Medicine: Uniting Practice, Education, Research, and Innovation.",
     images: [
       {
-        url: "/opengraph-image.png", // Use a relative path for images in the `public` folder
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/images/opengraph-image.png`, // Use a relative path for images in the `public` folder
         width: 1200, // Ideal width for OG images
         height: 630, // Ideal height for OG images
         alt: "CEDIMED Brussels - Emergency and Disaster Medicine",
