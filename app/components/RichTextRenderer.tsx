@@ -15,9 +15,9 @@ const RichTextRenderer = ({ content }: RichTextRendererProps) => {
 
             // Define the Tailwind classes for different heading levels
             const headingClasses: Record<number,string> = {
-                   1: "text-2xl text-left font-bold tracking-wider uppercase border-l-4 border-uzGreen px-2 pb-6 mt-15",
-          2: "text-xl text-left font-bold tracking-wider uppercase border-l-4 border-uzGreen pb-6 mt-15",
-          3: "text-lg text-left font-bold tracking-wider uppercase border-l-4 border-uzGreen pb-6 mt-15",
+                   1: "text-2xl text-left font-bold tracking-wider uppercase border-l-4 border-uzGreen px-2 mt-16",
+          2: "text-xl text-left font-bold tracking-wider uppercase border-l-4 border-uzGreen px-2 mt-16",
+          3: "text-lg text-left font-bold tracking-wider uppercase border-l-4 border-uzGreen px-2 mt-16",
                 // Add more heading levels if needed
             };
 
@@ -29,7 +29,7 @@ const RichTextRenderer = ({ content }: RichTextRendererProps) => {
   
         case 'paragraph':
           return (
-            <p key={index} className="text-lg mb-6 leading-loose max-w-full">
+            <p key={index} className="text-lg mb-16 mt-16 leading-loose max-w-full">
               {node.children.map((child: any, idx: number) => renderNode(child, idx))}
             </p>
           );
