@@ -2,6 +2,10 @@ import { Metadata } from "next";
 import AboutText from "../../components/AboutText";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
+type Params = {
+  locale: string | string[];
+};
+
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const locale = Array.isArray(params?.locale) ? params.locale[0] : params.locale || "nl"; // Default to 'nl'
   const t = await getTranslations(locale);
@@ -11,10 +15,6 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     description: t("overOnsDescription"),
   };
 }
-
-type Params = {
-  locale: string | string[];
-};
 
 
 export default async function About({
