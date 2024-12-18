@@ -23,6 +23,20 @@ export const metadata: Metadata = {
     template: "%s - CEDIMED Brussels"
   }, 
   description: "Shaping the Future of Emergency and Disaster Medicine: Uniting Practice, Education, Research, and Innovation.",
+  openGraph: {
+    title: "CEDIMED Brussels",
+    description:
+      "Shaping the Future of Emergency and Disaster Medicine: Uniting Practice, Education, Research, and Innovation.",
+    images: [
+      {
+        url: "/opengraph-image.png", // Use a relative path for images in the `public` folder
+        width: 1200, // Ideal width for OG images
+        height: 630, // Ideal height for OG images
+        alt: "CEDIMED Brussels - Emergency and Disaster Medicine",
+      },
+    ],
+    type: "website",
+  },
 };
 
 export default async function RootLayout({ children, params }: LayoutProps) {

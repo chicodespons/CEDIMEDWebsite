@@ -90,7 +90,29 @@ async function fetchLatestNewsItem(locale:string): Promise<NieuwsItem| null> {
     return null;
     }
   
+export async function generateMetadata({ params }: { params: { locale: string } }) {
+  const locale = Array.isArray(params?.locale) ? params.locale[0] : params.locale || "nl";
+  setRequestLocale(locale);
 
+  const newsItem: NieuwsItem = await fetchLatestNewsItem(locale);
+  let imgUrl: string = '/images/opengraph-image.png';
+
+  if (newsItem?.img?.formats?.medium?.url) {
+    imgUrl = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${newsItem.img.formats.medium.url}`
+  }
+
+  return {
+    title: newsItem.title || "CEDIMED Brussels News",
+    description: newsItem.excerpt || "CEDIMED Brussels latest news",
+    openGraph: {
+      images: [
+        {
+          url: imgUrl
+        }
+      ]
+    }
+  }
+}
 
 export default async function NewsBasePage({ params }: { params: { locale: string } }) {
     const locale = Array.isArray(params?.locale) ? params.locale[0] : params.locale || "nl";
