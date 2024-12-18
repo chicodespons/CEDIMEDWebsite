@@ -7,15 +7,15 @@ type Params = {
 };
 
 const englishMetadata = {
-  title: "CEDIMED Brussels",
+  title: "About Us",
   description: "Over the organization CEDIMED Brussels",
 };
 const frenchMetadata = {
   title: "CEDIMED Bruxelles",
-  description: "Sur l'organisation CEDIMED Bruxelles",
+  description: "À propos de nous",
 };
 const dutchMetadata = {
-  title: "CEDIMED Brussels",
+  title: "Over Ons",
   description: "Over de organisatie CEDIMED Brussels",
 };
 

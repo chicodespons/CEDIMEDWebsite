@@ -99,6 +99,31 @@ type Props = {
   }
   
  
+  export async function generateMetadata({ params } : Props) {
+    const locale = Array.isArray(params?.locale) ? params.locale[0] : params.locale || "nl"; // Default to 'nl'
+    setRequestLocale(locale);
+    let newsItem : NieuwsItem = null;
+    let imgUrl : string = `${process.env.NEXT_PUBLIC_BASE_URL}/opengraph-image.png`;
+    if (params.slug) {
+      newsItem = await fetchNewsItemViaSlug(params.slug, locale);
+     }
+    
+    if (newsItem?.img?.formats?.medium?.url) {
+      imgUrl = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${newsItem.img.formats.medium.url}`
+    }
+    
+    return {
+      title: newsItem.title || "CEDIMED Brussels News",
+      description: newsItem.excerpt || "CEDIMED Brussels latest news",
+      openGraph: {
+        images : [
+          {
+            url: imgUrl
+          }
+        ]
+      }
+    }
+  }
   
 
   export default async function NewsPage({ params } : Props ) {
