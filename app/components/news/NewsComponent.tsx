@@ -44,9 +44,13 @@ export const NewsComponent: React.FC<NewsComponentProps> = ({ newsItem }) => {
     year: "numeric",
   }).format(date);
 
-  const avatarImageUrl = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${avatar.formats.thumbnail.url}`;
-
   const defaultAvatarImage = "/images/default_user.png";
+  
+  const avatarImageUrl = avatar
+  ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${avatar.formats.thumbnail.url}`
+  : defaultAvatarImage;
+
+  
 
   return (
     <div className="flex flex-col md:flex-row gap-8 p-4 mx-auto">

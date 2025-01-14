@@ -104,10 +104,9 @@ async function fetchNewsItemViaSlug(
         img: newsItem.image?.formats?.medium ? newsItem.image : null,
         author: newsItem.author ? newsItem.author.name : null,
         bio: newsItem.author ? newsItem.author.bio : null,
-        avatar:
-          newsItem.author && newsItem.author.avatar
-            ? newsItem.author.avatar
-            : null,
+        avatar: newsItem.author?.avatar?.formats?.thumbnail
+          ? newsItem.author.avatar
+          : null,
       };
 
       return mappedItem;
