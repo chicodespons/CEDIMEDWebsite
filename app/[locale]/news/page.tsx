@@ -127,7 +127,7 @@ export default async function NewsBasePage({
     ? params.locale[0]
     : params.locale || "nl";
   setRequestLocale(locale);
-  const t = await getTranslations();
+//   const t = await getTranslations();
 
   // let newsItem = null;
   // try {
