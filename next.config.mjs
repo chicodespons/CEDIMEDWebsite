@@ -9,7 +9,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "www.strapi.cedimed.brussels",
+        hostname: "cedimed-strapi-ji87p.ondigitalocean.app",
         port: "8080",
         pathname: "/uploads/**/*",
       },
