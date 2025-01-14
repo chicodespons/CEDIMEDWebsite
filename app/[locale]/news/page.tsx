@@ -1,6 +1,6 @@
 // import { NewsComponent } from "@/app/components/news/NewsComponent";
 // import NoNewsComponent from "@/app/components/news/NoNewsComponent";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 
 // interface StrapiImage {
 //   alternativeText: string;
