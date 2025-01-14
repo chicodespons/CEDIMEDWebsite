@@ -101,7 +101,7 @@ async function fetchNewsItemViaSlug(
         excerpt: newsItem.excerpt,
         slug: newsItem.slug,
         publicationDate: newsItem.publishedAt,
-        img: newsItem.image ?? null,
+        img: newsItem.image?.formats?.medium ? newsItem.image : null,
         author: newsItem.author ? newsItem.author.name : null,
         bio: newsItem.author ? newsItem.author.bio : null,
         avatar:
