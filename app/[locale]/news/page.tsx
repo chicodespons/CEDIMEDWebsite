@@ -124,13 +124,16 @@ export default async function NewsBasePage({ params }: { params: { locale: strin
     setRequestLocale(locale);
     const t = await getTranslations();
   
-    const newsItem = await fetchLatestNewsItem(locale);
-
-    if (newsItem){
-        return <NewsComponent newsItem={newsItem} />
-    } else {
-        return <NoNewsComponent t={t}/>
+    let newsItem = null;
+    try {
+      newsItem = await fetchLatestNewsItem(locale);
+    } catch (error) {
+      console.error("Failed to fetch news item:", error);
     }
   
-    
+    if (newsItem) {
+      return <NewsComponent newsItem={newsItem} />;
+    } else {
+      return <NoNewsComponent t={t} />;
+    }
   }
