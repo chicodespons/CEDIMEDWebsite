@@ -120,37 +120,37 @@ async function fetchNewsItemViaSlug(
   return null;
 }
 
-export async function generateMetadata({ params }: Props) {
-  const locale = Array.isArray(params?.locale)
-    ? params.locale[0]
-    : params.locale || "nl"; // Default to 'nl'
-  setRequestLocale(locale);
-  let newsItem: NieuwsItem | null = null;
+// export async function generateMetadata({ params }: Props) {
+//   const locale = Array.isArray(params?.locale)
+//     ? params.locale[0]
+//     : params.locale || "nl"; // Default to 'nl'
+//   setRequestLocale(locale);
+//   let newsItem: NieuwsItem | null = null;
 
-  if (params.slug) {
-    try {
-      newsItem = await fetchNewsItemViaSlug(params.slug, locale);
-    } catch (error) {
-      console.error("Error in generateMetadata fetchNewsItemViaSlug:", error);
-    }
-  }
+//   if (params.slug) {
+//     try {
+//       newsItem = await fetchNewsItemViaSlug(params.slug, locale);
+//     } catch (error) {
+//       console.error("Error in generateMetadata fetchNewsItemViaSlug:", error);
+//     }
+//   }
 
-  const imgUrl = newsItem?.img?.formats?.medium?.url
-    ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${newsItem.img.formats.medium.url}`
-    : `${process.env.NEXT_PUBLIC_BASE_URL}/images/opengraph-image.png`;
+//   const imgUrl = newsItem?.img?.formats?.medium?.url
+//     ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${newsItem.img.formats.medium.url}`
+//     : `${process.env.NEXT_PUBLIC_BASE_URL}/images/opengraph-image.png`;
 
-  return {
-    title: newsItem?.title || "CEDIMED Brussels News",
-    description: newsItem?.excerpt || "CEDIMED Brussels latest news",
-    openGraph: {
-      images: [
-        {
-          url: imgUrl,
-        },
-      ],
-    },
-  };
-}
+//   return {
+//     title: newsItem?.title || "CEDIMED Brussels News",
+//     description: newsItem?.excerpt || "CEDIMED Brussels latest news",
+//     openGraph: {
+//       images: [
+//         {
+//           url: imgUrl,
+//         },
+//       ],
+//     },
+//   };
+// }
 
 export default async function NewsPage({ params }: Props) {
   const locale = Array.isArray(params?.locale)
