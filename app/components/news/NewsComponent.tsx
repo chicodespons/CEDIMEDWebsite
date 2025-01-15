@@ -38,14 +38,10 @@ interface NewsComponentProps {
   t: (key: string) => string;
 }
 
-interface ArticleAttributes {
-  title: string;
-  slug: string;
-}
-
 interface ArticleData {
   id: number;
-  attributes?: ArticleAttributes;
+  title: string;
+  slug: string;
 }
 
 interface ArticlesResponse {
@@ -138,14 +134,14 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({ newsItem, lo
         <section className="bg-white shadow-md rounded-lg p-4">
           <h2 className="text-lg font-semibold mb-4">{t("articels")}</h2>
           <ul className="space-y-2 text-blue-600">
-            {relatedArticles.map(({ id, attributes }) => (
-              attributes && (
+            {relatedArticles.map(({ id, title, slug }) => (
+              id && title && slug && (
                 <li key={id}>
                   <Link
-                    href={`/${locale}/news/${attributes.slug}`}
+                    href={`/${locale}/news/${slug}`}
                     className="hover:underline"
                   >
-                    {attributes.title || "problem with title"}
+                    {title || "problem with title"}
                   </Link>
                 </li>
               )
