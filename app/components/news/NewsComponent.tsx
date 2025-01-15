@@ -1,6 +1,7 @@
 import React from "react";
 import DefaultImageComponent from "../defaultImageComponent";
 import RichTextRenderer from "../RichTextRenderer";
+import Link from "next/link";
 
 interface StrapiImage {
   alternativeText: string;
@@ -33,9 +34,49 @@ interface NieuwsItem {
 
 interface NewsComponentProps {
   newsItem: NieuwsItem;
+  locale: string;
+  t: (key: string) => string;
 }
 
-export const NewsComponent: React.FC<NewsComponentProps> = ({ newsItem }) => {
+interface ArticleAttributes {
+  title: string;
+  slug: string;
+}
+
+interface ArticleData {
+  id: number;
+  attributes: ArticleAttributes;
+}
+
+interface ArticlesResponse {
+  data: ArticleData[];
+}
+
+
+async function fetchRelatedArticles(locale: string): Promise<ArticleData[]> {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?fields=title,slug&sort=publishedAt:desc&locale=${locale}`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
+        },
+      }
+    );
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch related articles.")
+    }
+
+    const data: ArticlesResponse = await res.json();
+    return data.data;
+  } catch (error) {
+    console.error(error);
+    return []
+  }
+}
+
+export const NewsComponent: React.FC<NewsComponentProps> = async ({ newsItem, locale, t }) => {
   const { title, content, publicationDate, img, author, bio, avatar } =
     newsItem;
   const date = new Date(publicationDate);
@@ -49,6 +90,8 @@ export const NewsComponent: React.FC<NewsComponentProps> = ({ newsItem }) => {
   const avatarImageUrl = avatar
     ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${avatar.formats.thumbnail.url}`
     : defaultAvatarImage;
+
+    const relatedArticles = await fetchRelatedArticles(locale);
 
   return (
     <div className="flex flex-col md:flex-row gap-8 mx-auto">
@@ -91,35 +134,22 @@ export const NewsComponent: React.FC<NewsComponentProps> = ({ newsItem }) => {
       <aside className="w-full md:w-3/12 space-y-6 p-4">
         {/* Related Articles */}
         <section className="bg-white shadow-md rounded-lg p-4">
-          <h2 className="text-lg font-semibold mb-4">Artikels</h2>
+          <h2 className="text-lg font-semibold mb-4">{t("articels")}</h2>
           <ul className="space-y-2 text-blue-600">
-            <li>
-              <a href="#" className="hover:underline">
-                Advancements in Trauma Care
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:underline">
-                Telemedicine in Disaster Response
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:underline">
-                Innovations in Cardiopulmonary Resuscitation
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:underline">
-                Enhancing Patient Monitoring Systems
-              </a>
-            </li>
+            {relatedArticles.map(({id, attributes}) => (
+              <li key={id}>
+                <Link href={`/${locale}/news/${attributes.slug}`} className="hover:underline">
+                  {attributes.title}
+                </Link>
+              </li>
+            ))}
           </ul>
         </section>
 
         {/* Author Bio */}
         <section className="bg-white shadow-md rounded-lg p-4">
-          <h2 className="text-lg font-semibold mb-4">Over de Auteur</h2>
-          <div className="flex items-center mb-4">
+          <h2 className="text-lg font-semibold mb-4">{t("aboutTheAuthor")}</h2>
+          <div className="flex flex-col items-center mb-4">
             <DefaultImageComponent
               image={avatarImageUrl}
               defaultImage={defaultAvatarImage}

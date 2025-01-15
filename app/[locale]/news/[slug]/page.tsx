@@ -168,7 +168,7 @@ export default async function NewsPage({ params }: Props) {
   }
 
   if (newsItem) {
-    return <NewsComponent newsItem={newsItem} />;
+    return <NewsComponent newsItem={newsItem} locale={locale} t={t} />;
   } else {
     return <NoNewsComponent t={t} />;
   }
