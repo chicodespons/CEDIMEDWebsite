@@ -54,7 +54,7 @@ interface NieuwsItem {
 
 async function fetchLatestNewsItem(locale: string): Promise<NieuwsItem | null> {
     try {
-      const res = await fetch(
+      let res = await fetch(
         `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?sort[0]=publishedAt:desc&populate[author][populate]=avatar&populate=image&locale=${locale}`,
         {
           headers: {
@@ -68,28 +68,40 @@ async function fetchLatestNewsItem(locale: string): Promise<NieuwsItem | null> {
         return null;
       }
 
-      const data: ApiResponse = await res.json();
+      let data: ApiResponse = await res.json();
 
-      if (!data?.data || !Array.isArray(data.data) || data.data.length === 0) {
-        console.warn(`No news found for locale ${locale}`);
-        return null;
+      if ((!data?.data || !Array.isArray(data.data) || data.data.length === 0) && locale !== "nl") {
+        // Fallback to default locale (nl)
+        res = await fetch(
+          `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?sort[0]=publishedAt:desc&populate[author][populate]=avatar&populate=image&locale=nl`,
+          {
+            headers: {
+              Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
+            },
+          }
+        );
+        data = await res.json();
       }
 
-      const newsItem = data.data[0];
-      return {
-        id: newsItem.id,
-        title: newsItem.title,
-        content: newsItem.content,
-        excerpt: newsItem.excerpt,
-        slug: newsItem.slug,
-        publicationDate: newsItem.publishedAt,
-        img: newsItem.image?.formats?.medium ? newsItem.image : null,
-        author: newsItem.author ? newsItem.author.name : null,
-        bio: newsItem.author ? newsItem.author.bio : null,
-        avatar: newsItem.author?.avatar?.formats?.thumbnail
-          ? newsItem.author.avatar
-          : null,
-      };
+      if (data?.data && Array.isArray(data.data) && data.data.length > 0) {
+        const newsItem = data.data[0];
+        return {
+          id: newsItem.id,
+          title: newsItem.title,
+          content: newsItem.content,
+          excerpt: newsItem.excerpt,
+          slug: newsItem.slug,
+          publicationDate: newsItem.publishedAt,
+          img: newsItem.image?.formats?.medium ? newsItem.image : null,
+          author: newsItem.author ? newsItem.author.name : null,
+          bio: newsItem.author ? newsItem.author.bio : null,
+          avatar: newsItem.author?.avatar?.formats?.thumbnail
+            ? newsItem.author.avatar
+            : null,
+        };
+      }
+
+      return null;
     } catch (error) {
       console.error("Error fetching latest news:", error);
       return null;
@@ -131,7 +143,8 @@ export default async function NewsBasePage({
   setRequestLocale(locale);
   const t = await getTranslations();
 
-  let newsItem = null;
+  let newsItem: NieuwsItem | null = null;
+
   try {
     newsItem = await fetchLatestNewsItem(locale);
   } catch (error) {
@@ -143,5 +156,4 @@ export default async function NewsBasePage({
   } else {
     return <NoNewsComponent t={t} />;
   }
-  return <div>this is a newspage</div>;
 }
