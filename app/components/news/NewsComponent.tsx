@@ -45,11 +45,11 @@ interface ArticleAttributes {
 
 interface ArticleData {
   id: number;
-  attributes: ArticleAttributes;
+  attributes?: ArticleAttributes;
 }
 
 interface ArticlesResponse {
-  data: ArticleData[];
+  data?: ArticleData[];
 }
 
 
@@ -69,7 +69,9 @@ async function fetchRelatedArticles(locale: string): Promise<ArticleData[]> {
     }
 
     const data: ArticlesResponse = await res.json();
-    return data.data;
+
+    return data?.data || [];
+
   } catch (error) {
     console.error(error);
     return []
@@ -136,12 +138,17 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({ newsItem, lo
         <section className="bg-white shadow-md rounded-lg p-4">
           <h2 className="text-lg font-semibold mb-4">{t("articels")}</h2>
           <ul className="space-y-2 text-blue-600">
-            {relatedArticles.map(({id, attributes}) => (
-              <li key={id}>
-                <Link href={`/${locale}/news/${attributes.slug}`} className="hover:underline">
-                  {attributes.title}
-                </Link>
-              </li>
+            {relatedArticles.map(({ id, attributes }) => (
+              attributes && (
+                <li key={id}>
+                  <Link
+                    href={`/${locale}/news/${attributes.slug}`}
+                    className="hover:underline"
+                  >
+                    {attributes.title || "problem with title"}
+                  </Link>
+                </li>
+              )
             ))}
           </ul>
         </section>
