@@ -62,40 +62,6 @@ const NieuwsSection = async ({t, locale} : NieuwsSectionProps) => {
   if (nieuwsItems) {
     nieuwsItems.sort((a,b) => b.publicationDate.getTime() - a.publicationDate.getTime());
   }
-
-    // const nieuwsItems: NieuwsItem[] = [
-    //     {
-    //       id:1,
-    //       excerpt:
-    //       'CEDIMED opent nieuw onderzoekscentrum voor spoedeisende geneeskunde in Brussel. Dit centrum richt zich op innovatieve zorgoplossingen.',
-    //       author: 'Dr. Sarah Williams',
-    //     },
-    //     {
-    //       id:2,
-    //       excerpt:
-    //       'Nieuwe samenwerking tussen CEDIMED en het Rode Kruis voor verbetering van nooddiensten in landelijke gebieden.',
-    //       author: 'Nurse John Doe',
-    //     },
-    //     {
-    //       id:3,
-    //       excerpt:
-    //       'CEDIMED lanceert educatieve programma’s voor eerstehulpverlening, gericht op gemeenschappen met beperkte toegang tot medische zorg.',
-    //       author: 'Dr. Emily Brown',
-    //     },
-    //     {
-    //       id:4,
-    //       excerpt:
-    //       'Onderzoek door CEDIMED toont aan dat vroege interventie in spoedeisende situaties levens kan redden in 80% van de gevallen.',
-    //       author: 'Dr. Jane Doe',
-    //     },
-    //     {
-    //       id:5,
-    //       excerpt:
-    //       'CEDIMED viert 10 jaar toewijding aan medische innovatie met een serie workshops en lezingen.',
-    //       author: 'prof. dr. Hendrik Cuppens',
-    //     },
-    //   ];
-    
      
   return (
     <div className='bg-grayBack pb-14'>
