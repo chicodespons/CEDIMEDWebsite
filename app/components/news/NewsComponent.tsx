@@ -112,12 +112,12 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({
         <section className="py-14 bg-white mt-2">
           <div className="container mx-auto px-6">
             {/* This is the 'AboutText'-like wrapper */}
-            <div className="max-w-[1200px] mx-auto bg-gray-100 p-4 rounded text-justify">
+            <div className="container mx-auto bg-gray-100 p-4 rounded text-justify">
               <div className="text-center py-4">
                 <h1 className="text-2xl lg:text-3xl text-left lg:text-center font-bold px-4 py-2 uppercase tracking-wider">
                   {title}
                 </h1>
-                <p className="text-gray-600 mb-6 text-center">
+                <p className="text-gray-600 mb-6 text-left lg:text-center">
                   {`Published on ${formattedDate} by ${author}`}
                 </p>
               </div>
@@ -130,7 +130,7 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({
                     alt={img.alternativeText || "News Item Image"}
                     width={img.formats.medium.width}
                     height={img.formats.medium.height}
-                    className="rounded"
+                    className="rounded max-w-full h-auto"
                   />
                 </div>
               )}
@@ -144,6 +144,28 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({
 
       {/* SIDEBAR */}
       <aside className="w-full md:w-3/12 space-y-6 p-4">
+        {/* Author Bio */}
+        <section className="bg-white shadow-md rounded-lg p-4">
+          <h2 className="text-lg font-semibold mb-6 tracking-wider">
+            {t("aboutTheAuthor")}
+          </h2>
+          <div className="flex flex-col items-start mb-6">
+            <DefaultImageComponent
+              image={avatarImageUrl}
+              defaultImage={defaultAvatarImage}
+              alt={author || "Author"}
+              width={48}
+              height={48}
+              className="w-16 h-16 rounded-full mr-4"
+            />
+            <div>
+              <h3 className="text-base font-semibold my-6">{author}</h3>
+              <p className="text-sm text-gray-600 leading-relaxed text-justify">
+                {bio}
+              </p>
+            </div>
+          </div>
+        </section>
         {/* Related Articles */}
         <section className="bg-white shadow-md rounded-lg p-4">
           <h2 className="text-lg font-semibold mb-4">{t("articels")}</h2>
@@ -164,25 +186,6 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({
                 )
             )}
           </ul>
-        </section>
-
-        {/* Author Bio */}
-        <section className="bg-white shadow-md rounded-lg p-4">
-          <h2 className="text-lg font-semibold mb-6 tracking-wider">{t("aboutTheAuthor")}</h2>
-          <div className="flex flex-col items-center mb-6">
-            <DefaultImageComponent
-              image={avatarImageUrl}
-              defaultImage={defaultAvatarImage}
-              alt={author || "Author"}
-              width={48}
-              height={48}
-              className="w-16 h-16 rounded-full mr-4"
-            />
-            <div>
-              <h3 className="text-base font-semibold my-6">{author}</h3>
-              <p className="text-sm text-gray-600 leading-relaxed text-justify">{bio}</p>
-            </div>
-          </div>
         </section>
       </aside>
     </div>
