@@ -180,7 +180,7 @@ const ContactForm: React.FC = () => {
             </div>
 
             {/* Message (Required) */}
-            <div>
+            <div className='xl:col-span-2'>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700">
                 {t('bericht')} <span className="text-red-500">*</span>
               </label>
@@ -198,7 +198,7 @@ const ContactForm: React.FC = () => {
             </div>
 
             {/* reCAPTCHA (Full width on XL) */}
-            <div className="xl:col-span-2 pt-1">
+            <div className="xl:col-span-2 pt-4">
               <ReCAPTCHA
                 sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
                 onChange={handleRecaptchaChange}
