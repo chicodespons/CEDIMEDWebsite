@@ -48,7 +48,7 @@ const LanguageSwitcher = ({ currentLocale }: LanguageSwitcherProps) => {
       {/* Current language displayed */}
       <button
         onClick={toggleDropdown}
-        className="text-uzGray lg:text-xl font-bold hover:text-black flex items-center"
+        className="text-uzGray lg:text-lg font-bold hover:text-black flex items-center"
       >
         {currentLocale.toUpperCase()}
         <svg
