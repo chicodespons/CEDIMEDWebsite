@@ -48,7 +48,6 @@ interface ArticlesResponse {
   data?: ArticleData[];
 }
 
-
 async function fetchRelatedArticles(locale: string): Promise<ArticleData[]> {
   try {
     const res = await fetch(
@@ -61,22 +60,33 @@ async function fetchRelatedArticles(locale: string): Promise<ArticleData[]> {
     );
 
     if (!res.ok) {
-      throw new Error("Failed to fetch related articles.")
+      throw new Error("Failed to fetch related articles.");
     }
 
     const data: ArticlesResponse = await res.json();
 
     return data?.data || [];
-
   } catch (error) {
     console.error(error);
-    return []
+    return [];
   }
 }
 
-export const NewsComponent: React.FC<NewsComponentProps> = async ({ newsItem, locale, t }) => {
-  const { title, content, publicationDate, img, author, bio, avatar } =
-    newsItem;
+export const NewsComponent: React.FC<NewsComponentProps> = async ({
+  newsItem,
+  locale,
+  t,
+}) => {
+  const {
+    id: currentArticleId,
+    title,
+    content,
+    publicationDate,
+    img,
+    author,
+    bio,
+    avatar,
+  } = newsItem;
   const date = new Date(publicationDate);
   const formattedDate = new Intl.DateTimeFormat("en-US", {
     month: "long",
@@ -89,10 +99,14 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({ newsItem, lo
     ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${avatar.formats.thumbnail.url}`
     : defaultAvatarImage;
 
-    const relatedArticles = await fetchRelatedArticles(locale);
+  const relatedArticles = (await fetchRelatedArticles(locale)).filter(
+    (article) => {
+      article.id !== currentArticleId;
+    }
+  );
 
   return (
-    <div className="flex flex-col md:flex-row gap-8 mx-auto">
+    <div className="flex flex-col lg:flex-row gap-8 mx-auto items-start">
       {/* MAIN CONTENT */}
       <main className="flex-1">
         <section className="py-14 bg-white mt-2">
@@ -100,7 +114,7 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({ newsItem, lo
             {/* This is the 'AboutText'-like wrapper */}
             <div className="max-w-[1200px] mx-auto bg-gray-100 p-4 rounded text-justify">
               <div className="text-center py-4">
-                <h1 className="text-3xl font-bold text-center px-4 py-2 uppercase tracking-wider">
+                <h1 className="text-3xl font-bold text-left lg:text-center px-4 py-2 uppercase tracking-wider">
                   {title}
                 </h1>
                 <p className="text-gray-600 mb-6 text-center">
@@ -133,37 +147,40 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({ newsItem, lo
         {/* Related Articles */}
         <section className="bg-white shadow-md rounded-lg p-4">
           <h2 className="text-lg font-semibold mb-4">{t("articels")}</h2>
-          <ul className="space-y-2 text-blue-600">
-            {relatedArticles.map(({ id, title, slug }) => (
-              id && title && slug && (
-                <li key={id}>
-                  <Link
-                    href={`/${locale}/news/${slug}`}
-                    className="hover:underline"
-                  >
-                    {title || "problem with title"}
-                  </Link>
-                </li>
-              )
-            ))}
+          <ul className="space-y-4 text-blue-600 hover:underline hover:decoration-2 hover:decoration-blue-400 visited:text-purple-600 active:text-red-600 transition-all duration-200">
+            {relatedArticles.map(
+              ({ id, title, slug }) =>
+                id &&
+                title &&
+                slug && (
+                  <li key={id}>
+                    <Link
+                      href={`/${locale}/news/${slug}`}
+                      className="hover:underline"
+                    >
+                      {title || ""}
+                    </Link>
+                  </li>
+                )
+            )}
           </ul>
         </section>
 
         {/* Author Bio */}
         <section className="bg-white shadow-md rounded-lg p-4">
-          <h2 className="text-lg font-semibold mb-4">{t("aboutTheAuthor")}</h2>
-          <div className="flex flex-col items-center mb-4">
+          <h2 className="text-lg font-semibold mb-6 tracking-wider">{t("aboutTheAuthor")}</h2>
+          <div className="flex flex-col items-center mb-6">
             <DefaultImageComponent
               image={avatarImageUrl}
               defaultImage={defaultAvatarImage}
               alt={author || "Author"}
               width={48}
               height={48}
-              className="w-12 h-12 rounded-full mr-4"
+              className="w-16 h-16 rounded-full mr-4"
             />
             <div>
-              <h3 className="text-base font-semibold">{author}</h3>
-              <p className="text-sm text-gray-600">{bio}</p>
+              <h3 className="text-base font-semibold mb-4 tracking-wider">{author}</h3>
+              <p className="text-sm text-gray-600 leading-relaxed text-justify tracking-wider">{bio}</p>
             </div>
           </div>
         </section>
