@@ -31,13 +31,13 @@ const Navbar = ({ locale }: NavbarProps) => {
 
         {/* Navigation Links (center on larger screens) */}
         <div className="hidden xl:flex space-x-2 lg:space-x-6">
-          <Link href={`/${locale}/about`} className="text-uzGray lg:text-xl font-bold hover:text-black uppercase tracking-wider">{t('overOns')}</Link>
-          <Link href={`/${locale}/clinical-care`} className="text-uzGray lg:text-xl font-bold hover:text-black uppercase tracking-wider">{t('klinischeZorg')}</Link>
-          <Link href={`/${locale}/education`} className="text-uzGray lg:text-xl font-bold hover:text-black uppercase tracking-wider">{t('onderwijs')}</Link>
-          <Link href={`/${locale}/research`} className="text-uzGray lg:text-xl font-bold hover:text-black uppercase tracking-wider">{t('onderzoek')}</Link>
-          <Link href={`/${locale}/innovation`} className="text-uzGray lg:text-xl font-bold hover:text-black uppercase tracking-wider">{t('innovatie')}</Link>
-          <Link href={`/${locale}/contact`} className="text-uzGray lg:text-xl font-bold hover:text-black uppercase tracking-wider">{t('contact')}</Link>
-          <Link href={`/${locale}/news`} className="text-uzGray lg:text-xl font-bold hover:text-black uppercase tracking-wider">{t('nieuws')}</Link>
+          <Link href={`/${locale}/about`} className="text-uzGray lg:text-lg font-bold hover:text-black uppercase tracking-wider">{t('overOns')}</Link>
+          <Link href={`/${locale}/clinical-care`} className="text-uzGray lg:text-lg font-bold hover:text-black uppercase tracking-wider">{t('klinischeZorg')}</Link>
+          <Link href={`/${locale}/education`} className="text-uzGray lg:text-lg font-bold hover:text-black uppercase tracking-wider">{t('onderwijs')}</Link>
+          <Link href={`/${locale}/research`} className="text-uzGray lg:text-lg font-bold hover:text-black uppercase tracking-wider">{t('onderzoek')}</Link>
+          <Link href={`/${locale}/innovation`} className="text-uzGray lg:text-lg font-bold hover:text-black uppercase tracking-wider">{t('innovatie')}</Link>
+          <Link href={`/${locale}/contact`} className="text-uzGray lg:text-lg font-bold hover:text-black uppercase tracking-wider">{t('contact')}</Link>
+          <Link href={`/${locale}/news`} className="text-uzGray lg:text-lg font-bold hover:text-black uppercase tracking-wider">{t('nieuws')}</Link>
           <LanguageSwitcher currentLocale={locale} />
         </div>
 
