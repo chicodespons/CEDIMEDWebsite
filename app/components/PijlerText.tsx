@@ -42,7 +42,7 @@ const PijlerText = async ({
         <div className="bg-gray-100 p-4 mx-4 lg:mx-32 rounded text-justify">
           {/* Center the h2 */}
           <div className="text-center py-4">
-            <h2 className="text-2xl lg:text-3xl text-left lg:text-center font-bold px-4 py-2 uppercase tracking-wider">
+            <h2 className="text-3xl lg:text-3xl text-left lg:text-center font-bold px-4 py-2 uppercase tracking-wider">
               {pijler.TextTitle}
             </h2>
           </div>
