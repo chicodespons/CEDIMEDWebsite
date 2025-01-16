@@ -15,20 +15,20 @@ const ReviewsSection = () => {
   const reviewItems: ReviewItem[] = [
     {
       quote:
-        "Ik lig momenteel op spoed en wordt opgenomen.Het personeel is uiterst professioneel en heel behumpzaam. Ik zou mijn dank willen betuigen.",
+        "Ik lig momenteel op spoed en wordt opgenomen.Het personeel is uiterst professioneel en heel behulpzaam. Ik zou mijn dank willen betuigen.",
       author: "Maddy Gielen",
     },
     {
       quote:
-        "Venu en urgence pour une douleurs ... opéré le soir même mis en service abdominale. Personnel soignant au top. Très empathigque",
+        "Venu en urgence pour une douleur... Opéré le soir même, mis en service abdominal. Personnel soignant au top. Très empathique.",
       author: "Hamza Mike",
     },
     {
-      quote: `Extrêmement bien reçu aux urgences. L'attente est longue mais vu la quantité des malades c'est compréhensible.Les infirmières sont des vrais professionnels en pédiatrie, les médecins très doux avec les enfants.`,
+      quote: `Extrêmement bien reçu aux urgences. L'attente est longue mais, vu la quantité de malades, c'est compréhensible. Les infirmières sont de vrais professionnels en pédiatrie, les médecins très doux avec les enfants.`,
       author: "Anna Szymaniak",
     },
     {
-      quote: `Bonjour, Je voudrais remercier tout vos équipes d'urgence qui ont pris mon fils en charge directement. Tout le personnel pneumonie et service soins intensif. Merci beaucoup d'avoir soigner mon fils et surtout vous m'avez tous expliqué en français, vous m'avez soutenu et rassuré. Il est bien rentré à la maison. Prenez soin de vous. Merci encore.`,
+      quote: `Bonjour, je voudrais remercier toutes vos équipes d'urgence qui ont pris mon fils en charge directement. Tout le personnel du service pneumonie et du service soins intensifs. Merci beaucoup d'avoir soigné mon fils et surtout de m'avoir tout expliqué en français : vous m'avez soutenu et rassuré. Il est bien rentré à la maison. Prenez soin de vous. Merci encore.`,
       author: "Tulay Gultaslar",
     },
   ];
@@ -68,9 +68,9 @@ const ReviewsSection = () => {
           <Slider {...settings}>
             {reviewItems.map((item, index) => (
               <div key={index} className="px-4">
-              {/* Pass the review data to the client component */}
-              <ReviewModal review={item} />
-          </div>
+                {/* Pass the review data to the client component */}
+                <ReviewModal review={item} />
+              </div>
             ))}
           </Slider>
         </div>
