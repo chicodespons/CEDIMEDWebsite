@@ -30,22 +30,26 @@ const CardSection = async ({locale}: CardSectionProps) => {
         {
           imageUrl: '/images/Clinical.webp',
           imageAlt: 'Doctor attending to a patient in a hospital',
-          hoverColor: 'hover:bg-vubBlue'
+          hoverColor: 'hover:bg-vubBlue',
+          focusColor: "focus:ring-vubBlue"
         },
         {
           imageUrl: '/images/Education.webp',
           imageAlt: 'Medical professionals in training',
-          hoverColor: 'hover:bg-uzGray'
+          hoverColor: 'hover:bg-uzGray',
+          focusColor: "focus:ring-uzGray"
         },
         {
           imageUrl: '/images/IMG_RESEARCH.webp',
           imageAlt: 'Researchers working in a laboratory',
-          hoverColor: 'hover:bg-uzGreen'
+          hoverColor: 'hover:bg-uzGreen',
+          focusColor: "focus:ring-uzGreen"
         },
         {
           imageUrl: '/images/Innovation.webp',
           imageAlt: 'Medical professionals discussing innovation',
-          hoverColor: 'hover:bg-vubOrange'
+          hoverColor: 'hover:bg-vubOrange',
+          focusColor: "focus:ring-vubOrange"
         },
       ];
     
@@ -62,6 +66,7 @@ const CardSection = async ({locale}: CardSectionProps) => {
                   imageAlt={cards[index].imageAlt}
                   link={`/${locale}/${pijler.link}`}
                   hoverColor={cards[index].hoverColor}
+                  focusColor={cards[index].focusColor}
                 />
               ))}
             </div>
