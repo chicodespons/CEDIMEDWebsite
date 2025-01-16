@@ -114,7 +114,7 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({
             {/* This is the 'AboutText'-like wrapper */}
             <div className="max-w-[1200px] mx-auto bg-gray-100 p-4 rounded text-justify">
               <div className="text-center py-4">
-                <h1 className="text-2xl lg:text-3xl font-bold text-center px-4 py-2 uppercase tracking-wider">
+                <h1 className="text-2xl lg:text-3xl text-left lg:text-center font-bold px-4 py-2 uppercase tracking-wider">
                   {title}
                 </h1>
                 <p className="text-gray-600 mb-6 text-center">
@@ -147,7 +147,7 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({
         {/* Related Articles */}
         <section className="bg-white shadow-md rounded-lg p-4">
           <h2 className="text-lg font-semibold mb-4">{t("articels")}</h2>
-          <ul className="space-y-4 text-blue-600 hover:underline hover:decoration-2 hover:decoration-blue-400 visited:text-purple-600 active:text-red-600 transition-all duration-200">
+          <ul className="space-y-4 text-blue-600 visited:text-purple-600">
             {relatedArticles.map(
               ({ id, title, slug }) =>
                 id &&
