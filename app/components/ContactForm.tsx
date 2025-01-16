@@ -76,15 +76,21 @@ const ContactForm: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center py-12 bg-gray-100">
-      <div className="w-full max-w-lg bg-white shadow-md rounded-lg p-8">
-        <h2 className="text-3xl font-bold text-center mb-6 uppercase tracking-wider">{t('contacteerOns')}</h2>
+      <div className="w-full max-w-4xl bg-white shadow-md rounded-lg p-8">
+        <h2 className="text-3xl font-bold text-center mb-6 uppercase tracking-wider">
+          {t('contacteerOns')}
+        </h2>
 
         {!isSubmitted ? (
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {/* First Name Input */}
+          <form
+            onSubmit={handleSubmit}
+            // 2 columns on xl screens, 1 column on smaller screens
+            className="grid grid-cols-1 xl:grid-cols-2 gap-6"
+          >
+            {/* First Name (Required) */}
             <div>
               <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
-                {t('voorNaam')}
+                {t('voorNaam')} <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
@@ -93,15 +99,16 @@ const ContactForm: React.FC = () => {
                 value={formData.firstName}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm 
+                           focus:ring-blue-500 focus:border-blue-500"
                 placeholder={t('voorNaam')}
               />
             </div>
 
-            {/* Last Name Input */}
+            {/* Last Name (Required) */}
             <div>
               <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
-              {t('familieNaam')}
+                {t('familieNaam')} <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
@@ -110,15 +117,16 @@ const ContactForm: React.FC = () => {
                 value={formData.lastName}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm 
+                           focus:ring-blue-500 focus:border-blue-500"
                 placeholder={t('familieNaam')}
               />
             </div>
 
-            {/* Email Input */}
+            {/* Email (Required) */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              {t('email2')}
+                {t('email2')} <span className="text-red-500">*</span>
               </label>
               <input
                 type="email"
@@ -127,15 +135,16 @@ const ContactForm: React.FC = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm 
+                           focus:ring-blue-500 focus:border-blue-500"
                 placeholder={t('email2')}
               />
             </div>
 
-            {/* Telephone Input (Optional) */}
+            {/* Telephone (Optional) */}
             <div>
               <label htmlFor="tel" className="block text-sm font-medium text-gray-700">
-              {t('tel2')}
+                {t('tel2')}
               </label>
               <input
                 type="tel"
@@ -143,15 +152,16 @@ const ContactForm: React.FC = () => {
                 id="tel"
                 value={formData.tel}
                 onChange={handleChange}
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm 
+                           focus:ring-blue-500 focus:border-blue-500"
                 placeholder="tel"
               />
             </div>
 
-            {/* Message Type Dropdown */}
+            {/* Message Type (Required) */}
             <div>
               <label htmlFor="messageType" className="block text-sm font-medium text-gray-700">
-              {t('onderwerp')}
+                {t('onderwerp')} <span className="text-red-500">*</span>
               </label>
               <select
                 name="messageType"
@@ -159,7 +169,8 @@ const ContactForm: React.FC = () => {
                 value={formData.messageType}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm 
+                           focus:ring-blue-500 focus:border-blue-500"
               >
                 <option value={MessageType.CLINICAL_CARE}>{t('klinischeZorg')}</option>
                 <option value={MessageType.EDUCATION}>{t('onderwijs')}</option>
@@ -168,10 +179,10 @@ const ContactForm: React.FC = () => {
               </select>
             </div>
 
-            {/* Message Input */}
+            {/* Message (Required) */}
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-                {t('bericht')}
+                {t('bericht')} <span className="text-red-500">*</span>
               </label>
               <textarea
                 name="message"
@@ -180,24 +191,26 @@ const ContactForm: React.FC = () => {
                 onChange={handleChange}
                 required
                 rows={4}
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm
+                           focus:ring-blue-500 focus:border-blue-500"
                 placeholder={t('bericht')}
               />
             </div>
 
-            {/* reCAPTCHA */}
-            <div className="pt-4">
+            {/* reCAPTCHA (Full width on XL) */}
+            <div className="xl:col-span-2 pt-1">
               <ReCAPTCHA
                 sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
                 onChange={handleRecaptchaChange}
               />
             </div>
 
-            {/* Submit Button */}
-            <div className="pt-4">
+            {/* Submit Button (Full width on XL) */}
+            <div className="xl:col-span-2 pt-4">
               <button
                 type="submit"
-                className="w-full bg-uzGreen hover:bg-uzGray text-white font-bold py-2 px-4 rounded-md transition duration-300"
+                className="w-full bg-uzGreen hover:bg-uzGray text-white font-bold py-2 px-4 rounded-md 
+                           transition duration-300"
               >
                 {t('verzendBericht')}
               </button>
