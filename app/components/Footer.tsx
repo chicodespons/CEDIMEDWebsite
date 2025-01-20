@@ -91,14 +91,12 @@ const Footer = ({
 
       {/* Underscript Section */}
       <div className="container mx-auto text-center mt-6 text-sm">
-        <p>
+        <div className="flex justify-center space-x-4">
           <Link href={`/${locale}/privacy-policy`} className="hover:underline">
             {t("privacyPolicy")}
           </Link>
-        </p>
-        <p className="mt-2">
-          &copy; {new Date().getFullYear()} CEDIMED Brussels
-        </p>
+          <span>&copy; {new Date().getFullYear()} CEDIMED Brussels</span>
+        </div>
       </div>
     </footer>
   );
