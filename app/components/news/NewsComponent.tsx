@@ -111,7 +111,7 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({
       <main className="flex-1">
         <section className="py-14 bg-white mt-2">
           <div className="container mx-auto">
-          <div className=" bg-gray-100 p-4 mx-4 rounded text-justify">
+          <div className=" bg-gray-100 p-4 mx-4 lg:mx-16 rounded text-justify">
             {/* This is the 'AboutText'-like wrapper */}
             <div className="text-center py-4">
               <h1 className="text-2xl lg:text-3xl text-left lg:text-center font-bold px-4 py-2 uppercase tracking-wider">
@@ -124,7 +124,7 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({
 
             {/* Image */}
             {img && (
-              <div className="flex justify-center mb-4">
+              <div className="flex justify-center mb-4 mx-4 lg:mx-16">
                 <img
                   src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${img.formats.medium.url}`}
                   alt={img.alternativeText || "News Item Image"}
