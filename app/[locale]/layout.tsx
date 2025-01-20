@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import "../globals.css";
 import GoogleAnalytics from "../components/GoogleAnalytics";
-import CookieBanner from "../components/Cookiebanner"
+import CookieBanner from "../components/CookieBanner"
 
 // Define the types for layout props
 interface LayoutProps {
