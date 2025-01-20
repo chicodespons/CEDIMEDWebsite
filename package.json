@@ -12,13 +12,15 @@
     "@react-google-maps/api": "^2.19.3",
     "@svgr/webpack": "8.1.0",
     "@types/node": "20.17.0",
+    "@types/nodemailer": "^6.4.16",
     "@types/react": "18.3.12",
     "@types/react-dom": "18.3.1",
+    "@types/react-google-recaptcha": "^2.1.9",
     "@types/react-slick": "0.23.13",
     "cross-env": "^7.0.3",
     "eslint": "^8",
     "eslint-config-next": "14.2.8",
-    "next": "14.2.13",
+    "next": "^14.2.23",
     "next-intl": "^3.19.1",
     "nodemailer": "^6.9.15",
     "postcss": "^8",
@@ -29,8 +31,9 @@
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5.6.3",
-    "@types/nodemailer": "^6.4.16",
-    "@types/react-google-recaptcha": "^2.1.9"
+    "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+    "@types/gtag.js": "^0.0.20"
   }
 }
