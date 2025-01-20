@@ -14,7 +14,7 @@
     "contacteerOns": "Contactez-nous",
     "email": "Email: ",
     "tel":"Tél: ",
-    "adres": "Adresse : Avenue du Laerbeek 101",
+    "adres": "Adresse : Avenue du Laerbeek 101, Jette",
     "quickLinks": "Liens rapides",
     "volgOns": "Suivez-nous",
     "onsTeam": "Notre Équipe",
@@ -34,5 +34,6 @@
     "bedanktVoorBericht": "Merci pour votre message!",
     "weZullenContactOpnemen": "Nous vous contacterons dès que possible.",
     "articels": "Articles",
-    "aboutTheAuthor": "À propos de l'auteur"
+    "aboutTheAuthor": "À propos de l'auteur",
+    "privacyPolicy": "Politique de confidentialité"
    }
