@@ -5,6 +5,7 @@ import { routing } from "../../i18n/routing";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import "../globals.css";
+import GoogleAnalytics from "../components/GoogleAnalytics";
 
 // Define the types for layout props
 interface LayoutProps {
@@ -48,6 +49,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 
   return (
     <html lang="en">
+      <GoogleAnalytics GA_MEASUREMENT_ID={""}/>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
