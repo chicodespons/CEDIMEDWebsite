@@ -97,7 +97,7 @@ const Footer = ({
       </div>
 
       {/* Underscript Section */}
-      <div className="container mx-auto text-center mt-16 text-sm">
+      <div className="container mx-auto text-center mt-16 mb-2 text-sm">
         <div className="flex justify-center space-x-4">
           <Link href={`/${locale}/privacy-policy`} className="hover:underline">
             {t("privacyPolicy")}

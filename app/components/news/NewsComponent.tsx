@@ -109,7 +109,7 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({
     <div className="flex flex-col lg:flex-row gap-8 mx-auto items-start overflow-x-hidden">
       {/* MAIN CONTENT */}
       <main className="flex-1">
-        <section className="py-14 bg-white mt-2">
+        <section className="py-14 bg-gray-100 mt-2">
           <div className="container mx-auto">
             <div className=" bg-gray-100 p-4 rounded text-justify">
               {/* This is the 'AboutText'-like wrapper */}

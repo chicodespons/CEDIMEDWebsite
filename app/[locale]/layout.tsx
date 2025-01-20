@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import "../globals.css";
 import GoogleAnalytics from "../components/GoogleAnalytics";
+import CookieBanner from "../components/Cookiebanner"
 
 // Define the types for layout props
 interface LayoutProps {
@@ -63,6 +64,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
             {/* Main content (children) grows to fill available space */}
             <main className="flex-grow">
               {children}
+              <CookieBanner/>
             </main>
 
             {/* Footer sticks to the bottom */}
