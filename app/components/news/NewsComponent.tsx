@@ -160,7 +160,7 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({
             />
             <div>
               <h3 className="text-base font-semibold my-6">{author}</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">{bio}</p>
+              <p className="text-sm text-gray-600 text-justify leading-relaxed">{bio}</p>
             </div>
           </div>
         </section>
