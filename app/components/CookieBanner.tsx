@@ -6,11 +6,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 
 // CookieBanner component that displays a banner for cookie consent.
-export default function CookieBanner({
-  locale,
-}: {
-  locale: string;
-}) {
+export default function CookieBanner({ locale }: { locale: string }) {
   const [cookieConsent, setCookieConsent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const t = useTranslations();
@@ -48,8 +44,7 @@ export default function CookieBanner({
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
         {/* Cookie Banner Text */}
         <p className="text-sm sm:text-base">
-          This site uses cookies to enhance your browsing experience. Learn more
-          in our{" "}
+          {t("cookieBannerText")}{" "}
           <Link
             href={`/${locale}/privacy-policy`}
             className="underline font-bold hover:text-uzGreen"
@@ -65,13 +60,13 @@ export default function CookieBanner({
             className="px-4 py-2 bg-uzGreen text-white font-bold rounded hover:bg-uzGray transition duration-300 text-sm"
             onClick={() => setCookieConsent(false)}
           >
-            Decline
+            {t("decline")}
           </button>
           <button
             className="px-4 py-2 bg-uzGreen text-white font-bold rounded hover:bg-uzGray transition duration-300 text-sm"
             onClick={() => setCookieConsent(true)}
           >
-            Accept
+            {t("accept")}
           </button>
         </div>
       </div>

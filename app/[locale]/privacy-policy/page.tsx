@@ -11,9 +11,11 @@ export default async function PrivacyPolicy({ params }: { params: Params }) {
   setRequestLocale(locale);
 
   return (
-    <div className="px-6 py-8 bg-white text-gray-800 max-w-4xl mx-auto">
+    <div className="px-6 py-14 mt-2 bg-white text-gray-800 max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold mb-4 text-uzGreen">Privacy Policy</h1>
-      <p className="text-sm text-gray-600 mb-6">Last updated: January 20, 2025</p>
+      <p className="text-sm text-gray-600 mb-6">
+        Last updated: January 20, 2025
+      </p>
       <p className="mb-4">
         This Privacy Policy describes Our policies and procedures on the
         collection, use, and disclosure of Your information when You use the
