@@ -13,9 +13,7 @@ export default async function PrivacyPolicy({ params }: { params: Params }) {
   return (
     <div className="px-6 py-8 bg-white text-gray-800 max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold mb-4 text-uzGreen">Privacy Policy</h1>
-      <p className="text-sm text-gray-600 mb-6">
-        Last updated: January 20, 2025
-      </p>
+      <p className="text-sm text-gray-600 mb-6">Last updated: January 20, 2025</p>
       <p className="mb-4">
         This Privacy Policy describes Our policies and procedures on the
         collection, use, and disclosure of Your information when You use the
@@ -62,16 +60,17 @@ export default async function PrivacyPolicy({ params }: { params: Params }) {
           <p>
             <strong>Affiliate</strong> means an entity that controls, is
             controlled by, or is under common control with a party, where
-            "control" means ownership of 50% or more of the shares, equity
-            interest, or other securities entitled to vote for election of
-            directors or other managing authority.
+            &quot;control&quot; means ownership of 50% or more of the shares,
+            equity interest, or other securities entitled to vote for election
+            of directors or other managing authority.
           </p>
         </li>
         <li>
           <p>
-            <strong>Company</strong> (referred to as either "the Company", "We",
-            "Us" or "Our" in this Agreement) refers to CEDIMED Brussels, Avenue
-            du Laerbeek 101, Jette.
+            <strong>Company</strong> (referred to as either &quot;the
+            Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in
+            this Agreement) refers to CEDIMED Brussels, Avenue du Laerbeek 101,
+            Jette.
           </p>
         </li>
         <li>
@@ -164,10 +163,11 @@ export default async function PrivacyPolicy({ params }: { params: Params }) {
       <h4 className="text-lg font-semibold mb-2">Usage Data</h4>
       <p className="mb-6">
         Usage Data is collected automatically when using the Service. Usage Data
-        may include information such as Your Device's Internet Protocol address
-        (e.g. IP address), browser type, browser version, the pages of our
-        Service that You visit, the time and date of Your visit, the time spent
-        on those pages, unique device identifiers, and other diagnostic data.
+        may include information such as Your Device&apos;s Internet Protocol
+        address (e.g. IP address), browser type, browser version, the pages of
+        our Service that You visit, the time and date of Your visit, the time
+        spent on those pages, unique device identifiers, and other diagnostic
+        data.
       </p>
 
       <p className="text-sm text-gray-600">
