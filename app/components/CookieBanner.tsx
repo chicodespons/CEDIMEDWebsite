@@ -6,6 +6,11 @@ import { getLocalStorage, setLocalStorage } from "../lib/storageHelper";
 
 export default function CookieBanner() {
   const [cookieConsent, setCookieConsent] = useState(false);
+  const [isBrowser, setIsBrowser] = useState(false);
+
+useEffect(() => {
+  setIsBrowser(true);
+}, []);
 
   useEffect(() => {
     const storedCookieConsent = getLocalStorage("cookie_consent", null);
@@ -26,7 +31,11 @@ export default function CookieBanner() {
     console.log("Cookie Consent: ", cookieConsent);
   }, [cookieConsent]);
 
+  
+  if (!isBrowser) return null
+
   return (
+    
     <div
       className={`my-10 mx-auto max-w-max md:max-w-screen-sm
                         fixed bottom-0 left-0 right-0 
