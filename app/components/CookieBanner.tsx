@@ -5,7 +5,13 @@ import { getLocalStorage, setLocalStorage } from "../lib/storageHelper";
 import Link from "next/link";
 
 // CookieBanner component that displays a banner for cookie consent.
-export default function CookieBanner() {
+export default function CookieBanner({
+  t,
+  locale,
+}: {
+  t: (key: string) => string;
+  locale: string;
+}) {
   const [cookieConsent, setCookieConsent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -45,10 +51,10 @@ export default function CookieBanner() {
           This site uses cookies to enhance your browsing experience. Learn more
           in our{" "}
           <Link
-            href="/privacy-policy"
+            href={`/${locale}/privacy-policy`}
             className="underline font-bold hover:text-uzGreen"
           >
-            Privacy Policy
+            {t("privacyPolicy")}
           </Link>
           .
         </p>

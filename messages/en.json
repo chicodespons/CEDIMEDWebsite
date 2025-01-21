@@ -35,5 +35,8 @@
     "weZullenContactOpnemen": "We will contact you as soon as possible.",
     "articels": "Articles",
     "aboutTheAuthor": "About the author",
-    "privacyPolicy": "Privacy Policy"
+    "privacyPolicy": "Privacy Policy",
+    "cookieBannerText": "This site uses cookies to enhance your browsing experience. Learn more in our",
+    "decline": "Decline",
+    "accept": "Accept"
    }

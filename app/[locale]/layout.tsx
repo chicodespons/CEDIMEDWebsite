@@ -71,7 +71,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
             {/* Main content (children) grows to fill available space */}
             <main className="flex-grow">
               {children}
-              <CookieBanner />
+              <CookieBanner t={t} locale={locale} />
             </main>
             {/* Footer sticks to the bottom */}
             <Footer t={t} locale={locale} /> {/* Pass messages to Footer */}

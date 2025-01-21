@@ -35,5 +35,8 @@
  "weZullenContactOpnemen": "We zullen zo snel mogelijk contact met U opnemen.",
  "articels": "Artikelen",
  "aboutTheAuthor": "Over de auteur",
- "privacyPolicy": "Privacybeleid"
+ "privacyPolicy": "Privacybeleid",
+ "cookieBannerText": "Deze site gebruikt cookies om uw browse-ervaring te verbeteren. Meer informatie in onze",
+ "decline": "Weigeren",
+ "accept": "Accepteren"
 }
