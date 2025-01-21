@@ -11,6 +11,7 @@ import Navbar from "../components/Navbar";
 import "../globals.css";
 import CookieBanner from "../components/CookieBanner";
 import GoogleAnalytics from "../components/GoogleAnalytics";
+import { Suspense } from "react";
 
 // Define the types for layout props
 interface LayoutProps {
@@ -58,7 +59,10 @@ export default async function RootLayout({ children, params }: LayoutProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body className="font-sans">
-        <GoogleAnalytics GA_MEASUREMENT_ID="" />
+        <Suspense>
+          <GoogleAnalytics GA_MEASUREMENT_ID="" />
+        </Suspense>
+
         <NextIntlClientProvider messages={messages}>
           {/* Wrapping content in a Flexbox container */}
           <div className="flex flex-col min-h-screen">
