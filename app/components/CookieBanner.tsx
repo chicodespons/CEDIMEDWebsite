@@ -41,7 +41,7 @@ export default function CookieBanner() {
             <div className="cookie-banner-inner">
                 <div className="cookie-banner-content">
                     <div className="cookie-banner-text">
-                        <p>This site uses cookies:</p>
+                        <p>This site uses cookies hello!!!!:</p>
                     </div>
                     <div className="cookie-banner-buttons">
                         <button className="decline-button" onClick={() => setCookieConsent(false)}>
