@@ -3,17 +3,17 @@
 import { useState, useEffect } from "react";
 import { getLocalStorage, setLocalStorage } from "../lib/storageHelper";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 // CookieBanner component that displays a banner for cookie consent.
 export default function CookieBanner({
-  t,
   locale,
 }: {
-  t: (key: string) => string;
   locale: string;
 }) {
   const [cookieConsent, setCookieConsent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const t = useTranslations();
 
   // Retrieve cookie consent status from local storage on component mount
   useEffect(() => {
