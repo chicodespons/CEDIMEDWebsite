@@ -56,9 +56,9 @@ export default async function RootLayout({ children, params }: LayoutProps) {
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <GoogleAnalytics GA_MEASUREMENT_ID={""} />
       </head>
       <body className="font-sans">
+        <GoogleAnalytics GA_MEASUREMENT_ID={""} />
         <NextIntlClientProvider messages={messages}>
           {/* Wrapping content in a Flexbox container */}
           <div className="flex flex-col min-h-screen">
