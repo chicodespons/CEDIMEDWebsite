@@ -22,7 +22,7 @@ const Navbar = ({ locale }: NavbarProps) => {
     <nav className="bg-white shadow-xl">
       <div className="container mx-auto flex justify-between items-center py-4 px-7">
         {/* Logo (left) */}
-        <Link href="/" aria-label="Go to homepage" className="h-10 w-auto">
+        <Link href={`/${locale}`} aria-label="Go to homepage" className="h-10 w-auto">
           <figure className="h-full w-auto cursor-pointer">
             <Logo className="h-full w-auto p-1" aria-label="CEDIMED Logo" />
             <figcaption className="sr-only">CEDIMED Logo</figcaption>
