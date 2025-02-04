@@ -69,7 +69,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
             {/* Navbar at the top */}
             <Navbar locale={locale} />
             {/* Main content (children) grows to fill available space */}
-            <main className="flex-grow">
+            <main className="flex-grow max-w-[1900px]">
               {children}
               <CookieBanner locale={locale} />
             </main>
