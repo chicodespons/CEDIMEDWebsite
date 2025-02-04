@@ -34,7 +34,7 @@ const Hero = ({ t, locale }: { t: (key: string) => string, locale:string }) => {
         </p>
 
         {/* Buttons */}
-        <div className="mt-8 grid grid-cols-2 gap-2 ">
+        <div className="mt-8 mb-4 flex justify-center ">
           <Link
             href={`/${locale}/about`}
             className="px-2 uppercase sm:px-8 py-2 sm:py-3 bg-uzGreen text-white font-bold rounded hover:bg-uzGray transition duration-300 text-sm sm:text-base"
