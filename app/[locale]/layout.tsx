@@ -65,11 +65,11 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 
         <NextIntlClientProvider messages={messages}>
           {/* Wrapping content in a Flexbox container */}
-          <div className="flex flex-col min-h-screen">
+          <div className="flex flex-col min-h-screen max-w-[1900px]">
             {/* Navbar at the top */}
             <Navbar locale={locale} />
             {/* Main content (children) grows to fill available space */}
-            <main className="flex-grow max-w-[1900px]">
+            <main className="flex-grow ">
               {children}
               <CookieBanner locale={locale} />
             </main>
