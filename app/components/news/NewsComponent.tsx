@@ -106,7 +106,7 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({
   );
 
   return (
-    <div className="flex flex-col md:flex-row gap-8 mx-auto items-start overflow-x-hidden">
+    <div className="flex flex-col lg:flex-row gap-8 mx-auto items-start overflow-x-hidden">
       {/* MAIN CONTENT */}
       <main className="flex-1">
         <section className="py-14 bg-gray-100 mt-2">
@@ -143,7 +143,7 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({
       </main>
 
       {/* SIDEBAR */}
-      <aside className="w-full md:w-3/12 space-y-6 p-4">
+      <aside className="w-full lg:w-3/12 space-y-6 p-4">
         {/* Author Bio */}
         <section className="bg-white shadow-md rounded-lg p-4">
           <h2 className="text-lg font-semibold mb-6 tracking-wider">

@@ -23,7 +23,7 @@ const Hero = ({ t, locale }: { t: (key: string) => string, locale:string }) => {
       {/* Content */}
       <div className="absolute inset-0 z-30 flex flex-col justify-center items-center text-center px-4">
         {/* Title */}
-        <h1 className="text-xl uppercase tracking-wider sm:text-xl md:text-3xl lg:text-4xl font-bold text-white">
+        <h1 className="text-xl uppercase tracking-wider md:text-3xl lg:text-4xl font-bold text-white">
         Centre on Emergency & Disaster Medicine Brussels       
         </h1>
         {/* Subtitle */}
