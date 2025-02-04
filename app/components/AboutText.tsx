@@ -36,7 +36,7 @@ const AboutText = async ({ locale }: { locale: string }) => {
         <div className="bg-gray-100 p-4 mx-4 lg:mx-32 rounded text-justify">
           {/* This header section matches the style of the main content header */}
           <div className="text-center py-4">
-            <h2 className="text-3xl lg:text-3xl text-left lg:text-center font-bold px-4 py-2 uppercase tracking-wider">
+            <h2 className="text-3xl lg:text-3xl text-center font-bold px-4 py-2 uppercase tracking-wider">
               {about.title}
             </h2>
           </div>

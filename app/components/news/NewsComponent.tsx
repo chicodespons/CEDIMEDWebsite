@@ -114,7 +114,7 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({
             <div className=" bg-gray-100 p-4 rounded text-justify">
               {/* This is the 'AboutText'-like wrapper */}
               <div className="text-center py-4">
-                <h1 className="text-2xl lg:text-3xl text-left lg:text-center font-bold px-4 py-2 uppercase tracking-wider">
+                <h1 className="text-2xl lg:text-3xl text-center font-bold px-4 py-2 uppercase tracking-wider">
                   {title}
                 </h1>
                 <p className="text-gray-600 mb-6 text-left px-4 lg:text-center">
@@ -124,7 +124,7 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({
 
               {/* Image */}
               {img && (
-                <div className="flex justify-center mb-4">
+                <div className="flex justify-center mb-4 px-4 sm:px-0">
                   <img
                     src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${img.formats.medium.url}`}
                     alt={img.alternativeText || "News Item Image"}
@@ -134,7 +134,7 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({
               )}
 
               {/* Rich text content */}
-              <div className="lg:mx-16">
+              <div className="px-4 sm:px-0 lg:mx-16">
                 <RichTextRenderer content={content} />
               </div>
             </div>
