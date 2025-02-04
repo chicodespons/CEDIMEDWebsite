@@ -23,7 +23,7 @@ const Hero = ({ t, locale }: { t: (key: string) => string, locale:string }) => {
       {/* Content */}
       <div className="absolute inset-0 z-30 flex flex-col justify-center items-center text-center px-4">
         {/* Title */}
-        <h1 className="text-xl uppercase tracking-wider md:text-3xl lg:text-4xl font-bold text-white">
+        <h1 className="text-xl uppercase tracking-wider md:text-3xl lg:text-4xl font-bold text-white mt-4 px-4 sm:mt-0 sm:px-0">
         Centre on Emergency & Disaster Medicine Brussels       
         </h1>
         {/* Subtitle */}
@@ -43,7 +43,7 @@ const Hero = ({ t, locale }: { t: (key: string) => string, locale:string }) => {
           </Link>
           <Link
             href={`/${locale}/contact`}
-            className="px-2 uppercase sm:px-8 py-2 sm:py-3 bg-uzGreen text-white font-bold rounded hover:bg-uzGray transition duration-300 text-sm sm:text-base"
+            className="hidden sm:block px-2 uppercase sm:px-8 py-2 sm:py-3 bg-uzGreen text-white font-bold rounded hover:bg-uzGray transition duration-300 text-sm sm:text-base"
           >
             {t("contact")}
           </Link>
