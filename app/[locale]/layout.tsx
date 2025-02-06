@@ -60,7 +60,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
       </head>
       <body className="font-sans">
         <Suspense>
-          <GoogleAnalytics GA_MEASUREMENT_ID="" />
+          <GoogleAnalytics GA_MEASUREMENT_ID="G-MXEXQKJLKW" />
         </Suspense>
 
         <NextIntlClientProvider messages={messages}>
