@@ -1,8 +1,7 @@
 // app/api/revalidate/route.ts
 import { NextResponse } from 'next/server';
 
-// const appId = '573d137f-a7ae-4150-a581-c7800106d480'; // Replace with your DigitalOcean app ID
-const coolifyToken = '510|tvoTvbC1VwFVTVnUHuye98cn62hlBIciir3bx7yKab2996c9'; // Store your token in an environment variable for security
+const coolifyToken = process.env.COOLIFY_TOKEN; // Store your token in an environment variable for security
 
 export async function POST(request: Request) {
   // Secure the webhook using a secret token
@@ -12,9 +11,8 @@ export async function POST(request: Request) {
   }
 
   try {
-    // Trigger a rebuild on DigitalOcean using fetch
     const response = await fetch(
-      `https://app.coolify.io/api/v1/deploy?uuid=mswo0c88k4040440o0800k0c&force=false`,
+      process.env.COOLIFY_URL,
       {
         method: 'POST',
         headers: {
