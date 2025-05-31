@@ -56,6 +56,7 @@ async function fetchRelatedArticles(locale: string): Promise<ArticleData[]> {
         headers: {
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
         },
+        cache: 'force-cache'
       }
     );
 

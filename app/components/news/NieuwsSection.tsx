@@ -37,6 +37,7 @@ async function fetchNieuwsItems(locale: string) : Promise<NieuwsItem[] | null> {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
       },
+      cache: 'force-cache'
     });
   
     const data: ApiResponse = await res.json();

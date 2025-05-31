@@ -9,6 +9,8 @@ async function fetchAbout(locale: string) {
         headers: {
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
         },
+
+        cache: 'force-cache'
       }
     );
 

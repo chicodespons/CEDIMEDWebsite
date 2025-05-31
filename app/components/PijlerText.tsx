@@ -9,7 +9,9 @@ async function fetchPijler(locale: string, slug: string) {
         headers: {
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
         },
+        cache: 'force-cache'
       }
+      
     );
 
     const data = await res.json();
