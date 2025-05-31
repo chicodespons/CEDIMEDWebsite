@@ -16,7 +16,7 @@ import { Suspense } from "react";
 // Define the types for layout props
 interface LayoutProps {
   children: React.ReactNode;
-  params: { locale: string }; // Expecting locale to be present here
+  params: Promise<{ locale: string }>; // Expecting locale to be present here
 }
 
 export function generateStaticParams() {
@@ -47,14 +47,14 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children, params }: LayoutProps) {
-  const { locale } = params;
+  const { locale } = await params;
   setRequestLocale(locale);
 
   const messages = await getMessages();
   const t = await getTranslations();
 
   return (
-    <html lang="en">
+    <html lang={locale}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>

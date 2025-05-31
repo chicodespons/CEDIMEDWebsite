@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
+import React, { type JSX } from 'react';
 
 interface RichTextRendererProps {
   content: Array<any>; // Adjust the type as needed for your content structure

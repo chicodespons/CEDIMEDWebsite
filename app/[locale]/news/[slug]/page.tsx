@@ -3,10 +3,10 @@ import NoNewsComponent from "@/app/components/news/NoNewsComponent";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 type Props = {
-  params: {
+  params: Promise<{
     slug?: string;
-    locale: string | string[];
-  };
+    locale: string;
+  }>;
 };
 
 interface StrapiImage {
@@ -120,15 +120,13 @@ async function fetchNewsItemViaSlug(
 }
 
 export async function generateMetadata({ params }: Props) {
-  const locale = Array.isArray(params?.locale)
-    ? params.locale[0]
-    : params.locale || "nl"; // Default to 'nl'
+  const { locale, slug } = await params;
   setRequestLocale(locale);
   let newsItem: NieuwsItem | null = null;
 
-  if (params.slug) {
+  if (slug) {
     try {
-      newsItem = await fetchNewsItemViaSlug(params.slug, locale);
+      newsItem = await fetchNewsItemViaSlug(slug, locale);
     } catch (error) {
       console.error("Error in generateMetadata fetchNewsItemViaSlug:", error);
     }
@@ -152,19 +150,17 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function NewsPage({ params }: Props) {
-  const locale = Array.isArray(params?.locale)
-    ? params.locale[0]
-    : params.locale || "nl"; // Default to 'nl'
+  const { locale, slug } = await params;
   setRequestLocale(locale);
   let newsItem: NieuwsItem = null;
   const t = await getTranslations();
 
-  if (params.slug) {
-    newsItem = await fetchNewsItemViaSlug(params.slug, locale);
+  if (slug) {
+    newsItem = await fetchNewsItemViaSlug(slug, locale);
   }
 
-  if (!newsItem && params.slug) {
-    newsItem = await fetchNewsItemViaSlug(params.slug, "nl");
+  if (!newsItem && slug) {
+    newsItem = await fetchNewsItemViaSlug(slug, "nl");
   }
 
   if (newsItem) {

@@ -1,10 +1,10 @@
 import { Metadata } from "next";
 import AboutText from "../../components/AboutText";
-import {setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 
-type Params = {
-  locale: string | string[];
-};
+type Params = Promise<{
+  locale: string;
+}>;
 
 const englishMetadata = {
   title: "About Us",
@@ -19,8 +19,13 @@ const dutchMetadata = {
   description: "Over de organisatie CEDIMED Brussels",
 };
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-  const locale =  Array.isArray(params?.locale) ? params.locale[0] : params.locale || "nl";
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
   switch (locale) {
     case "en":
       return englishMetadata;
@@ -32,12 +37,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   }
 }
 
-export default async function About({
-  params,
-}: {
-  params: Params;
-}) {
-  const locale = Array.isArray(params?.locale) ? params.locale[0] : params.locale || "nl"; // Default to 'nl'
+export default async function About({ params }: { params: Params }) {
+  const { locale } = await params;
   setRequestLocale(locale);
   // const t = await getTranslations();
 

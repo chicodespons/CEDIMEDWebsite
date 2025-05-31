@@ -1,13 +1,11 @@
 import { setRequestLocale } from "next-intl/server";
 
-type Params = {
-  locale: string | string[];
-};
+type Params = Promise<{
+  locale: string;
+}>;
 
 export default async function PrivacyPolicy({ params }: { params: Params }) {
-  const locale = Array.isArray(params?.locale)
-    ? params.locale[0]
-    : params.locale || "nl"; // Default to 'nl'
+  const { locale } = await params;
   setRequestLocale(locale);
 
   return (
