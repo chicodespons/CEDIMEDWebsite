@@ -19,7 +19,7 @@ export async function POST(request: Request) {
           Authorization: `Bearer ${coolifyToken}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ force_build: true }),
+        body: JSON.stringify({}),
       }
     );
 
