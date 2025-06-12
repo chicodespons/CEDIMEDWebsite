@@ -86,8 +86,9 @@ export async function generateMetadata({
 // Fetch news items function
 async function fetchNewsItems(locale: string): Promise<NewsItem[]> {
   try {
+     const query = `fields=title,slug,excerpt,publishedAt&populate[image][fields]=alternativeText,formats&locale=${locale}&sort=publishedAt:desc&pagination[limit]=10`
     let res = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?populate[author]=*&populate=image&locale=${locale}&sort=publishedAt:desc&pagination[limit]=10`,
+      `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?${query}`,
       {
         headers: {
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
@@ -100,8 +101,10 @@ async function fetchNewsItems(locale: string): Promise<NewsItem[]> {
 
     // Fallback to default locale if no data found
     if ((!data.data || data.data.length === 0) && locale !== 'nl') {
+          const fallbackQuery = `fields=title,slug,excerpt,publishedAt&populate[image][fields]=alternativeText,formats&locale=nl&sort=publishedAt:desc&pagination[limit]=10`;
+
       res = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?populate[author]=*&populate=image&locale=nl&sort=publishedAt:desc&pagination[limit]=10`,
+       `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?${fallbackQuery}`,
         {
           headers: {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
