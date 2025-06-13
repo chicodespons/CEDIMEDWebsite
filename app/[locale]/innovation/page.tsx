@@ -86,30 +86,30 @@ export async function generateMetadata({
 // Fetch news items function
 async function fetchNewsItems(locale: string): Promise<NewsItem[]> {
   try {
-     const query = `fields=title,slug,excerpt,publishedAt&populate[image][fields]=alternativeText,formats&locale=${locale}&sort=publishedAt:desc&pagination[limit]=10`
+    const query = `fields=title,slug,excerpt,publishedAt&populate[image][fields]=alternativeText,formats&locale=${locale}&sort=publishedAt:desc&pagination[limit]=10`;
     let res = await fetch(
       `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?${query}`,
       {
         headers: {
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
         },
-        cache: 'force-cache'
+        cache: "force-cache",
       }
     );
 
     let data = await res.json();
 
     // Fallback to default locale if no data found
-    if ((!data.data || data.data.length === 0) && locale !== 'nl') {
-          const fallbackQuery = `fields=title,slug,excerpt,publishedAt&populate[image][fields]=alternativeText,formats&locale=nl&sort=publishedAt:desc&pagination[limit]=10`;
+    if ((!data.data || data.data.length === 0) && locale !== "nl") {
+      const fallbackQuery = `fields=title,slug,excerpt,publishedAt&populate[image][fields]=alternativeText,formats&locale=nl&sort=publishedAt:desc&pagination[limit]=10`;
 
       res = await fetch(
-       `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?${fallbackQuery}`,
+        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?${fallbackQuery}`,
         {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
-          },
-          cache: 'force-cache'
+          // headers: {
+          //   Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
+          // },
+          cache: "force-cache",
         }
       );
       data = await res.json();
@@ -129,7 +129,7 @@ async function fetchNewsItems(locale: string): Promise<NewsItem[]> {
 
     return [];
   } catch (error) {
-    console.error('Error fetching news items:', error);
+    console.error("Error fetching news items:", error);
     return [];
   }
 }
@@ -138,7 +138,7 @@ export default async function Innovation({ params }: { params: Params }) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-   const newsItems = await fetchNewsItems(locale);
+  const newsItems = await fetchNewsItems(locale);
 
   return (
     <div>

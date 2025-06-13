@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import DefaultImageComponent from "../defaultImageComponent";
 import RichTextRenderer from "../RichTextRenderer";

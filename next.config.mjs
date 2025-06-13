@@ -7,12 +7,27 @@ const nextConfig = {
   
   images: {
     remotePatterns: [
+      // Local development Strapi
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "1337",
+        pathname: "/uploads/**",
+      },
+      // Current production/staging Strapi
       {
         protocol: "https",
-        hostname: "cedimed-strapi-ji87p.ondigitalocean.app",
+        hostname: "strapi.cedimed.brussels",
         port: "8080",
         pathname: "/uploads/**/*",
       },
+      // Temporary development Strapi (from your env)
+      {
+        protocol: "http",
+        hostname: "oso004o8co8sog0s8o04s40k.188.245.222.221.sslip.io",
+        pathname: "/uploads/**",
+      },
+      // Placeholder service
       {
         protocol: "https",
         hostname: "placehold.co",
