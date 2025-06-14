@@ -67,10 +67,37 @@ const NewsCardSliderComponent: React.FC<NewsCardSliderProps> = ({
     return <p className="text-center">No news available at the moment.</p>;
   }
 
+  // Fill up to 3 items with dummy data if needed
+  const displayItems = [...newsItems];
+  if (newsItems.length < 3) {
+    const placeholdersNeeded = 3 - newsItems.length;
+    for (let i = 0; i < placeholdersNeeded; i++) {
+      displayItems.push({
+        id: -i - 1,
+        title:
+          locale === "nl"
+            ? "Meer nieuws komt eraan"
+            : locale === "fr"
+            ? "Plus de nouvelles à venir"
+            : "More news coming",
+        excerpt:
+          locale === "nl"
+            ? "We werken aan nieuwe artikelen voor u."
+            : locale === "fr"
+            ? "Nous travaillons sur de nouveaux articles pour vous."
+            : "We are working on new articles for you.",
+        slug: "",
+        author: null,
+        publicationDate: new Date().toISOString(),
+        img: null,
+      });
+    }
+  }
+
   return (
     <div className="py-8">
       <Slider {...settings}>
-        {newsItems.map((newsItem) => (
+        {displayItems.map((newsItem) => (
           <div key={newsItem.id} className="px-4">
             <NewsCard newsItem={newsItem} locale={locale} />
           </div>

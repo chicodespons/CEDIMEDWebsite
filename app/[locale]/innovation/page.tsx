@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import PijlerText from "../../components/PijlerText";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import NewsCardSliderComponent from "@/app/components/CardSliderComponent";
+import { NewsType } from "@/app/enums/newsType";
 
 type Params = Promise<{
   locale: string;
@@ -23,6 +24,13 @@ interface StrapiImage {
   };
 }
 
+interface NewsCategory {
+  id: number;
+  name: string;
+  slug: string;
+  type: NewsType;
+}
+
 interface ApiAuthor {
   name: string;
   bio: string;
@@ -38,6 +46,7 @@ interface ApiNewsItem {
   author?: ApiAuthor;
   publishedAt: string;
   image?: StrapiImage;
+  categories?: NewsCategory[];
 }
 
 interface NewsItem {
@@ -48,6 +57,7 @@ interface NewsItem {
   author: string | null;
   publicationDate: string;
   img: StrapiImage | null;
+  categories?: NewsCategory[];
 }
 
 const englishMetadata = {
@@ -86,7 +96,7 @@ export async function generateMetadata({
 // Fetch news items function
 async function fetchNewsItems(locale: string): Promise<NewsItem[]> {
   try {
-    const query = `fields=title,slug,excerpt,publishedAt&populate[image][fields]=alternativeText,formats&locale=${locale}&sort=publishedAt:desc&pagination[limit]=10`;
+    const query = `fields=title,slug,excerpt,publishedAt&populate[image][fields]=alternativeText,formats&populate[news_categories][fields]=name,slug,type&locale=${locale}&filters[news_categories][type][$eq]=${NewsType.INNOVATION}&sort=publishedAt:desc&pagination[limit]=10`;
     let res = await fetch(
       `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?${query}`,
       {
@@ -101,14 +111,14 @@ async function fetchNewsItems(locale: string): Promise<NewsItem[]> {
 
     // Fallback to default locale if no data found
     if ((!data.data || data.data.length === 0) && locale !== "nl") {
-      const fallbackQuery = `fields=title,slug,excerpt,publishedAt&populate[image][fields]=alternativeText,formats&locale=nl&sort=publishedAt:desc&pagination[limit]=10`;
+      const fallbackQuery = `fields=title,slug,excerpt,publishedAt&populate[image][fields]=alternativeText,formats&populate[news_categories][fields]=name,slug,type&locale=nl&filters[news_categories][type][$eq]=${NewsType.INNOVATION}&sort=publishedAt:desc&pagination[limit]=10`;
 
       res = await fetch(
         `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?${fallbackQuery}`,
         {
-          // headers: {
-          //   Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
-          // },
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
+          },
           cache: "force-cache",
         }
       );
@@ -124,6 +134,7 @@ async function fetchNewsItems(locale: string): Promise<NewsItem[]> {
         author: item.author ? item.author.name : null,
         publicationDate: item.publishedAt,
         img: item.image?.formats?.medium ? item.image : null,
+        categories: item["news-categories"] || [],
       }));
     }
 
@@ -137,13 +148,22 @@ async function fetchNewsItems(locale: string): Promise<NewsItem[]> {
 export default async function Innovation({ params }: { params: Params }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations(); // Fetch translations for the current locale
 
   const newsItems = await fetchNewsItems(locale);
 
   return (
     <div>
       <PijlerText locale={locale} slug={"innovation"} />
-      <NewsCardSliderComponent newsItems={newsItems} locale={locale} />
+
+      <section className="py-14 bg-white mx-6 rounded-lg">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl uppercase tracking-wider font-bold text-center mb-10">
+            {t("cedimedNieuws")}
+          </h2>
+          <NewsCardSliderComponent newsItems={newsItems} locale={locale} />
+        </div>
+      </section>
     </div>
   );
 }

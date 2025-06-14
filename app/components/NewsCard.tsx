@@ -45,9 +45,9 @@ const NewsCard: React.FC<{ newsItem: NewsItem; locale: string }> = ({
         {/* Image Section */}
         <div className="relative h-48 m-6">
           <img
-            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${imageUrl}`}
+            src={imageUrl}
             alt={imageAlt || "News Item Image"}
-            className="rounded max-w-full h-auto"
+            className="w-full h-full object-cover rounded"
           />
         </div>
 
