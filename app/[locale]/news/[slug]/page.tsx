@@ -1,5 +1,6 @@
 import { NewsComponent } from "@/app/components/news/NewsComponent";
 import NoNewsComponent from "@/app/components/news/NoNewsComponent";
+import { NewsType } from "@/app/enums/newsType";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 type Props = {
@@ -25,6 +26,13 @@ interface StrapiImage {
   };
 }
 
+interface NewsCategory {
+  id: number;
+  name: string;
+  slug: string;
+  type: NewsType;
+}
+
 interface ApiAuthor {
   name: string;
   bio: string;
@@ -40,6 +48,7 @@ interface ApiNewsItem {
   author?: ApiAuthor;
   publishedAt: string;
   image?: StrapiImage;
+  news_categories?: NewsCategory[];
 }
 
 interface ApiResponse {
@@ -57,6 +66,7 @@ interface NieuwsItem {
   author: string | null;
   bio: string | null;
   avatar: StrapiImage | null;
+  categories?: NewsCategory[];
 }
 
 async function fetchNewsItemViaSlug(
@@ -65,11 +75,12 @@ async function fetchNewsItemViaSlug(
 ): Promise<NieuwsItem | null> {
   try {
     let res = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?filters[slug][$eq]=${slug}&populate[author][populate]=avatar&populate=image&locale=${locale}`,
+      `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?filters[slug][$eq]=${slug}&populate[author][populate]=avatar&populate=image&populate[news_categories][fields]=name,slug,type&locale=${locale}`,
       {
         headers: {
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
         },
+        cache: "force-cache",
       }
     );
 
@@ -81,11 +92,12 @@ async function fetchNewsItemViaSlug(
     ) {
       // Fallback to the default locale (e.g., "nl")
       res = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?filters[slug][$eq]=${slug}&populate[author][populate]=avatar&populate=image&locale=nl`,
+        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?filters[slug][$eq]=${slug}&populate[author][populate]=avatar&populate=image&populate[news_categories][fields]=name,slug,type&locale=nl`,
         {
           headers: {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
           },
+          cache: "force-cache",
         }
       );
       data = await res.json();
@@ -107,6 +119,7 @@ async function fetchNewsItemViaSlug(
         avatar: newsItem.author?.avatar?.formats?.thumbnail
           ? newsItem.author.avatar
           : null,
+        categories: newsItem.news_categories || [],
       };
 
       return mappedItem;

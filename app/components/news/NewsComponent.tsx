@@ -2,7 +2,8 @@
 import React from "react";
 import DefaultImageComponent from "../defaultImageComponent";
 import RichTextRenderer from "../RichTextRenderer";
-import Link from "next/link";
+import { NewsType } from "@/app/enums/newsType";
+import RelatedArticles from "./RelatedArticles";
 
 interface StrapiImage {
   alternativeText: string;
@@ -20,6 +21,13 @@ interface StrapiImage {
   };
 }
 
+interface NewsCategory {
+  id: number;
+  name: string;
+  slug: string;
+  type: NewsType;
+}
+
 interface NieuwsItem {
   id: number;
   title: string;
@@ -31,6 +39,7 @@ interface NieuwsItem {
   author: string | null;
   bio: string | null;
   avatar: StrapiImage | null;
+  categories?: NewsCategory[];
 }
 
 interface NewsComponentProps {
@@ -43,6 +52,7 @@ interface ArticleData {
   id: number;
   title: string;
   slug: string;
+  categories?: NewsCategory[];
 }
 
 interface ArticlesResponse {
@@ -52,12 +62,12 @@ interface ArticlesResponse {
 async function fetchRelatedArticles(locale: string): Promise<ArticleData[]> {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?fields=title,slug&sort=publishedAt:desc&locale=${locale}`,
+      `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/newses?fields=title,slug&populate[news_categories][fields]=name,slug,type&sort=publishedAt:desc&locale=${locale}`,
       {
         headers: {
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
         },
-        cache: 'force-cache'
+        cache: "force-cache",
       }
     );
 
@@ -88,6 +98,7 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({
     author,
     bio,
     avatar,
+    categories,
   } = newsItem;
   const date = new Date(publicationDate);
   const formattedDate = new Intl.DateTimeFormat("en-US", {
@@ -123,6 +134,19 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({
                   {`Published on ${formattedDate} by ${author}`}
                 </p>
               </div>
+              {/* Categories */}
+              {categories && categories.length > 0 && (
+                <div className="flex flex-wrap gap-2 px-4 mb-6">
+                  {categories.map((category) => (
+                    <span
+                      key={category.id}
+                      className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
+                    >
+                      {category.name}
+                    </span>
+                  ))}
+                </div>
+              )}
 
               {/* Image */}
               {img && (
@@ -162,31 +186,14 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({
             />
             <div>
               <h3 className="text-base font-semibold my-6">{author}</h3>
-              <p className="text-sm text-gray-600 text-justify leading-relaxed">{bio}</p>
+              <p className="text-sm text-gray-600 text-justify leading-relaxed">
+                {bio}
+              </p>
             </div>
           </div>
         </section>
         {/* Related Articles */}
-        <section className="bg-white shadow-md rounded-lg p-4">
-          <h2 className="text-lg font-semibold mb-4">{t("articels")}</h2>
-          <ul className="space-y-4 text-blue-600 visited:text-purple-600">
-            {relatedArticles.map(
-              ({ id, title, slug }) =>
-                id &&
-                title &&
-                slug && (
-                  <li key={id}>
-                    <Link
-                      href={`/${locale}/news/${slug}`}
-                      className="hover:underline"
-                    >
-                      {title || ""}
-                    </Link>
-                  </li>
-                )
-            )}
-          </ul>
-        </section>
+        <RelatedArticles relatedArticles={relatedArticles} locale={locale}/>
       </aside>
     </div>
   );
