@@ -38,5 +38,14 @@
   "privacyPolicy": "Politique de confidentialité",
   "cookieBannerText": "Ce site utilise des cookies pour améliorer votre expérience de navigation. En savoir plus dans notre",
   "decline": "Refuser",
-  "accept": "Accepter"
+  "accept": "Accepter",
+  "filterByNewsType": "Filtrer par type d'actualité:",
+  "clearAllFilters": "Effacer tous les filtres",
+  "general": "Général",
+  "noArticlesFoundFilter": "Aucun article trouvé pour le filtre sélectionné.",
+  "showing": "Affichage",
+  "of": "de",
+  "next": "Suivant",
+  "previous": "Précédent",
+  "page": "Page"
 }

@@ -31,6 +31,8 @@ const RelatedArticles: React.FC<RelatedArticleProps> = ({
 }) => {
   const t = useTranslations();
   const [selectedNewsTypes, setSelectedNewsTypes] = useState<NewsType[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const articlesPerPage = 5;
 
   // Get all news types (always show all types)
   const allNewsTypes = Object.values(NewsType);
@@ -39,15 +41,15 @@ const RelatedArticles: React.FC<RelatedArticleProps> = ({
   const getNewsTypeLabel = (newsType: NewsType): string => {
     switch (newsType) {
       case NewsType.CLINICAL_CARE:
-        return "Clinical Care";
+        return t("klinischeZorg");
       case NewsType.EDUCATION:
-        return "Education";
+        return t("onderwijs");
       case NewsType.RESEARCH:
-        return "Research";
+        return t("onderzoek");
       case NewsType.INNOVATION:
-        return "Innovation";
+        return t("innovatie");
       case NewsType.GENERAL:
-        return "General";
+        return t("general");
       default:
         return newsType;
     }
@@ -55,24 +57,43 @@ const RelatedArticles: React.FC<RelatedArticleProps> = ({
 
   // Filter articles based on selected news types
   const filteredArticles = useMemo(() => {
+    // Debug logging (remove in production)
+    console.log("Total articles:", relatedArticles.length);
+    console.log("Selected filters:", selectedNewsTypes);
+
     if (selectedNewsTypes.length === 0) {
       return relatedArticles; // Show all if no filters selected
     }
 
-    return relatedArticles.filter((article) => {
+    const filtered = relatedArticles.filter((article) => {
       // Check both possible field names from API
-      const articleCategories =
-        article.categories || article.news_categories || [];
+      const articleCategories = article.news_categories;
+
+      // If no categories exist, don't show this article when filtering
+      if (!articleCategories || articleCategories.length === 0) {
+        return false;
+      }
+
       const articleNewsTypes = articleCategories.map(
         (category) => category.type
       );
 
-      // Check if article has ALL selected news types (exact match)
-      return selectedNewsTypes.every((selectedType) =>
+      const matches = selectedNewsTypes.some((selectedType) =>
         articleNewsTypes.includes(selectedType)
       );
+
+      return matches;
     });
+
+    console.log("Filtered articles:", filtered.length);
+    return filtered;
   }, [relatedArticles, selectedNewsTypes]);
+
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredArticles.length / articlesPerPage);
+  const startIndex = (currentPage - 1) * articlesPerPage;
+  const endIndex = startIndex + articlesPerPage;
+  const currentArticles = filteredArticles.slice(startIndex, endIndex);
 
   // Handle news type selection toggle
   const toggleNewsType = (newsType: NewsType) => {
@@ -85,6 +106,19 @@ const RelatedArticles: React.FC<RelatedArticleProps> = ({
         return [...prev, newsType];
       }
     });
+    // Reset to first page when filter changes
+    setCurrentPage(1);
+  };
+
+  // Handle page navigation
+  const goToPage = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  // Clear all filters
+  const clearAllFilters = () => {
+    setSelectedNewsTypes([]);
+    setCurrentPage(1);
   };
 
   return (
@@ -94,7 +128,7 @@ const RelatedArticles: React.FC<RelatedArticleProps> = ({
       {/* NewsType Filter */}
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          Filter by News Type:
+          {t("filterByNewsType")}
         </label>
 
         <div className="flex flex-wrap gap-2">
@@ -119,38 +153,97 @@ const RelatedArticles: React.FC<RelatedArticleProps> = ({
         {/* Clear all button */}
         {selectedNewsTypes.length > 0 && (
           <button
-            onClick={() => setSelectedNewsTypes([])}
+            onClick={clearAllFilters}
             className="mt-2 text-xs text-gray-500 hover:text-gray-700 underline"
           >
-            Clear all filters
+            {t("clearAllFilters")}
           </button>
         )}
       </div>
 
       {/* Articles List */}
-      <ul className="space-y-4 text-blue-600 visited:text-purple-600">
-        {filteredArticles.length > 0 ? (
-          filteredArticles.map(
-            ({ id, title, slug }) =>
-              id &&
-              title &&
-              slug && (
-                <li key={id}>
-                  <Link
-                    href={`/${locale}/news/${slug}`}
-                    className="hover:underline"
-                  >
-                    {title || ""}
-                  </Link>
-                </li>
+      <div className="mb-4">
+        <ul className="space-y-4 text-blue-600 visited:text-purple-600">
+          {currentArticles.length > 0 ? (
+            currentArticles.map(
+              ({ id, title, slug }) =>
+                id &&
+                title &&
+                slug && (
+                  <li key={id}>
+                    <Link
+                      href={`/${locale}/news/${slug}`}
+                      className="hover:underline"
+                    >
+                      {title || ""}
+                    </Link>
+                  </li>
+                )
+            )
+          ) : (
+            <li className="text-gray-500 italic">
+              {t("noArticlesFoundFilter")}
+            </li>
+          )}
+        </ul>
+      </div>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="flex justify-end items-center space-x-2">
+          <span className="text-sm text-gray-600">
+            {t("page")} {currentPage} {t("of")} {totalPages}
+          </span>
+
+          {/* Previous button */}
+          {currentPage > 1 && (
+            <button
+              onClick={() => goToPage(currentPage - 1)}
+              className="px-2 py-1 text-sm text-blue-600 hover:text-blue-800 hover:underline"
+            >
+              ← {t("previous")}
+            </button>
+          )}
+
+          {/* Page numbers */}
+          <div className="flex space-x-1">
+            {Array.from({ length: totalPages }, (_, index) => index + 1).map(
+              (page) => (
+                <button
+                  key={page}
+                  onClick={() => goToPage(page)}
+                  className={`px-3 py-1 text-sm rounded transition-colors ${
+                    page === currentPage
+                      ? "bg-blue-600 text-white"
+                      : "text-blue-600 hover:bg-blue-100"
+                  }`}
+                >
+                  {page}
+                </button>
               )
-          )
-        ) : (
-          <li className="text-gray-500 italic">
-            No articles found for the selected filter.
-          </li>
-        )}
-      </ul>
+            )}
+          </div>
+
+          {/* Next button */}
+          {currentPage < totalPages && (
+            <button
+              onClick={() => goToPage(currentPage + 1)}
+              className="px-2 py-1 text-sm text-blue-600 hover:text-blue-800 hover:underline"
+            >
+              {t("next")} →
+            </button>
+          )}
+        </div>
+      )}
+
+      {/* Results summary */}
+      {filteredArticles.length > 0 && (
+        <div className="mt-2 text-xs text-gray-500 text-right">
+          {t("showing")} {startIndex + 1}-
+          {Math.min(endIndex, filteredArticles.length)} {t("of")}{" "}
+          {filteredArticles.length} {t("articels")}
+        </div>
+      )}
     </section>
   );
 };

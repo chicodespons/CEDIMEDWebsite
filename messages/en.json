@@ -38,5 +38,14 @@
     "privacyPolicy": "Privacy Policy",
     "cookieBannerText": "This site uses cookies to enhance your browsing experience. Learn more in our",
     "decline": "Decline",
-    "accept": "Accept"
+    "accept": "Accept",
+    "filterByNewsType": "Filter by News Type:",
+    "clearAllFilters": "Clear All Filters",
+    "general": "General",
+    "noArticlesFoundFilter": "No articles found for the selected filter.",
+    "showing": "Showing",
+    "of": "of",
+    "next": "Next",
+    "previous": "Previous",
+    "page": "Page"
    }
