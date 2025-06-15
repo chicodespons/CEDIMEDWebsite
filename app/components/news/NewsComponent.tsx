@@ -19,6 +19,7 @@ interface StrapiImage {
       height: number;
     };
   };
+  caption:string
 }
 
 interface NewsCategory {
@@ -156,6 +157,11 @@ export const NewsComponent: React.FC<NewsComponentProps> = async ({
                     alt={img.alternativeText || "News Item Image"}
                     className="rounded max-w-full h-auto"
                   />
+                  {img.caption && (
+                <p className="text-sm text-gray-500 mt-2 text-center">
+                  {img.caption}
+                </p>
+              )}
                 </div>
               )}
 

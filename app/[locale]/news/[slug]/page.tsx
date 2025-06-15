@@ -24,6 +24,7 @@ interface StrapiImage {
       height: number;
     };
   };
+  caption: string;
 }
 
 interface NewsCategory {
