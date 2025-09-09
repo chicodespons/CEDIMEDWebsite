@@ -97,12 +97,31 @@ const Footer = ({
       </div>
 
       {/* Underscript Section */}
-      <div className="container mx-auto text-center mt-16 mb-2 text-sm">
-        <div className="flex justify-center space-x-4">
-          <Link href={`/${locale}/privacy-policy`} className="hover:underline">
-            {t("privacyPolicy")}
-          </Link>
-          <span>&copy; {new Date().getFullYear()} CEDIMED Brussels</span>
+      {/* Underscript Section */}
+      <div className="container mx-auto mt-16 mb-2 text-sm">
+        <div className="flex flex-col md:flex-row items-center justify-center relative">
+          {/* Center group */}
+          <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4 text-center">
+            <Link
+              href={`/${locale}/privacy-policy`}
+              className="hover:underline"
+            >
+              {t("privacyPolicy")}
+            </Link>
+            <span>&copy; {new Date().getFullYear()} CEDIMED Brussels</span>
+          </div>
+
+          {/* Right group */}
+          <div className="mt-2 md:mt-0 md:absolute md:right-4 md:text-right">
+            <a
+              href="https://www.dedycker.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-gray-300 hover:text-white transition-colors hover:underline"
+            >
+              Made by De Dycker Development
+            </a>
+          </div>
         </div>
       </div>
     </footer>
