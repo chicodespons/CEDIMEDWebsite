@@ -6,14 +6,16 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 
 export default function CookieBanner({ locale }: { locale: string }) {
-  const [cookieConsent, setCookieConsent] = useState<boolean | null>(() => {
-    return getLocalStorage("cookie_consent", null);
-  });
+  const [cookieConsent, setCookieConsent] = useState<boolean | null | undefined>(undefined);
 
   const t = useTranslations();
 
   useEffect(() => {
-    if (cookieConsent === null) return;
+    setCookieConsent(getLocalStorage("cookie_consent", null));
+  }, []);
+
+  useEffect(() => {
+    if (cookieConsent === undefined || cookieConsent === null) return;
 
     setLocalStorage("cookie_consent", cookieConsent);
 
