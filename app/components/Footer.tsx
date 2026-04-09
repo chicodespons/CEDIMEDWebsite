@@ -26,8 +26,8 @@ const Footer = ({
             </p>
             <p>
               {t("tel")}{" "}
-              <Link href="tel:+3247355570" className="text-white">
-                +32 473 55 70
+              <Link href="tel:+3224749543" className="text-white">
+                +32 2 474 95 43
               </Link>
             </p>
             <p>{t("adres")}</p>
