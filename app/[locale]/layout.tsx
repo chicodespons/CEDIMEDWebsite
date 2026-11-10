@@ -11,6 +11,7 @@ import Navbar from "../components/Navbar";
 import "../globals.css";
 import CookieBanner from "../components/CookieBanner";
 import GoogleAnalytics from "../components/GoogleAnalytics";
+import UmamiAnalytics from "../components/UmamiAnalytics";
 import { Suspense } from "react";
 
 // Define the types for layout props
@@ -62,6 +63,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
         <Suspense>
           <GoogleAnalytics GA_MEASUREMENT_ID="G-MXEXQKJLKW" />
         </Suspense>
+        <UmamiAnalytics />
 
         <NextIntlClientProvider messages={messages}>
           {/* Wrapping content in a Flexbox container */}

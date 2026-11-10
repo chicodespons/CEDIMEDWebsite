@@ -170,6 +170,15 @@ export default async function PrivacyPolicy({ params }: { params: Params }) {
         data.
       </p>
 
+      <h4 className="text-lg font-semibold mb-2">Website Analytics</h4>
+      <p className="mb-6">
+        We use Umami, a privacy-friendly analytics tool hosted on our web
+        developer&apos;s own server in the EU. Umami does not use cookies, does
+        not collect personal data and does not store IP addresses; it only
+        provides anonymous, aggregated visitor statistics that help us improve
+        the Service.
+      </p>
+
       <p className="text-sm text-gray-600">
         For more details, please review the full Privacy Policy above or contact
         us at{" "}
