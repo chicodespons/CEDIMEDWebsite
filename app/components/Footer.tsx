@@ -20,13 +20,23 @@ const Footer = ({
             </h3>
             <p>
               {t("email")}{" "}
-              <Link href="mailto:info@cedimed.brussels" className="text-white">
+              <Link
+                href="mailto:info@cedimed.brussels"
+                className="text-white"
+                data-umami-event="email-click"
+                data-umami-event-location="footer"
+              >
                 info@cedimed.brussels
               </Link>
             </p>
             <p>
               {t("tel")}{" "}
-              <Link href="tel:+3224749543" className="text-white">
+              <Link
+                href="tel:+3224749543"
+                className="text-white"
+                data-umami-event="phone-click"
+                data-umami-event-location="footer"
+              >
                 +32 2 474 95 43
               </Link>
             </p>
