@@ -41,7 +41,7 @@ const GoogleMapsComponent: React.FC<Props> = ({ apiKey}) => {
       <div className="w-full md:w-1/2 p-6 flex flex-col justify-center ">
         <h2 className="text-xl font-semibold">CEDIMED Brussels</h2>
         <p><strong>{t('adres2')}</strong> {t('laarbeeklaan')}</p>
-        <p><strong>{t('tel')}</strong> +32 2 474 95 43</p>
+        <p><strong>{t('tel')}</strong> <a href="tel:+3224749543" className="text-blue-600" data-umami-event="phone-click" data-umami-event-location="contact-page">+32 2 474 95 43</a></p>
         <p><strong>{t('openingsUren')}</strong> 09:00 - 17:00</p>
         <p><strong>{t('email')}</strong> <a href="mailto:info@cedimed.brussels" className="text-blue-600" data-umami-event="email-click" data-umami-event-location="contact-page">info@cedimed.brussels</a></p>
 
