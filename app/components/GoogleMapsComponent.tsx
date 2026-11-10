@@ -43,10 +43,11 @@ const GoogleMapsComponent: React.FC<Props> = ({ apiKey}) => {
         <p><strong>{t('adres2')}</strong> {t('laarbeeklaan')}</p>
         <p><strong>{t('tel')}</strong> +32 2 474 95 43</p>
         <p><strong>{t('openingsUren')}</strong> 09:00 - 17:00</p>
-        <p><strong>{t('email')}</strong> <a href="mailto:info@cedimed.brussels" className="text-blue-600">info@cedimed.brussels</a></p>
+        <p><strong>{t('email')}</strong> <a href="mailto:info@cedimed.brussels" className="text-blue-600" data-umami-event="email-click" data-umami-event-location="contact-page">info@cedimed.brussels</a></p>
 
         <Link
           href={googleMapsRouteUrl}
+          data-umami-event="directions-click"
           className="inline-block uppercase max-w-72 mt-6 px-6 sm:px-8 py-2 sm:py-3 bg-uzGreen text-white font-bold rounded hover:bg-uzGray transition duration-300 text-sm sm:text-base"
         >
           {t('getDirectionsOnGoogleMaps')}

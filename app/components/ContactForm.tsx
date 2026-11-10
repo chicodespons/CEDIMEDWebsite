@@ -2,6 +2,7 @@
 import { useTranslations } from 'next-intl';
 import React, { useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { trackEvent } from '../lib/umami-track';
 
 enum MessageType {
   CLINICAL_CARE = 'klinischeZorg',
@@ -66,6 +67,7 @@ const ContactForm: React.FC = () => {
 
       if (response.ok) {
         setIsSubmitted(true);
+        trackEvent('contact-form-sent');
       } else {
         alert('There was an error submitting the form. Please try again.');
       }
